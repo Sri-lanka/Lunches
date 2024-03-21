@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add User</title>
+    <link rel="stylesheet" href="/css/styleFormNewUser.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="logo">Create/Edit Benefit</h1>
+    <form class="benefitForm" th:object="${benefit}" th:action="${action}" method="post">
+        <div class="formGroup">
+            <label>ID:</label>
+            <input type="number" id="id_benefit" name="id_benefit" th:field="*{id_benefit}" required>
+        </div>
+        <div class="formGroup">
+            <label for="nom_benefit">Benefit Name:</label>
+            <input type="text" id="nom_benefit" name="nom_benefit" th:value="${benefit.nom_benefit}" required>
+        </div>
+        <div class="formGroup">
+            <label for="description_benefit">Description:</label>
+            <input type="text" id="description_benefit" name="description_benefit" th:value="${benefit.description_benefit}" required>
+        </div>
+        <div class="formGroup">
+            <label for="date_start">Start Date:</label>
+            <input type="date" id="date_start" name="date_start" th:value="${benefit.date_start}" required>
+        </div>
+        <div class="formGroup">
+            <label for="date_end">End Date:</label>
+            <input type="date" id="date_end" name="date_end" th:value="${benefit.date_end}" required>
+        </div>
+        <div class="formGroup">
+            <button type="submit" class="btnSubmit">Save Benefit</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
