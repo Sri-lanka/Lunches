@@ -1,6 +1,6 @@
 package com.sena.lunches.service;
 
-import com.sena.lunches.entities.Benefit;
+
 import com.sena.lunches.entities.Excuse;
 
 import java.util.List;
