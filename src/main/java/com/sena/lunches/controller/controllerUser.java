@@ -17,7 +17,7 @@ public class controllerUser {
     @Autowired
     private UserSenaService userSenaService;
 
-    @GetMapping("listUser")
+    @GetMapping("/listUser")
     public String listUsers(Model model) {
         try {
             List<User_sena> users = userSenaService.getUser_sena();

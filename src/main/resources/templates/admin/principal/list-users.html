@@ -60,7 +60,7 @@
                 <th>State</th>
                 <th>ID benefit</th>
                 <th>Keyword</th>
-                <th id="button"><a th:href="@{/inicio/listUser/newUser}"><img th:src="@{/img/add.webp}" class="icon" ></a></th>
+                <th id="button"><a th:href="@{/newUser}"><img th:src="@{/img/add.webp}" class="icon" ></a></th>
             </tr>
             </thead>
             <tbody>
@@ -206,6 +206,7 @@
                 <th>ID User</th>
                 <th>ID Assistance</th>
                 <th>Description</th>
+                <th id="button"><a th:href="@{/excuse/newExcuse}"><img th:src="@{/img/add.webp}" class="icon" ></a></th>
             </tr>
             </thead>
             <tbody>
@@ -214,6 +215,10 @@
                 <td th:text="${Excuse.id_user}"></td>
                 <td th:text="${Excuse.id_assistance}"></td>
                 <td th:text="${Excuse.description_excuse}"></td>
+                <td id="button">
+                    <a th:href="@{/excuse/editExcuse/{idExcuse}(idExcuse=${Excuse.id_excuse})}"><img th:src="@{/img/edit.png}" class="icon" ></a>
+                    <a th:href="@{/excuse/delete/{idExcuse}(idExcuse=${Excuse.id_excuse})}" class="delete"><img th:src="@{/img/delate.webp}" class="icon" ></a>
+                </td>
             </tr>
             </tbody>
         </table>
