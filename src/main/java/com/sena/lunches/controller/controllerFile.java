@@ -27,7 +27,7 @@ public class controllerFile {
     public String createNewUser(Model model){
         model.addAttribute("file_sena", new File_sena());
         model.addAttribute("action","");
-        return "admin/principal/newFile_sena";
+        return "admin/principal/newFile";
     }
 
     @PostMapping("/newFile_sena")
@@ -40,7 +40,7 @@ public class controllerFile {
     public String updateFile_sena (@PathVariable Integer idFile_sena, Model model){
         model.addAttribute("file_sena", file_senaService.getFile_senaById(idFile_sena) );
         model.addAttribute("action","/file_sena/editFile_sena/" + idFile_sena);
-        return "admin/principal/newFile_sena";
+        return "admin/principal/newFile";
     }
 
     @PostMapping("/editFile_sena/{idFile_sena}")
