@@ -18,7 +18,7 @@ public class User_sena {
     private String name_2;
     private String last_name_1;
     private String last_name_2;
-    private int Age;
+    private int age;
     private String Email;
     private int telephone;
     private String keyword;
@@ -91,11 +91,11 @@ public class User_sena {
     }
 
     public int getAge() {
-        return Age;
+        return age;
     }
 
-    public void setAge(int Age) {
-        this.Age = Age;
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public String getEmail() {
