@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add User</title>
+    <link rel="stylesheet" href="/css/styleFormNewUser.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="logo">Create/Edit Benefit</h1>
+    <form class="messageForm" th:object="${message}" th:action="${action}" method="post">
+        <div class="formGroup">
+            <label>ID:</label>
+            <input type="number" id="id_message" name="id_message" th:field="*{id_message}" required>
+        </div>
+        <div class="formGroup">
+            <label for="id_user">ID User:</label>
+            <input type="number" id="id_user" name="id_user" th:value="${message.id_user}" required>
+        </div>
+        <div class="formGroup">
+            <label for="description_message">Description :</label>
+            <input type="text" id="description_message" name="description_message" th:value="${message.description_message}" required>
+        </div>
+        <div class="formGroup">
+            <label for="date_send">date send:</label>
+            <input type="date" id="date_send" name="date_send" th:value="${message.date_send}" required>
+        </div>
+        <div class="formGroup">
+            <button type="submit" class="btnSubmit">Save Benefit</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

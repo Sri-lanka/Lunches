@@ -4,9 +4,11 @@ import com.sena.lunches.entities.Message;
 import com.sena.lunches.repository.Message_repo;
 import com.sena.lunches.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class MessageServiceImpl  implements MessageService {
 
     @Autowired
