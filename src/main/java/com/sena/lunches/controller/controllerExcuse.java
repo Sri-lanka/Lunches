@@ -1,12 +1,14 @@
 package com.sena.lunches.controller;
 
+import com.sena.lunches.entities.Benefit;
 import com.sena.lunches.entities.Excuse;
 import com.sena.lunches.repository.Excuse_sena_repo;
+import com.sena.lunches.service.BenefitService;
+import com.sena.lunches.service.ExcuseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -14,17 +16,45 @@ import java.util.List;
 @RequestMapping("/excuse")
 public class controllerExcuse {
     @Autowired
-    private Excuse_sena_repo excuse_sena_repo;
+    private ExcuseService excuseService;
 
     @GetMapping("/listExcuse")
-    public String listExcuse(Model model) {
-        try{
-        List<Excuse> Excuse = excuse_sena_repo.findAll();
-        model.addAttribute("excuse", Excuse);
-        }catch (Exception e) {
-            System.out.println("Error: " + e);
-        }
+    public String listUsers(Model model) {
+        List<Excuse> excuseData = excuseService.getExcuse();
+        model.addAttribute("excuse", excuseData);
         return "admin/principal/list-users";
+    }
+
+    @GetMapping("/newExcuse")
+    public String createNewUser(Model model){
+        model.addAttribute("excuse", new Excuse());
+        model.addAttribute("action","");
+        return "admin/principal/newExcuse";
+    }
+
+    @PostMapping("/newExcuse")
+    public String saveUserData (@ModelAttribute Excuse excuse){
+        excuseService.saveExcuse(excuse);
+        return "redirect:/excuse/listExcuse";
+    }
+
+    @GetMapping("/editExcuse/{idExcuse}")
+    public String updateExcuse(@PathVariable Integer idExcuse, Model model){
+        model.addAttribute("excuse", excuseService.getExcuseById(idExcuse) );
+        model.addAttribute("action","/excuse/editExcuse/" + idExcuse);
+        return "admin/principal/newExcuse";
+    }
+
+    @PostMapping("/editExcuse/{idExcuse}")
+    public String updatingExcuse (@PathVariable Integer idExcuse,@ModelAttribute Excuse excuse){
+        excuseService.updateExcuse(idExcuse, excuse);
+        return "redirect:/excuse/listExcuse";
+    }
+
+    @GetMapping("/delete/{idExcuse}")
+    public String deleteExcuse (@PathVariable Integer idExcuse){
+        excuseService.deleteExcuse(idExcuse);
+        return "redirect:/excuse/listBenefit";
     }
 
 
