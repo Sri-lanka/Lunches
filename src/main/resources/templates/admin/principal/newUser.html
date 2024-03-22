@@ -8,28 +8,76 @@
 </head>
 <body>
 <div class="container">
-    <h1 class="logo">Create/Edit Benefit</h1>
-    <form class="benefitForm" th:object="${benefit}" th:action="${action}" method="post">
+    <h1 class="logo">Create/Edit User</h1>
+    <form class="userForm" th:object="${userSena}" th:action="${action}" method="post">
         <div class="formGroup">
             <label>ID:</label>
-            <input type="number" id="id_benefit" name="id_benefit" th:field="*{id_benefit}" required>
+            <input type="number" id="id_user" name="id_user" th:field="*{id_user}" required>
+        </div>
+
+        <div class="formGroup">
+            <label for="document">Benefit Name:</label>
+            <input type="number" id="document" name="document" th:value="${user.document}" required>
+        </div>
+
+        <div class="formGroup">
+            <label for="type_document">Benefit Name:</label>
+            <input type="number" id="type_document" name="type_document" th:value="${user.type_document}" required>
+        </div>
+
+        <div class="formGroup">
+        <label for="rol">Benefit Name:</label>
+        <input type="number" id="rol" name="rol" th:value="${user.rol}" required>
+        </div>
+
+        <div class="formGroup">
+        <label for="name_1">Benefit Name:</label>
+        <input type="number" id="name_1" name="name_1" th:value="${user.name_1}" required>
+        </div>
+
+        <div class="formGroup">
+        <label for="name_2">Benefit Name:</label>
+        <input type="number" id="name_2" name="name_2" th:value="${user.name_2}" required>
+        </div>
+
+        <div class="formGroup">
+            <label for="last_name_1">Benefit Name:</label>
+            <input type="number" id="last_name_1" name="last_name_1" th:value="${user.last_name_1}" required>
         </div>
         <div class="formGroup">
-            <label for="nom_benefit">Benefit Name:</label>
-            <input type="text" id="nom_benefit" name="nom_benefit" th:value="${benefit.nom_benefit}" required>
+            <label for="last_name_2">Benefit Name:</label>
+            <input type="number" id="last_name_2" name="last_name_2" th:value="${user.last_name_2}" required>
+        </div>
+
+        <div class="formGroup">
+            <label for="age">Description:</label>
+            <input type="text" id="Age" name="Age" th:value="${user.age}" required>
+        </div>
+
+        <div class="formGroup">
+            <label for="Email">Start Date:</label>
+            <input type="date" id="Email" name="Email" th:value="${user.Email}" required>
+        </div>
+
+        <div class="formGroup">
+            <label for="telephone">End Date:</label>
+            <input type="date" id="telephone" name="telephone" th:value="${user.telephone}" required>
         </div>
         <div class="formGroup">
-            <label for="description_benefit">Description:</label>
-            <input type="text" id="description_benefit" name="description_benefit" th:value="${benefit.description_benefit}" required>
+            <label for="state">End Date:</label>
+            <input type="date" id="state" name="state" th:value="${user.state}" required>
         </div>
+
         <div class="formGroup">
-            <label for="date_start">Start Date:</label>
-            <input type="date" id="date_start" name="date_start" th:value="${benefit.date_start}" required>
+            <label for="idbenefit">End Date:</label>
+            <input type="date" id="idbenefit" name="id_benefit" th:value="${user.id_benefit}" required>
         </div>
+
         <div class="formGroup">
-            <label for="date_end">End Date:</label>
-            <input type="date" id="date_end" name="date_end" th:value="${benefit.date_end}" required>
+            <label for="keyword">End Date:</label>
+            <input type="date" id="keyword" name="keyword" th:value="${user.keyword}" required>
         </div>
+
         <div class="formGroup">
             <button type="submit" class="btnSubmit">Save Benefit</button>
         </div>

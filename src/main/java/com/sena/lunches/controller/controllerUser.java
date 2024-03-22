@@ -28,9 +28,9 @@ public class controllerUser {
         return "admin/principal/list-users";
     }
 
-    @GetMapping("/newUsers")
+    @GetMapping("/newUser")
     public  String AddUser(Model model) {
-        model.addAttribute("User_sena",new User_sena());
+        model.addAttribute("userSena",new User_sena());
         model.addAttribute("action", "");
         return "admin/principal/newUser";
 
@@ -38,12 +38,12 @@ public class controllerUser {
     @PostMapping("/newUsers")
     public String saveUserData (@ModelAttribute User_sena userSena){
         userSenaService.saveUser_sena(userSena);
-        return "redirect:/listUser";
+        return "redirect:/inicio/listUser";
     }
 
     @GetMapping("/editUser/{idUserSena}")
     public String updateUser_sena (@PathVariable Integer idUserSena, Model model){
-        model.addAttribute("User", userSenaService.getUser_senaById(idUserSena) );
+        model.addAttribute("UserSena", userSenaService.getUser_senaById(idUserSena) );
         model.addAttribute("action","/listUser/editUser/" + idUserSena);
         return "admin/principal/newUser";
     }
@@ -51,13 +51,13 @@ public class controllerUser {
     @PostMapping("/editUser/{idUserSena}")
     public String updatingUser_sena(@PathVariable Integer idUserSena,@ModelAttribute User_sena userSena){
         userSenaService.updateUser_sena(idUserSena, userSena);
-        return "redirect:/listUser";
+        return "redirect:/inicio/listUser";
     }
 
     @GetMapping("/deleteUser/{idUserSena}")
     public String deleteUser_sena (@PathVariable Integer idUserSena){
         userSenaService.deleteUser_sena(idUserSena);
-        return "redirect:/listUser";
+        return "redirect:/inicio/listUser";
     }
 
 
