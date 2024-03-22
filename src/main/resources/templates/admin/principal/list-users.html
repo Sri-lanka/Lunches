@@ -60,7 +60,7 @@
                 <th>State</th>
                 <th>ID benefit</th>
                 <th>Keyword</th>
-                <th id="button"><a th:href="@{/inicio/listUser/newUser}"><img th:src="@{/img/add.webp}" class="icon" ></a></th>
+                <th id="button"><a th:href="@{/newUser}"><img th:src="@{/img/add.webp}" class="icon" ></a></th>
             </tr>
             </thead>
             <tbody>
@@ -147,7 +147,7 @@
                 <th>ID</th>
                 <th>Number</th>
                 <th>ID program</th>
-
+                <th id="button"><a th:href="@{/file/newFile_sena}"><img th:src="@{/img/add.webp}" class="icon" ></a></th>
             </tr>
             </thead>
             <tbody>
@@ -155,6 +155,10 @@
                 <td th:text="${Files.id_file}"></td>
                 <td th:text="${Files.n_file}"></td>
                 <td th:text="${Files.id_program}">
+                <td id="button">
+                    <a th:href="@{/file/editFile_sena/{idFile_sena}(idFile_sena=${Files.id_file})}"><img th:src="@{/img/edit.png}" class="icon" ></a>
+                    <a th:href="@{/file/delete/{idFile_sena}(idFile_sena=${Files.id_file})}" class="delete"><img th:src="@{/img/delate.webp}" class="icon" ></a>
+                </td>
             </tr>
             </tbody>
         </table>
@@ -206,6 +210,7 @@
                 <th>ID User</th>
                 <th>ID Assistance</th>
                 <th>Description</th>
+                <th id="button"><a th:href="@{/excuse/newExcuse}"><img th:src="@{/img/add.webp}" class="icon" ></a></th>
             </tr>
             </thead>
             <tbody>
@@ -214,6 +219,10 @@
                 <td th:text="${Excuse.id_user}"></td>
                 <td th:text="${Excuse.id_assistance}"></td>
                 <td th:text="${Excuse.description_excuse}"></td>
+                <td id="button">
+                    <a th:href="@{/excuse/editExcuse/{idExcuse}(idExcuse=${Excuse.id_excuse})}"><img th:src="@{/img/edit.png}" class="icon" ></a>
+                    <a th:href="@{/excuse/delete/{idExcuse}(idExcuse=${Excuse.id_excuse})}" class="delete"><img th:src="@{/img/delate.webp}" class="icon" ></a>
+                </td>
             </tr>
             </tbody>
         </table>
