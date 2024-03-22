@@ -4,7 +4,7 @@ import com.sena.lunches.entities.User_sena;
 import java.util.List;
 
 
-public interface User_sena_service {
+public interface UserSenaService {
     public List<User_sena> getUser_sena();
 
     public User_sena saveUser_sena(User_sena userSena);

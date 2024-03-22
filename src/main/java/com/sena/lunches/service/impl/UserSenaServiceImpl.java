@@ -3,13 +3,13 @@ package com.sena.lunches.service.impl;
 
 import com.sena.lunches.entities.User_sena;
 import com.sena.lunches.repository.User_sena_repo;
-import com.sena.lunches.service.User_sena_service;
+import com.sena.lunches.service.UserSenaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
-public class User_sena_service_Impl implements User_sena_service {
+public class UserSenaServiceImpl implements UserSenaService {
     @Autowired
     private User_sena_repo userSenaRepo;
 

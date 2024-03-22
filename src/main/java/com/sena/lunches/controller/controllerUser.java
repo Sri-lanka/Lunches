@@ -1,14 +1,12 @@
 package com.sena.lunches.controller;
 
 import com.sena.lunches.entities.User_sena;
-import com.sena.lunches.service.User_sena_service;
+import com.sena.lunches.service.UserSenaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 
@@ -17,12 +15,12 @@ import java.util.List;
 public class controllerUser {
 
     @Autowired
-    private User_sena_service UserSenaService;
+    private UserSenaService userSenaService;
 
     @GetMapping("listUser")
     public String listUsers(Model model) {
         try {
-            List<User_sena> users = UserSenaService.getUser_sena();
+            List<User_sena> users = userSenaService.getUser_sena();
             model.addAttribute("users", users);
         }catch (Exception e) {
             System.out.println("Error: " + e);
@@ -30,18 +28,39 @@ public class controllerUser {
         return "admin/principal/list-users";
     }
 
-    @GetMapping("/addUser")
+    @GetMapping("/newUsers")
     public  String AddUser(Model model) {
         model.addAttribute("User_sena",new User_sena());
         model.addAttribute("action", "");
         return "admin/principal/newUser";
 
     }
-    @PostMapping("/addUser")
-    public String saveUserSena (@ModelAttribute User_sena userSena){
-        UserSenaService.saveUser_sena(userSena);
-        return "redirect:/listUse";
+    @PostMapping("/newUsers")
+    public String saveUserData (@ModelAttribute User_sena userSena){
+        userSenaService.saveUser_sena(userSena);
+        return "redirect:/listUser";
     }
+
+    @GetMapping("/editUser/{idUserSena}")
+    public String updateUser_sena (@PathVariable Integer idUserSena, Model model){
+        model.addAttribute("User", userSenaService.getUser_senaById(idUserSena) );
+        model.addAttribute("action","/listUser/editUser/" + idUserSena);
+        return "admin/principal/newUser";
+    }
+
+    @PostMapping("/editUser/{idUserSena}")
+    public String updatingUser_sena(@PathVariable Integer idUserSena,@ModelAttribute User_sena userSena){
+        userSenaService.updateUser_sena(idUserSena, userSena);
+        return "redirect:/listUser";
+    }
+
+    @GetMapping("/deleteUser/{idUserSena}")
+    public String deleteUser_sena (@PathVariable Integer idUserSena){
+        userSenaService.deleteUser_sena(idUserSena);
+        return "redirect:/listUser";
+    }
+
+
 
 
 
