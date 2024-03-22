@@ -35,7 +35,7 @@ public class controllerUser {
         return "admin/principal/newUser";
 
     }
-    @PostMapping("/newUsers")
+    @PostMapping("/newUser")
     public String saveUserData (@ModelAttribute User_sena userSena){
         userSenaService.saveUser_sena(userSena);
         return "redirect:/inicio/listUser";
@@ -54,7 +54,7 @@ public class controllerUser {
         return "redirect:/inicio/listUser";
     }
 
-    @GetMapping("/deleteUser/{idUserSena}")
+    @GetMapping("/delete/{idUserSena}")
     public String deleteUser_sena (@PathVariable Integer idUserSena){
         userSenaService.deleteUser_sena(idUserSena);
         return "redirect:/inicio/listUser";

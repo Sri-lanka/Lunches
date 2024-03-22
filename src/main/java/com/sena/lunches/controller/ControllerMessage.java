@@ -15,7 +15,7 @@ public class ControllerMessage {
     @Autowired
     private MessageService messageService;
 
-    @GetMapping("/listBenefit")
+    @GetMapping("/listMessage")
     public String listUsers(Model model) {
         List<Message> messageData = messageService.getMessage();
         model.addAttribute("message", messageData);
