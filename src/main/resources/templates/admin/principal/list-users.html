@@ -60,7 +60,7 @@
                 <th>State</th>
                 <th>ID benefit</th>
                 <th>Keyword</th>
-                <th id="button"><a th:href="@{/listUser/newUsers}"><img th:src="@{/img/add.webp}" class="icon" ></a></th>
+                <th id="button"><a th:href="@{/inicio/listUser/newUser}"><img th:src="@{/img/add.webp}" class="icon" ></a></th>
             </tr>
             </thead>
             <tbody>
@@ -81,7 +81,7 @@
                 <td th:text="${user.keyword}"></td>
                 <td class="button">
                 <a th:href="@{/inicio/listUser/editUser/{idUserSena}(idUserSena=${user.id_user})}"><img th:src="@{/img/edit.png}" class="icon" ></a>
-                <a th:href="@{/inicio/listUser/deleteUser/{idUserSena}(idUserSena=${user.id_user})}" class="delete"><img th:src="@{/img/delate.webp}" class="icon" ></a>
+                <a th:href="@{/inicio/listUser/delete/{idUserSena}(idUserSena=${user.id_user})}" class="delete"><img th:src="@{/img/delate.webp}" class="icon" ></a>
                 </td>
             </tr>
             </tbody>
@@ -250,7 +250,7 @@
                 <th>ID User</th>
                 <th>Description</th>
                 <th>Date send</th>
-                <a th:href="@{/quesitp/insano}">OLA </a>
+                <<th id="button"><a th:href="@{/message/newMessage}"><img th:src="@{/img/add.webp}" class="icon" ></a></th>
             </tr>
             </thead>
             <tbody>
@@ -259,6 +259,10 @@
                 <td th:text="${Message.id_user}"></td>
                 <td th:text="${Message.description_message}"></td>
                 <td th:text="${Message.date_send}"></td>
+                <td id="button">
+                    <a th:href="@{/message/editMessage/{idMessage}(idMessage=${Message.id_message})}"><img th:src="@{/img/edit.png}" class="icon" ></a>
+                    <a th:href="@{/message/delete/{idMessage}(idMessage=${Message.id_message})}" class="delete"><img th:src="@{/img/delate.webp}" class="icon" ></a>
+                </td>
             </tr>
             </tbody>
         </table>
