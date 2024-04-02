@@ -97,6 +97,7 @@
                 <th>ID Authorization</th>
                 <th>ID user</th>
                 <th>time</th>
+                <th id="button"><a th:href="@{/newAssistance}"><img th:src="@{/img/add.webp}" class="icon" ></a></th>
             </tr>
             </thead>
             <tbody>
@@ -105,6 +106,10 @@
                 <td th:text="${assist.id_authorization}"></td>
                 <td th:text="${assist.id_user}"></td>
                 <td th:text="${assist.times}"></td>
+                <td id="button">
+                    <a th:href="@{/assistance/editAssistance/{idAssistance}(idAssistance=${assist.id_assistance})}"><img th:src="@{/img/edit.png}" class="icon" ></a>
+                    <a th:href="@{/assistance/delete/{idAssistance}(idAssistance=${assist.id_assistance})}" class="delete"><img th:src="@{/img/delate.webp}" class="icon" ></a>
+                </td>
             </tr>
             </tbody>
         </table>
@@ -237,6 +242,7 @@
                 <th>ID User x Authorization</th>
                 <th>Description</th>
                 <th>Date</th>
+                <th id="button"><a th:href="@{/authorization/newAuthorization}"><img th:src="@{/img/add.webp}" class="icon" ></a></th>
             </tr>
             </thead>
             <tbody>
@@ -246,6 +252,10 @@
                 <td th:text="${Authorization.id_user_autho}"></td>
                 <td th:text="${Authorization.description_excuse}"></td>
                 <td th:text="${Authorization.date_apli}"></td>
+                <td id="button">
+                    <a th:href="@{/authorization/editAuthorization/{idAuthorization}(idAuthorization=${Authorization.id_authorization})}"><img th:src="@{/img/edit.png}" class="icon" ></a>
+                    <a th:href="@{/authorization/delete/{idAuthorization}(idAuthorization=${Authorization.id_authorization})}" class="delete"><img th:src="@{/img/delate.webp}" class="icon" ></a>
+                </td>
             </tr>
             </tbody>
         </table>
@@ -259,7 +269,7 @@
                 <th>ID User</th>
                 <th>Description</th>
                 <th>Date send</th>
-                <<th id="button"><a th:href="@{/message/newMessage}"><img th:src="@{/img/add.webp}" class="icon" ></a></th>
+                <th id="button"><a th:href="@{/message/newMessage}"><img th:src="@{/img/add.webp}" class="icon" ></a></th>
             </tr>
             </thead>
             <tbody>
@@ -285,6 +295,7 @@
                 <th>ID User</th>
                 <th>Description</th>
                 <th>Date send</th>
+                <th id="button"><a th:href="@{/archive/newArchive}"><img th:src="@{/img/add.webp}" class="icon" ></a></th>
             </tr>
             </thead>
             <tbody>
@@ -293,6 +304,10 @@
                 <td th:text="${Archive.id_excuse}"></td>
                 <td th:text="${Archive.id_message}"></td>
                 <td th:text="${Archive.archive}"></td>
+                <td id="button">
+                    <a th:href="@{/archive/editArchive/{idArchive}(idArchive=${Archive.id_archive})}"><img th:src="@{/img/edit.png}" class="icon" ></a>
+                    <a th:href="@{/archive/delete/{idArchive}(idArchive=${Archive.id_archive})}" class="delete"><img th:src="@{/img/delate.webp}" class="icon" ></a>
+                </td>
             </tr>
             </tbody>
         </table>

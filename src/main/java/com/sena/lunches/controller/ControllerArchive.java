@@ -25,14 +25,14 @@ public class ControllerArchive {
         return "admin/principal/list-users";
     }
 
-    @GetMapping("/newArchives")
+    @GetMapping("/newArchive")
     public String createNewUser(Model model){
         model.addAttribute("archive", new Archive());
         model.addAttribute("action","");
         return "admin/principal/newArchive";
     }
 
-    @PostMapping("/newArchives")
+    @PostMapping("/newArchive")
     public String saveUserData (@ModelAttribute Archive archive){
         archiveService.saveArchive(archive);
         return "redirect:/archive/listArchive";

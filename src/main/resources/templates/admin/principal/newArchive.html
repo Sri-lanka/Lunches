@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Archive</title>
+    <link rel="stylesheet" href="/css/styleFormNewUser.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="logo">Create/Edit Excuse</h1>
+    <form class="fileForm" th:object="${archive}" th:action="${action}" method="post">
+
+        <div class="formGroup">
+            <label>ID:</label>
+            <input type="number" id="id_archive" name="id_archive" th:field="*{id_archive}" required>
+        </div>
+
+        <div class="formGroup">
+            <label for="id_excuse">ID excuse:</label>
+            <input type="number" id="id_excuse" name="id_excuse" th:value="${archive.id_excuse}" required>
+        </div>
+
+        <div class="formGroup">
+            <label for="id_message">ID message :</label>
+            <input type="number" id="id_message" name="id_message" th:value="${archive.id_message}" required>
+        </div>
+
+        <div class="formGroup">
+            <label for="archive">Archive :</label>
+            <input type="number" id="archive" name="archive" th:value="${archive.archive}" required>
+        </div>
+
+        <div class="formGroup">
+            <button type="submit" class="btnSubmit">Save Archive</button>
+        </div>
+
+    </form>
+</div>
+</body>
+</html>
