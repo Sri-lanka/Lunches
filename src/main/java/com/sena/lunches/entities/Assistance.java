@@ -13,7 +13,7 @@ public class Assistance {
     private int id_assistance;
     private int id_authorization;
    private  int id_user;
-   private LocalDateTime times;
+   private LocalDateTime date_time;
 
     public int getId_assistance() {
         return id_assistance;
@@ -39,11 +39,11 @@ public class Assistance {
         this.id_user = id_user;
     }
 
-    public LocalDateTime getTimes() {
-        return times;
+    public LocalDateTime getDate_time() {
+        return date_time;
     }
 
-    public void setTimes(LocalDateTime times) {
-        this.times = times;
+    public void setDate_time(LocalDateTime date_time) {
+        this.date_time = date_time;
     }
 }
