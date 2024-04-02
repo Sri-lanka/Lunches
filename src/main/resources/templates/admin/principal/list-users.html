@@ -46,7 +46,7 @@
             <tr>
                 <th>Id</th>
                 <th>Document</th>
-                <th>Type document</th>
+                <th>T.document</th>
                 <th>rol</th>
                 <th>Name</th>
                 <th></th>
@@ -103,7 +103,7 @@
                 <td th:text="${assist.id_assistance}"></td>
                 <td th:text="${assist.id_authorization}"></td>
                 <td th:text="${assist.id_user}"></td>
-                <td th:text="${assist.times}"></td>
+                <td th:text="${assist.date_time}"></td>
                 <td id="button">
                     <a th:href="@{/assistance/editAssistance/{idAssistance}(idAssistance=${assist.id_assistance})}"><img th:src="@{/img/edit.png}" class="icon" ></a>
                     <a th:href="@{/assistance/delete/{idAssistance}(idAssistance=${assist.id_assistance})}" class="delete"><img th:src="@{/img/delate.webp}" class="icon" ></a>
@@ -180,12 +180,9 @@
                 <td th:text="${Programs.name_program}"></td>
 
                 <td id="button">
-                    <a th:href="@{/program/editProgram/{idProgram}(idProgram=${Programs.id_excuse})}"><img th:src="@{/img/edit.png}" class="icon" ></a>
-                    <a th:href="@{/program/delete/{idProgram}(idProgram=${Programs.id_excuse})}" class="delete"><img th:src="@{/img/delate.webp}" class="icon" ></a>
+                    <a th:href="@{/program/editProgram/{idProgram}(idProgram=${Programs.id_program})}"><img th:src="@{/img/edit.png}" class="icon" ></a>
+                    <a th:href="@{/program/delete/{idProgram}(idProgram=${Programs.id_program})}" class="delete"><img th:src="@{/img/delate.webp}" class="icon" ></a>
                 </td>
-
-
-
             </tr>
             </tbody>
         </table>
