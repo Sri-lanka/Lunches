@@ -1,9 +1,6 @@
 package com.sena.lunches.controller;
 
 import com.sena.lunches.entities.Authorization;
-import com.sena.lunches.entities.Authorization;
-import com.sena.lunches.repository.Authorization_sena_repo;
-import com.sena.lunches.service.AuthorizationService;
 import com.sena.lunches.service.AuthorizationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
