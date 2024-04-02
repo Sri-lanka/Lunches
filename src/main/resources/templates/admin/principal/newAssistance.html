@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add assistance</title>
+    <link rel="stylesheet" th:href="@{/css/styleForm.css}">
+</head>
+<body>
+<div class="container">
+    <h1 class="logo">Create/Edit assistance</h1>
+    <form class="fileForm" th:object="${assistance}" th:action="${action}" method="post">
+
+        <div class="formGroup">
+            <label>ID:</label>
+            <input type="number" id="id_assistance" name="id_assistance" th:field="*{id_assistance}" required>
+        </div>
+
+        <div class="formGroup">
+            <label for="id_authorization">ID authorization:</label>
+            <input type="number" id="id_authorization" name="id_authorization" th:value="${assistance.id_authorization}" required>
+        </div>
+
+        <div class="formGroup">
+            <label for="id_user">ID user :</label>
+            <input type="number" id="id_user" name="id_user" th:value="${assistance.id_user}" required>
+        </div>
+
+        <div class="formGroup">
+            <label for="date_time">Date :</label>
+            <input type="datetime-local" id="date_time" name="date_time" th:value="${assistance.date_time}" required>
+        </div>
+
+        <div class="formGroup">
+            <button type="submit" class="btnSubmit">Save Assistance</button>
+        </div>
+
+    </form>
+</div>
+</body>
+</html>

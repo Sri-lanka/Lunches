@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Program</title>
+    <link rel="stylesheet" href="/css/styleForm.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="logo">Create/Edit Program</h1>
+    <form class="fileForm" th:object="${program}" th:action="${action}" method="post">
+
+        <div class="formGroup">
+            <label>ID:</label>
+            <input type="number" id="id_program" name="id_program" th:field="*{id_program}" required>
+        </div>
+
+        <div class="formGroup">
+            <label for="name_program">Name :</label>
+            <input type="text" id="name_program" name="name_program" th:value="${program.name_program}" required>
+        </div>
+
+        <div class="formGroup">
+            <button type="submit" class="btnSubmit">Save Program</button>
+        </div>
+
+    </form>
+</div>
+</body>
+</html>

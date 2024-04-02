@@ -60,6 +60,7 @@
     background: rgb(78, 78, 78);
     width: 100%;
     height: 100%;
+    align-items: center;
 }
 p {
     text-align: center;
@@ -70,9 +71,11 @@ p {
     height: 25px;
 }
 #button{
-    width:100px;
+     width:100px;
      display: grid;
      background-color: var(--bs-table-bg);
      grid-template-columns: 1fr 1fr;
-
+}
+.table table-dark{
+    width:100%;
 }

@@ -21,18 +21,18 @@ public class ControllerArchive {
     @GetMapping("/listArchive")
     public String listUsers(Model model) {
         List<Archive> archiveData = archiveService.getArchive();
-        model.addAttribute("archives", archiveData);
+        model.addAttribute("Archive", archiveData);
         return "admin/principal/list-users";
     }
 
-    @GetMapping("/newArchives")
+    @GetMapping("/newArchive")
     public String createNewUser(Model model){
         model.addAttribute("archive", new Archive());
         model.addAttribute("action","");
         return "admin/principal/newArchive";
     }
 
-    @PostMapping("/newArchives")
+    @PostMapping("/newArchive")
     public String saveUserData (@ModelAttribute Archive archive){
         archiveService.saveArchive(archive);
         return "redirect:/archive/listArchive";
