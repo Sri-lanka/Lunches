@@ -23,14 +23,14 @@ public class controllerAuthorization {
         return "admin/principal/list-users";
     }
 
-    @GetMapping("/newAuthorizations")
+    @GetMapping("/newAuthorization")
     public String createNewUser(Model model){
         model.addAttribute("authorization", new Authorization());
         model.addAttribute("action","");
         return "admin/principal/newAuthorization";
     }
 
-    @PostMapping("/newAuthorizations")
+    @PostMapping("/newAuthorization")
     public String saveUserData (@ModelAttribute Authorization authorization){
         authorizationService.saveAuthorization(authorization);
         return "redirect:/authorization/listAuthorization";
