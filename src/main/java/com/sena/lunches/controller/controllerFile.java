@@ -16,42 +16,42 @@ public class controllerFile {
     @Autowired
     private FileService file_senaService;
 
-    @GetMapping("/listFile_sena")
+    @GetMapping("/listFileSena")
     public String listUsers(Model model) {
         List<File_sena> file_senaData = file_senaService.getFile_sena();
         model.addAttribute("file", file_senaData);
         return "admin/principal/list-users";
     }
 
-    @GetMapping("/newFile_sena")
+    @GetMapping("/newFileSena")
     public String createNewUser(Model model){
         model.addAttribute("file_sena", new File_sena());
         model.addAttribute("action","");
         return "admin/principal/newFile";
     }
 
-    @PostMapping("/newFile_sena")
+    @PostMapping("/newFileSena")
     public String saveUserData (@ModelAttribute File_sena file_sena){
         file_senaService.saveFile_sena(file_sena);
-        return "redirect:/file_sena/listFile_sena";
+        return "redirect:/file/listFileSena";
     }
 
-    @GetMapping("/editFile_sena/{idFile_sena}")
-    public String updateFile_sena (@PathVariable Integer idFile_sena, Model model){
-        model.addAttribute("file_sena", file_senaService.getFile_senaById(idFile_sena) );
-        model.addAttribute("action","/file_sena/editFile_sena/" + idFile_sena);
+    @GetMapping("/editFileSena/{idFileSena}")
+    public String updateFile_sena (@PathVariable Integer idFileSena, Model model){
+        model.addAttribute("file_sena", file_senaService.getFile_senaById(idFileSena) );
+        model.addAttribute("action","/file_sena/editFile_sena/" + idFileSena);
         return "admin/principal/newFile";
     }
 
-    @PostMapping("/editFile_sena/{idFile_sena}")
-    public String updatingFile_sena (@PathVariable Integer idFile_sena,@ModelAttribute File_sena file_sena){
-        file_senaService.updateFile_sena(idFile_sena, file_sena);
-        return "redirect:/file_sena/listFile_sena";
+    @PostMapping("/editFileSena/{idFileSena}")
+    public String updatingFile_sena (@PathVariable Integer idFileSena,@ModelAttribute File_sena file_sena){
+        file_senaService.updateFile_sena(idFileSena, file_sena);
+        return "redirect:/file/listFileSena";
     }
 
-    @GetMapping("/delete/{idFile_sena}")
-    public String deleteFile_sena (@PathVariable Integer idFile_sena){
-        file_senaService.deleteFile_sena(idFile_sena);
-        return "redirect:/file_sena/listFile_sena";
+    @GetMapping("/delete/{idFileSena}")
+    public String deleteFile_sena (@PathVariable Integer idFileSena){
+        file_senaService.deleteFile_sena(idFileSena);
+        return "redirect:/file/listFileSena";
     }
 }

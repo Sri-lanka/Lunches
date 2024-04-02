@@ -41,7 +41,7 @@
         <table class="table table-dark"  th:if="${users != null}">
 
             <p>list beneficiaries</p>
-            <a th:href="@{/newBenefits}"><button class="bnt">Add User</button></a>
+
             <thead class="thead-dark">
             <tr>
                 <th>Id</th>
@@ -95,7 +95,7 @@
                 <th>ID Authorization</th>
                 <th>ID user</th>
                 <th>time</th>
-                <th id="button"><a th:href="@{/newAssistance}"><img th:src="@{/img/add.webp}" class="icon" ></a></th>
+                <th id="button"><a th:href="@{/assistence/newAssistance}"><img th:src="@{/img/add.webp}" class="icon" ></a></th>
             </tr>
             </thead>
             <tbody>
@@ -150,7 +150,7 @@
                 <th>ID</th>
                 <th>Number</th>
                 <th>ID program</th>
-                <th id="button"><a th:href="@{/file/newFile_sena}"><img th:src="@{/img/add.webp}" class="icon" ></a></th>
+                <th id="button"><a th:href="@{/file/newFileSena}"><img th:src="@{/img/add.webp}" class="icon" ></a></th>
             </tr>
             </thead>
             <tbody>
@@ -159,8 +159,8 @@
                 <td th:text="${Files.n_file}"></td>
                 <td th:text="${Files.id_program}">
                 <td id="button">
-                    <a th:href="@{/file/editFile_sena/{idFile_sena}(idFile_sena=${Files.id_file})}"><img th:src="@{/img/edit.png}" class="icon" ></a>
-                    <a th:href="@{/file/delete/{idFile_sena}(idFile_sena=${Files.id_file})}" class="delete"><img th:src="@{/img/delate.webp}" class="icon" ></a>
+                    <a th:href="@{/file/editFileSena/{idFileSena}(idFileSena=${Files.id_file})}"><img th:src="@{/img/edit.png}" class="icon" ></a>
+                    <a th:href="@{/file/delete/{idFileSena}(idFileSena=${Files.id_file})}" class="delete"><img th:src="@{/img/delate.webp}" class="icon" ></a>
                 </td>
             </tr>
             </tbody>

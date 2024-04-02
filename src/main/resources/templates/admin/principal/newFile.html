@@ -9,21 +9,21 @@
 <body>
 <div class="container">
     <h1 class="logo">Create/Edit File</h1>
-    <form class="fileForm" th:object="${file}" th:action="${action}" method="post">
+    <form class="fileForm" th:object="${file_sena}" th:action="${action}" method="post">
 
         <div class="formGroup">
-            <label>ID:</label>
+            <label>ID: </label>
             <input type="number" id="id_file" name="id_file" th:field="*{id_file}" required>
         </div>
 
         <div class="formGroup">
             <label for="n_file">Number file:</label>
-            <input type="number" id="n_file" name="n_file" th:value="${file.n_file}" required>
+            <input type="number" id="n_file" name="n_file" th:value="${file_sena.n_file}" required>
         </div>
 
         <div class="formGroup">
             <label for="id_program">ID program :</label>
-            <input type="number" id="id_program" name="id_program" th:value="${file.id_program}" required>
+            <input type="number" id="id_program" name="id_program" th:value="${file_sena.id_program}" required>
         </div>
 
         <div class="formGroup">
