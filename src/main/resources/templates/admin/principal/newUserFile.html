@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add User-File</title>
+    <link rel="stylesheet" href="/css/styleForm.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="logo">Create/Edit USer-File</h1>
+    <form class="fileForm" th:object="${user_file}" th:action="${action}" method="post">
+
+        <div class="formGroup">
+            <label>ID:</label>
+            <input type="number" id="id_user_file" name="id_user_file" th:field="*{id_user_file}" required>
+        </div>
+
+        <div class="formGroup">
+            <label for="id_file">ID file :</label>
+            <input type="number" id="id_file" name="id_file" th:value="${user_file.id_file}" required>
+        </div>
+
+        <div class="formGroup">
+            <label for="id_user">ID user :</label>
+            <input type="number" id="id_user" name="id_user" th:value="${user_file.id_user}" required>
+        </div>
+
+        <div class="formGroup">
+            <label for="asset">Asset :</label>
+            <input type="number" id="asset" name="asset" th:value="${user_file.asset}" required>
+        </div>
+
+        <div class="formGroup">
+            <button type="submit" class="btnSubmit">Save User-file</button>
+        </div>
+
+    </form>
+</div>
+</body>
+</html>
