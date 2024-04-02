@@ -19,7 +19,7 @@ public class controllerFile {
     @GetMapping("/listFile_sena")
     public String listUsers(Model model) {
         List<File_sena> file_senaData = file_senaService.getFile_sena();
-        model.addAttribute("file_sena", file_senaData);
+        model.addAttribute("file", file_senaData);
         return "admin/principal/list-users";
     }
 

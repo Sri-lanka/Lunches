@@ -15,10 +15,10 @@ public class controllerUserFile {
     @Autowired
     private UserFileService userFileService;
 
-    @GetMapping("/listUser_file")
+    @GetMapping("/listUserFile")
     public String listUsers(Model model) {
         List<User_file> user_fileData = userFileService.getUser_file();
-        model.addAttribute("user_file", user_fileData);
+        model.addAttribute("User_File", user_fileData);
         return "admin/principal/list-users";
     }
 

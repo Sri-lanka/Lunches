@@ -21,7 +21,7 @@ public class ControllerArchive {
     @GetMapping("/listArchive")
     public String listUsers(Model model) {
         List<Archive> archiveData = archiveService.getArchive();
-        model.addAttribute("archives", archiveData);
+        model.addAttribute("Archive", archiveData);
         return "admin/principal/list-users";
     }
 

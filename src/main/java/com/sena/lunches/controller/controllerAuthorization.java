@@ -19,7 +19,7 @@ public class controllerAuthorization {
     @GetMapping("/listAuthorization")
     public String listUsers(Model model) {
         List<Authorization> authorizationData = authorizationService.getAuthorization();
-        model.addAttribute("authorizations", authorizationData);
+        model.addAttribute("authorization", authorizationData);
         return "admin/principal/list-users";
     }
 
