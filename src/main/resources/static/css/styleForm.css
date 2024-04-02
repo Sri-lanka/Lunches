@@ -1,16 +1,32 @@
 
 body{
     background-color: rgba(36, 35, 35, 0.966);
-    width: 100%;
-    height: 150vh;
+    width: 98%;
+    height: 100vh;
     place-items: center;
 }
+logo{
+    margin:0px;
+    margin-top:10px
+}
 .container{
+    border-radius: 4px;
     margin: auto;
-    padding: 10px;
-    background-color:  rgba(4, 110, 27, 0.568);
-    width: 500px;
+    margin-top:30px;
+    padding: 30px;
+    background-color:  rgba(3, 253, 57, 0.438);
+    width: 350px;
     text-align: left;
     color:white;
 
 }
+.formGroup{
+    margin-top: 20px;
+}
+.btnSubmit{
+    border:0px;
+    border-radius: 4px;
+    background-color:rgb(4, 216, 39);
+    box-shadow: 1px 1px 3px 3px rgba(1, 117, 21, 0.363);
+}
+
