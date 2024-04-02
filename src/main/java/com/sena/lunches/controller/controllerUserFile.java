@@ -22,35 +22,35 @@ public class controllerUserFile {
         return "admin/principal/list-users";
     }
 
-    @GetMapping("/newUser_files")
+    @GetMapping("/newUserFile")
     public String createNewUser(Model model){
         model.addAttribute("user_file", new User_file());
         model.addAttribute("action","");
-        return "admin/principal/newUser_file";
+        return "admin/principal/newUserFile";
     }
 
-    @PostMapping("/newUser_files")
+    @PostMapping("/newUserFile")
     public String saveUserData (@ModelAttribute User_file user_file){
         userFileService.saveUser_file(user_file);
-        return "redirect:/user_file/listUser_file";
+        return "redirect:/userFile/listUserFile";
     }
 
-    @GetMapping("/editUser_file/{idUser_file}")
-    public String updateUser_file (@PathVariable Integer idUser_file, Model model){
-        model.addAttribute("user_file", userFileService.getUser_fileById(idUser_file) );
-        model.addAttribute("action","/user_file/editUser_file/" + idUser_file);
-        return "admin/principal/newUser_file";
+    @GetMapping("/editUserFile/{idUserFile}")
+    public String updateUser_file (@PathVariable Integer idUserFile, Model model){
+        model.addAttribute("user_file", userFileService.getUser_fileById(idUserFile) );
+        model.addAttribute("action","/user_file/idUserFile/" + idUserFile);
+        return "admin/principal/newUserFile";
     }
 
-    @PostMapping("/editUser_file/{idUser_file}")
-    public String updatingUser_file (@PathVariable Integer idUser_file,@ModelAttribute User_file user_file){
-        userFileService.updateUser_file(idUser_file, user_file);
-        return "redirect:/user_file/listUser_file";
+    @PostMapping("/editUserFile/{idUserFile}")
+    public String updatingUser_file (@PathVariable Integer idUserFile,@ModelAttribute User_file user_file){
+        userFileService.updateUser_file(idUserFile, user_file);
+        return "redirect:/userFile/listUserFile";
     }
 
-    @GetMapping("/delete/{idUser_file}")
-    public String deleteUser_file (@PathVariable Integer idUser_file){
-        userFileService.deleteUser_file(idUser_file);
-        return "redirect:/user_file/listUser_file";
+    @GetMapping("/delete/{idUserFile}")
+    public String deleteUser_file (@PathVariable Integer idUserFile){
+        userFileService.deleteUser_file(idUserFile);
+        return "redirect:/userFile/listUserFile";
     }
 }

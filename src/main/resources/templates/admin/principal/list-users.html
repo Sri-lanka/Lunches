@@ -95,7 +95,7 @@
                 <th>ID Authorization</th>
                 <th>ID user</th>
                 <th>time</th>
-                <th id="button"><a th:href="@{/assistence/newAssistance}"><img th:src="@{/img/add.webp}" class="icon" ></a></th>
+                <th id="button"><a th:href="@{/assistance/newAssistance}"><img th:src="@{/img/add.webp}" class="icon" ></a></th>
             </tr>
             </thead>
             <tbody>
@@ -137,9 +137,7 @@
                     <a th:href="@{/benefit/delete/{idBenefit}(idBenefit=${benefit.id_benefit})}" class="delete"><img th:src="@{/img/delate.webp}" class="icon" ></a>
                 </td>
             </tr>
-
             </tbody>
-
         </table>
 
 
@@ -173,12 +171,17 @@
             <tr>
                 <th>ID</th>
                 <th>Name</th>
+                <th id="button"><a th:href="@{/program/newProgram}"><img th:src="@{/img/add.webp}" class="icon" ></a></th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="Programs : ${program}" >
                 <td th:text="${Programs.id_program}"></td>
                 <td th:text="${Programs.name_program}"></td>
+                <td id="button">
+                    <a th:href="@{/program/editProgram/{idProgram}(idProgram=${Programs.id_excuse})}"><img th:src="@{/img/edit.png}" class="icon" ></a>
+                    <a th:href="@{/program/delete/{idProgram}(idProgram=${Programs.id_excuse})}" class="delete"><img th:src="@{/img/delate.webp}" class="icon" ></a>
+                </td>
             </tr>
             </tbody>
         </table>
@@ -192,6 +195,7 @@
                 <th>ID File</th>
                 <th>ID User</th>
                 <th>Asset</th>
+                <th id="button"><a th:href="@{/userFile/newUserFile}"><img th:src="@{/img/add.webp}" class="icon" ></a></th>
             </tr>
             </thead>
             <tbody>
@@ -200,6 +204,10 @@
                 <td th:text="${UserFile.id_file}"></td>
                 <td th:text="${UserFile.id_user}"></td>
                 <td th:text="${UserFile.asset}"></td>
+                <td id="button">
+                    <a th:href="@{/userFile/editUserFile/{idUserFile}(idUserFile=${UserFile.id_user_file})}"><img th:src="@{/img/edit.png}" class="icon" ></a>
+                    <a th:href="@{/userFile/delete/{idUserFile}(idUserFile=${UserFile.id_user_file})}" class="delete"><img th:src="@{/img/delate.webp}" class="icon" ></a>
+                </td>
             </tr>
             </tbody>
         </table>
