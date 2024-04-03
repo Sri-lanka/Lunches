@@ -77,7 +77,7 @@
                 <td th:text="${user.state}"></td>
                 <td th:text="${user.id_benefit}"></td>
                 <td th:text="${user.keyword}"></td>
-                <td class="button">
+                <td id="button">
                 <a th:href="@{/inicio/listUser/editUser/{idUserSena}(idUserSena=${user.id_user})}"><img th:src="@{/img/edit.png}" class="icon" ></a>
                 <a th:href="@{/inicio/listUser/delete/{idUserSena}(idUserSena=${user.id_user})}" class="delete"><img th:src="@{/img/delate.webp}" class="icon" ></a>
                 </td>
