@@ -31,7 +31,7 @@
 .scream{
     background: rgb(78, 78, 78);
     display: grid;
-    grid-template-columns: 1fr 5fr;
+    grid-template-columns: 1fr 8fr;
     height: 95%;
 }
 .display{
@@ -58,8 +58,10 @@
 }
 .container{
     background: rgb(78, 78, 78);
-    width: 100%;
+    width: 120%;
     height: 100%;
+    padding-right:1px;
+    padding-left:1px;
     align-items: center;
 }
 p {
@@ -76,6 +78,10 @@ p {
      background-color: var(--bs-table-bg);
      grid-template-columns: 1fr 1fr;
 }
-.table table-dark{
-    width:100%;
+
+
+#email{
+  max-width:100px;
+  overflow:hidden;
+
 }
