@@ -44,7 +44,7 @@ public class controllerUser {
     @GetMapping("/editUser/{idUserSena}")
     public String updateUser_sena (@PathVariable Integer idUserSena, Model model){
         model.addAttribute("userSena", userSenaService.getUser_senaById(idUserSena) );
-        model.addAttribute("action","/listUser/editUser/" + idUserSena);
+        model.addAttribute("action","/inicio/editUser/" + idUserSena);
         return "admin/principal/newUser";
     }
 

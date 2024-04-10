@@ -65,7 +65,10 @@
             <tr th:each="user : ${users}" th:if="${users != null}">
                 <td th:text="${user.id_user}"></td>
                 <td th:text="${user.document}"></td>
-                <td th:text="${user.type_document}"></td>
+                <td>
+                    <span th:if="${user.type_document == 1}">C.C</span>
+                    <span th:if="${user.type_document  == 2}">T.I</span>
+                </td>
                 <td th:text="${user.rol}"></td>
                 <td th:text="${user.name_1}"></td>
                 <td th:text="${user.name_2}"></td>
