@@ -21,6 +21,7 @@
         </div>
 
         <div class="formGroup">
+
             <label>Type document:</label>
             <input class="form-check-input" type="radio" name="type_document" id="C.C" th:value="1" th:checked="${userSena.type_document == 1}" /> C.C
             <input class="form-check-input" type="radio" name="type_document" id="T.I" th:value="2" th:checked="${userSena.type_document == 2}" /> T.I
@@ -28,13 +29,22 @@
             <label>Type document:</label>
             <input class="form-check-input" type="radio" name="type_document" id="C.C" th:value="1" th:checked="${userSena.type_document == 1}" /> C.C
             <input class="form-check-input" type="radio" name="type_document" id="T.I" th:value="2" th:checked="${userSena.type_document == 2}" /> T.I
+
+
+            <label for="type_document">Type document:</label>
+
+            <input class="form-check-input" type="radio" name="type_document" id="C.C" th:value= "1" th:checked="${userSena.type_document == 1}"/>C.C
+            <input class="form-check-input" type="radio" name="type_document" id="T.I" th:value= "2" th:checked="${userSena.type_document == 2}"/>T.I
 
 
         </div>
 
         <div class="formGroup">
         <label for="rol">Rol :</label>
-        <input type="number" id="rol" name="rol" th:value="${userSena.rol}" required>
+            <input class="form-check-input" type="radio" name="rol" id="Beneficiary" th:value= "1" th:checked="${userSena.rol == 1}"/>Beneficiary
+            <input class="form-check-input" type="radio" name="rol" id="Admin" th:value= "2"       th:checked="${userSena.rol == 2}"/>Admin
+            <input class="form-check-input" type="radio" name="rol" id="Manager" th:value= "3"     th:checked="${userSena.rol == 3}"/>Manager
+            <!--<input type="number" id="rol" name="rol" th:value="${userSena.rol}" required>-->
         </div>
 
         <div class="formGroup">
@@ -72,7 +82,10 @@
         </div>
         <div class="formGroup">
             <label for="state">State: </label>
-            <input type="number" id="state" name="state" th:value="${userSena.state}" required>
+            <input class="form-check-input" type="radio" name="state" id="Active" th:value= "1" th:checked="${userSena.state == 1}"/>Active
+            <input class="form-check-input" type="radio" name="state" id="Disabled" th:value= "2" th:checked="${userSena.state == 2}"/>Disabled
+
+            <!--<input type="number" id="state" name="state" th:value="${userSena.state}" required>-->
         </div>
 
         <div class="formGroup">

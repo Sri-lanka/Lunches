@@ -28,7 +28,9 @@
 
         <div class="formGroup">
             <label for="asset">Asset :</label>
-            <input type="number" id="asset" name="asset" th:value="${user_file.asset}" required>
+            <input class="form-check-input" type="radio" name="asset" id="Active" th:value= "1" th:checked="${user_file.asset == 1}"/>Active
+            <input class="form-check-input" type="radio" name="asset" id="Disabled" th:value= "2" th:checked="${user_file.asset == 2}"/>Disabled
+            <!--<input type="number" id="asset" name="asset" th:value="${user_file.asset}" required>-->
         </div>
 
         <div class="formGroup">

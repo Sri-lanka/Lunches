@@ -69,7 +69,11 @@
                     <span th:if="${user.type_document == 1}">C.C</span>
                     <span th:if="${user.type_document  == 2}">T.I</span>
                 </td>
-                <td th:text="${user.rol}"></td>
+                <td>
+                    <span th:if="${user.rol == 1}">Beneficiary</span>
+                    <span th:if="${user.rol  == 2}">Admin</span>
+                    <span th:if="${user.rol == 3}">manager</span>
+                </td>
                 <td th:text="${user.name_1}"></td>
                 <td th:text="${user.name_2}"></td>
                 <td th:text="${user.last_name_1}"></td>
@@ -77,11 +81,12 @@
                 <td th:text="${user.age}"></td>
                 <td th:text="${user.Email}" id="email" ></td>
                 <td th:text="${user.telephone}"></td>
-                <td th:text="${user.state}"></td>
+                <td>
+                    <span th:if="${user.state == 1}">Active</span>
+                    <span th:if="${user.state == 2}">Disabled</span>
+                </td>
                 <td th:text="${user.id_benefit}"></td>
                 <td th:text="${user.keyword}"></td>
-
-
 
                 <td id="button">
                 <a th:href="@{/editUser/{idUserSena}(idUserSena=${user.id_user})}"><img th:src="@{/img/edit.png}" class="icon" ></a>
@@ -211,7 +216,10 @@
                 <td th:text="${UserFile.id_user_file}"></td>
                 <td th:text="${UserFile.id_file}"></td>
                 <td th:text="${UserFile.id_user}"></td>
-                <td th:text="${UserFile.asset}"></td>
+                <td>
+                    <span th:if="${UserFile.asset == 1}">Active</span>
+                    <span th:if="${UserFile.asset == 2}">Disabled</span>
+                </td>
                 <td id="button">
                     <a th:href="@{/userFile/editUserFile/{idUserFile}(idUserFile=${UserFile.id_user_file})}"><img th:src="@{/img/edit.png}" class="icon" ></a>
                     <a th:href="@{/userFile/delete/{idUserFile}(idUserFile=${UserFile.id_user_file})}" class="delete"><img th:src="@{/img/delate.webp}" class="icon" ></a>
