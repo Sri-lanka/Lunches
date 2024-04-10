@@ -21,10 +21,21 @@
         </div>
 
         <div class="formGroup">
+
+            <label>Type document:</label>
+            <input class="form-check-input" type="radio" name="type_document" id="C.C" th:value="1" th:checked="${userSena.type_document == 1}" /> C.C
+            <input class="form-check-input" type="radio" name="type_document" id="T.I" th:value="2" th:checked="${userSena.type_document == 2}" /> T.I
+
+            <label>Type document:</label>
+            <input class="form-check-input" type="radio" name="type_document" id="C.C" th:value="1" th:checked="${userSena.type_document == 1}" /> C.C
+            <input class="form-check-input" type="radio" name="type_document" id="T.I" th:value="2" th:checked="${userSena.type_document == 2}" /> T.I
+
+
             <label for="type_document">Type document:</label>
 
             <input class="form-check-input" type="radio" name="type_document" id="C.C" th:value= "1" th:checked="${userSena.type_document == 1}"/>C.C
             <input class="form-check-input" type="radio" name="type_document" id="T.I" th:value= "2" th:checked="${userSena.type_document == 2}"/>T.I
+
 
         </div>
 

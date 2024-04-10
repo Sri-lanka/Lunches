@@ -42,7 +42,7 @@
     <div class="container">
 
 
-        <table class="table table-dark"  th:if="${users != null}">
+        <table  class="table table-dark"  th:if="${users != null}">
 
             <p>list beneficiaries</p>
 
@@ -57,7 +57,7 @@
                 <th>Lastname</th>
                 <th></th>
                 <th>Age</th>
-                <th>E-mail</th>
+                <th >E-mail</th>
                 <th>Phone</th>
                 <th>State</th>
                 <th>ID benefit</th>
@@ -83,7 +83,7 @@
                 <td th:text="${user.last_name_1}"></td>
                 <td th:text="${user.last_name_2}"></td>
                 <td th:text="${user.age}"></td>
-                <td th:text="${user.Email}"></td>
+                <td th:text="${user.Email}" id="email" ></td>
                 <td th:text="${user.telephone}"></td>
                 <td>
                     <span th:if="${user.state == 1}">Active</span>
