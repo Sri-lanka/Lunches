@@ -33,7 +33,7 @@ public class Benefit_repoTest {
     public void testSaveBenefit() {
         // Given
         Benefit benefit = Benefit.builder()
-                .id_benefit(15)
+                .id_benefit(16)
                 .nom_benefit("transport")
                 .description_benefit("use transport")
                 .date_start(LocalDate.of(2024, 6, 14))
@@ -78,7 +78,7 @@ public class Benefit_repoTest {
         List<Benefit> benefitList = benefit_repo.findAll();
 
         assertThat(benefitList).isNotNull();
-        assertThat(benefitList.size()).isEqualTo(4);
+        assertThat(benefitList.size()).isEqualTo(5);
     }
 
 
@@ -86,7 +86,7 @@ public class Benefit_repoTest {
     public void testFindBenefit() {
         // Given
         Benefit benefit = Benefit.builder()
-                .id_benefit(13)
+                .id_benefit(15)
                 .nom_benefit("transport")
                 .description_benefit("use transport")
                 .date_start(LocalDate.of(2024, 6, 14))
@@ -151,7 +151,7 @@ public class Benefit_repoTest {
     public void testDeleteBenefit() {
         // Given
         Benefit benefit = Benefit.builder()
-                .id_benefit(13)
+                .id_benefit(16)
                 .nom_benefit("transport")
                 .description_benefit("use transport")
                 .date_start(LocalDate.of(2024, 6, 14))
@@ -165,6 +165,8 @@ public class Benefit_repoTest {
         assertThat(benefitReturn).isEmpty();
 
     }
+
+
 
 }
 
