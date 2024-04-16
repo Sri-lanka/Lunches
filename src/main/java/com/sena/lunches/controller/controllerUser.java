@@ -11,13 +11,13 @@ import java.util.List;
 
 
 @Controller
-@RequestMapping({"/","/inicio"})
+@RequestMapping("/")
 public class controllerUser {
 
     @Autowired
     private UserSenaService userSenaService;
 
-    @GetMapping("/listUser")
+    @GetMapping
     public String listUsers(Model model) {
         try {
             List<User_sena> users = userSenaService.getUser_sena();
@@ -38,26 +38,26 @@ public class controllerUser {
     @PostMapping("/newUser")
     public String saveUserData (@ModelAttribute User_sena userSena){
         userSenaService.saveUser_sena(userSena);
-        return "redirect:/inicio/listUser";
+        return "redirect:/";
     }
 
     @GetMapping("/editUser/{idUserSena}")
     public String updateUser_sena (@PathVariable Integer idUserSena, Model model){
         model.addAttribute("userSena", userSenaService.getUser_senaById(idUserSena) );
-        model.addAttribute("action","/inicio/editUser/" + idUserSena);
+        model.addAttribute("action","/editUser/" + idUserSena);
         return "admin/principal/newUser";
     }
 
     @PostMapping("/editUser/{idUserSena}")
     public String updatingUser_sena(@PathVariable Integer idUserSena,@ModelAttribute User_sena userSena){
         userSenaService.updateUser_sena(idUserSena, userSena);
-        return "redirect:/inicio/listUser";
+        return "redirect:/";
     }
 
     @GetMapping("/delete/{idUserSena}")
     public String deleteUser_sena (@PathVariable Integer idUserSena){
         userSenaService.deleteUser_sena(idUserSena);
-        return "redirect:/inicio/listUser";
+        return "redirect:/";
     }
 
 
