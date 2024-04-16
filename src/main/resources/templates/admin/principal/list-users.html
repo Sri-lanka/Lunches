@@ -19,14 +19,10 @@
     <div class="display">
         <div class="button">
 
-            <frameset rows="45%, *" border=0>
-                <frame th:href="@{/newUser}">
-            </frameset>
-
             <label for="databaseTables"> <p> Seleccione una tabla:</p></label>
             <select id="databaseTables">
                 <option>Tables</option>
-                <option  value="User">User</option>
+                <option  value="User" >User</option>
                 <option  value="Assistance">Assistance</option>
                 <option  value="Authorization">Authorization</option>
                 <option  value="Benefit">Benefit</option>
@@ -39,9 +35,9 @@
             </select>
         </div>
     </div>
+
     <div class="container">
-
-
+        
         <table  class="table table-dark"  th:if="${users != null}">
 
             <p>list beneficiaries</p>

@@ -25,7 +25,7 @@ function assignClickEvents() {
 
   activities.addEventListener("change", function () {
     if (activities.value == "User") {
-      fetchData('/inicio/listUser');
+      fetchData("");
     }
   });
 
