@@ -26,7 +26,7 @@ public class controllerUserFile {
     public String createNewUser(Model model){
         model.addAttribute("user_file", new User_file());
         model.addAttribute("action","");
-        return "admin/principal/newUserFile";
+        return "admin/principal/Forms/newUserFile";
     }
 
     @PostMapping("/newUserFile")
@@ -39,7 +39,7 @@ public class controllerUserFile {
     public String updateUser_file (@PathVariable Integer idUserFile, Model model){
         model.addAttribute("user_file", userFileService.getUser_fileById(idUserFile) );
         model.addAttribute("action","/userFile/idUserFile/" + idUserFile);
-        return "admin/principal/newUserFile";
+        return "admin/principal/Forms/newUserFile";
     }
 
     @PostMapping("/editUserFile/{idUserFile}")

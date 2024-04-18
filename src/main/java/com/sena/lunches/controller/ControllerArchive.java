@@ -19,6 +19,7 @@ public class ControllerArchive {
     private ArchiveService archiveService;
 
     @GetMapping("/listArchive")
+
     public String listUsers(Model model) {
         List<Archive> archiveData = archiveService.getArchive();
         model.addAttribute("Archive", archiveData);
@@ -29,7 +30,7 @@ public class ControllerArchive {
     public String createNewUser(Model model){
         model.addAttribute("archive", new Archive());
         model.addAttribute("action","");
-        return "admin/principal/newArchive";
+        return "admin/principal/Forms/newArchive";
     }
 
     @PostMapping("/newArchive")
@@ -42,7 +43,7 @@ public class ControllerArchive {
     public String updateArchive (@PathVariable Integer idArchive, Model model){
         model.addAttribute("archive", archiveService.getArchiveById(idArchive) );
         model.addAttribute("action","/archive/editArchive/" + idArchive);
-        return "admin/principal/newArchive";
+        return "admin/principal/Forms/newArchive";
     }
 
     @PostMapping("/editArchive/{idArchive}")

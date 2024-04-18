@@ -27,7 +27,7 @@ public class controllerAuthorization {
     public String createNewUser(Model model){
         model.addAttribute("authorization", new Authorization());
         model.addAttribute("action","");
-        return "admin/principal/newAuthorization";
+        return "admin/principal/Forms/newAuthorization";
     }
 
     @PostMapping("/newAuthorization")
@@ -40,7 +40,7 @@ public class controllerAuthorization {
     public String updateAuthorization (@PathVariable Integer idAuthorization, Model model){
         model.addAttribute("authorization", authorizationService.getAuthorizationById(idAuthorization) );
         model.addAttribute("action","/authorization/editAuthorization/" + idAuthorization);
-        return "admin/principal/newAuthorization";
+        return "admin/principal/Forms/newAuthorization";
     }
 
     @PostMapping("/editAuthorization/{idAuthorization}")

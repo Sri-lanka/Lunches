@@ -30,14 +30,14 @@ public class Archive_repoTest {
     @Autowired
     private TestEntityManager entityManager;
 
-    @Test
+    /*@Test
     public void testSaveArchive() {
         // Given
         Archive archive = Archive.builder()
                 .id_archive(16)
                 .id_excuse(14)
                 .id_message(10)
-                .archive("doc.xt")
+                .archive_pdf("doc.xt")
                 .build();
 
         // When

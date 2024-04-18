@@ -26,7 +26,7 @@ public class ControllerBenefit {
     public String createNewUser(Model model){
         model.addAttribute("benefit", new Benefit());
         model.addAttribute("action","");
-        return "admin/principal/newBenefit";
+        return "admin/principal/Forms/newBenefit";
     }
 
     @PostMapping("/newBenefits")
@@ -39,7 +39,7 @@ public class ControllerBenefit {
     public String updateBenefit (@PathVariable Integer idBenefit, Model model){
         model.addAttribute("benefit", benefitService.getBenefitById(idBenefit) );
         model.addAttribute("action","/benefit/editBenefit/" + idBenefit);
-        return "admin/principal/newBenefit";
+        return "admin/principal/Forms/newBenefit";
     }
 
     @PostMapping("/editBenefit/{idBenefit}")

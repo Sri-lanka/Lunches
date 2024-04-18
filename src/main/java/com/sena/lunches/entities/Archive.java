@@ -1,10 +1,12 @@
 package com.sena.lunches.entities;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -14,7 +16,7 @@ public class Archive {
     private int id_archive;
     private int id_excuse;
     private int id_message;
-    private  String archive;
+    private String archive_pdf;
 
 
     public int getId_archive() {
@@ -41,11 +43,11 @@ public class Archive {
         this.id_message = id_message;
     }
 
-    public String getArchive() {
-        return archive;
+    public String getArchive_pdf() {
+        return archive_pdf;
     }
 
-    public void setArchive(String archive) {
-        this.archive = archive;
+    public void setArchive_pdf(String archive_pdf) {
+        this.archive_pdf = archive_pdf;
     }
 }

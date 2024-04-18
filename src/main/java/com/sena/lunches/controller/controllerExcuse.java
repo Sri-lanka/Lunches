@@ -27,7 +27,7 @@ public class controllerExcuse {
     public String createNewUser(Model model){
         model.addAttribute("excuse", new Excuse());
         model.addAttribute("action","");
-        return "admin/principal/newExcuse";
+        return "admin/principal/Forms/newExcuse";
     }
 
     @PostMapping("/newExcuse")
@@ -40,7 +40,7 @@ public class controllerExcuse {
     public String updateExcuse(@PathVariable Integer idExcuse, Model model){
         model.addAttribute("excuse", excuseService.getExcuseById(idExcuse) );
         model.addAttribute("action","/excuse/editExcuse/" + idExcuse);
-        return "admin/principal/newExcuse";
+        return "admin/principal/Forms/newExcuse";
     }
 
     @PostMapping("/editExcuse/{idExcuse}")
