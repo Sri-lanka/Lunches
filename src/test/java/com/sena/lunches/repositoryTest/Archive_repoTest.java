@@ -1,7 +1,9 @@
 package com.sena.lunches.repositoryTest;
 
-import com.sena.lunches.entities.Benefit;
-import com.sena.lunches.repository.Benefit_repo;
+import com.sena.lunches.entities.Archive;
+
+import com.sena.lunches.repository.Archive_repo;
+
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,38 +23,37 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @Rollback(false)
 
-public class Benefit_repoTest {
+public class Archive_repoTest {
     @Autowired
-    private Benefit_repo benefit_repo;
+    private Archive_repo archiveRepo;
 
     @Autowired
     private TestEntityManager entityManager;
 
     @Test
-    public void testSaveBenefit() {
+    public void testSaveArchive() {
         // Given
-        Benefit benefit = Benefit.builder()
-                .id_benefit(16)
-                .nom_benefit("transport")
-                .description_benefit("use transport")
-                .date_start(LocalDate.of(2024, 6, 14))
-                .date_end(LocalDate.of(2024, 12, 14))
+        Archive archive = Archive.builder()
+                .id_archive(16)
+                .id_excuse(14)
+                .id_message(10)
+                .archive("doc.xt")
                 .build();
 
         // When
-        Benefit savedBenefit = entityManager.persist(benefit);
+        Archive savedArchive = entityManager.persist(archive);
         entityManager.flush(); // Forcibly flush the data to the database
 
         // Then
-        assertThat(savedBenefit.getId_benefit()).isNotNull();// Check if ID is assigned after persisting
+        assertThat(savedArchive.getId_archive()).isNotNull();// Check if ID is assigned after persisting
 
         // Optional: Verify if the benefit can be retrieved from the repository
 
-        Optional<Benefit> retrievedBenefit = benefit_repo.findById(savedBenefit.getId_benefit());
+        Optional<Archive> retrievedBenefit = archiveRepo.findById(savedArchive.getId_archive());
         assertThat(retrievedBenefit).isPresent(); // Check if benefit is found
-        assertThat(retrievedBenefit.get().getNom_benefit()).isEqualTo("transport"); // Verify attribute value
+        assertThat(retrievedBenefit.get().getId_excuse()).isEqualTo(14); // Verify attribute value
     }
-
+/*
     @Test
     public void testGetBenefit(){
         // Given
@@ -166,10 +167,8 @@ public class Benefit_repoTest {
     }
 
 
-
+*/
 }
-
-
 
 
 

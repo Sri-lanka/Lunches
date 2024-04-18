@@ -20,7 +20,7 @@ public class User_sena {
     private String last_name_2;
     private int age;
     private String Email;
-    private int telephone;
+    private long telephone;
     private String keyword;
     private int state;
     private int id_benefit;
@@ -106,11 +106,11 @@ public class User_sena {
         this.Email = Email;
     }
 
-    public int getTelephone() {
+    public long getTelephone() {
         return telephone;
     }
 
-    public void setTelephone(int telephone) {
+    public void setTelephone(long telephone) {
         this.telephone = telephone;
     }
 

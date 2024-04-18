@@ -2,10 +2,12 @@ package com.sena.lunches.entities;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Entity
 public class Archive {
     @Id
@@ -13,6 +15,7 @@ public class Archive {
     private int id_excuse;
     private int id_message;
     private  String archive;
+
 
     public int getId_archive() {
         return id_archive;
