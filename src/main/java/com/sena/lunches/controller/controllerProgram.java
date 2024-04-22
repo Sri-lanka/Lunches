@@ -28,7 +28,7 @@ public class controllerProgram {
     public String createNewUser(Model model){
         model.addAttribute("program", new Program());
         model.addAttribute("action","");
-        return "admin/principal/newProgram";
+        return "admin/principal/Forms/newProgram";
     }
 
     @PostMapping("/newProgram")
@@ -41,7 +41,7 @@ public class controllerProgram {
     public String updateProgram (@PathVariable Integer idProgram, Model model){
         model.addAttribute("program", programService.getProgramById(idProgram) );
         model.addAttribute("action","/program/editProgram/" + idProgram);
-        return "admin/principal/newProgram";
+        return "admin/principal/Forms/newProgram";
     }
 
     @PostMapping("/editProgram/{idProgram}")

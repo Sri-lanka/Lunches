@@ -32,7 +32,7 @@ public class controllerUser {
     public  String AddUser(Model model) {
         model.addAttribute("userSena",new User_sena());
         model.addAttribute("action", "");
-        return "admin/principal/newUser";
+        return "admin/principal/Forms/newUser";
 
     }
     @PostMapping("/newUser")
@@ -45,7 +45,7 @@ public class controllerUser {
     public String updateUser_sena (@PathVariable Integer idUserSena, Model model){
         model.addAttribute("userSena", userSenaService.getUser_senaById(idUserSena) );
         model.addAttribute("action","/editUser/" + idUserSena);
-        return "admin/principal/newUser";
+        return "admin/principal/Forms/newUser";
     }
 
     @PostMapping("/editUser/{idUserSena}")

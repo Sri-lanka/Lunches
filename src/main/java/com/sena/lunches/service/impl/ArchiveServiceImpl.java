@@ -30,7 +30,7 @@ public class ArchiveServiceImpl implements ArchiveService {
         if (oldArchive != null){
             oldArchive.setId_excuse(archive. getId_excuse());
             oldArchive.setId_message(archive.getId_message());
-            oldArchive.setArchive(archive.getArchive());
+            oldArchive.setArchive_pdf(archive.getArchive_pdf());
             return archive_repo.save(oldArchive);
         }
         return null;

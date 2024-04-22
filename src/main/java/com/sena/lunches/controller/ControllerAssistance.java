@@ -26,7 +26,7 @@ public class ControllerAssistance {
     public String createNewUser(Model model){
         model.addAttribute("assistance", new Assistance());
         model.addAttribute("action","");
-        return "admin/principal/newAssistance";
+        return "admin/principal/Forms/newAssistance";
     }
 
     @PostMapping("/newAssistance")
@@ -39,7 +39,7 @@ public class ControllerAssistance {
     public String updateAssistance (@PathVariable Integer idAssistance, Model model){
         model.addAttribute("assistance", assistanceService.getAssistanceById(idAssistance) );
         model.addAttribute("action","/assistance/editAssistance/" + idAssistance);
-        return "admin/principal/newAssistance";
+        return "admin/principal/Forms/newAssistance";
     }
 
     @PostMapping("/editAssistance/{idAssistance}")

@@ -26,7 +26,7 @@ public class ControllerMessage {
     public String createNewUser(Model model){
         model.addAttribute("message", new Message());
         model.addAttribute("action","");
-        return "admin/principal/newMessage";
+        return "admin/principal/Forms/newMessage";
     }
 
     @PostMapping("/newMessage")
@@ -39,7 +39,7 @@ public class ControllerMessage {
     public String updateMessage (@PathVariable Integer idMessage, Model model){
         model.addAttribute("message", messageService.getMessageById(idMessage) );
         model.addAttribute("action","/message/editMessage/" + idMessage);
-        return "admin/principal/newMessage";
+        return "admin/principal/Forms/newMessage";
     }
 
     @PostMapping("/editMessage/{idMessage}")
