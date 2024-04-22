@@ -81,7 +81,6 @@ class BenefitServiceImplTest {
         // Verify repository method invocation
         verify(benefit_repo, times(1)).findAll();
     }
-
     @Test
     void saveBenefit() {
         Benefit benefitToSave = Benefit.builder()
@@ -106,7 +105,6 @@ class BenefitServiceImplTest {
         // Verify repository method invocation
         verify(benefit_repo, times(1)).save(any(Benefit.class));
     }
-
     @Test
     void getBenefitById() {
         Benefit benefit1 = Benefit.builder()
@@ -132,7 +130,6 @@ class BenefitServiceImplTest {
         // Verify repository method invocation
         verify(benefit_repo, times(1)).findById(13);
     }
-
     @Test
     void updateBenefit() {
         Benefit benefitUpdate = Benefit.builder()
@@ -153,35 +150,6 @@ class BenefitServiceImplTest {
         assertThat(updateBenefit).isNotNull();
 
     }
-
-
-    /*@Test
-    void deleteBenefit() {
-        // Given
-        int benefitId = 15;
-        Benefit benefitToDelete = Benefit.builder()
-                .id_benefit(benefitId)
-                .nom_benefit("transport")
-                .description_benefit("use transport")
-                .date_start(LocalDate.of(2024, 6, 14))
-                .date_end(LocalDate.of(2024, 12, 14))
-                .build();
-
-        // Configure repository mock behavior to return the benefit to delete when findById is called
-        when(benefit_repo.findById(benefitId)).thenReturn(Optional.of(benefitToDelete));
-
-        // When
-        benefitServiceImpl.deleteBenefit(benefitId);
-
-        // Then
-        // Verify that findById was called exactly once with the specified benefitId
-        verify(benefit_repo, times(1)).findById(benefitId);
-
-        // Verify that deleteById was called exactly once with the specified benefitId
-        verify(benefit_repo, times(1)).deleteById(benefitId);
-    }*/
-
-
     @Test
     public void deleteBenefit() {
         // Crear el objeto Benefit a ser eliminado
