@@ -19,7 +19,6 @@ public class ControllerArchive {
     private ArchiveService archiveService;
 
     @GetMapping("/listArchive")
-
     public String listUsers(Model model) {
         List<Archive> archiveData = archiveService.getArchive();
         model.addAttribute("Archive", archiveData);
@@ -30,6 +29,7 @@ public class ControllerArchive {
     public String createNewUser(Model model){
         model.addAttribute("archive", new Archive());
         model.addAttribute("action","");
+
         return "admin/principal/Forms/newArchive";
     }
 

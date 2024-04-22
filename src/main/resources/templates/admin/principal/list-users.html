@@ -325,7 +325,7 @@
                 <td th:text="${Archive.id_archive}"></td>
                 <td th:text="${Archive.id_excuse}"></td>
                 <td th:text="${Archive.id_message}"></td>
-                <td th:text="${Archive.archive_pdf}"></td>
+                <td th:href="${Archive.archive_pdf}"></td>
                 <td id="button">
                     <a th:href="@{/archive/editArchive/{idArchive}(idArchive=${Archive.id_archive})}"><img th:src="@{/img/edit.png}" class="icon" ></a>
                     <a th:href="@{/archive/delete/{idArchive}(idArchive=${Archive.id_archive})}" class="delete"><img th:src="@{/img/delate.webp}" class="icon" ></a>
