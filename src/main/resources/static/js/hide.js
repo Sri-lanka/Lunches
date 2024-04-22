@@ -84,3 +84,25 @@ function assignClickEvents() {
   });
 }
 assignClickEvents();
+
+//buttons function
+function Confirm(){
+    var retVal = confirm("continue with this action?");
+    if( retVal == true ){
+        <a th:href="@{/benefit/listBenefit}"></a>
+        document.write ("OK,");
+        return true;
+    }else{
+        document.write ("don´t save");
+        return false;
+    }
+}
+
+function hello(){
+    alert('hello');
+}
+
+
+
+
+
