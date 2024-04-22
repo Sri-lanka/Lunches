@@ -1,21 +1,12 @@
-package com.sena.lunches.repositoryTest;
-
-import com.sena.lunches.entities.Archive;
-
-import com.sena.lunches.repository.Archive_repo;
+package com.sena.lunches.repository;
 
 
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.annotation.Rollback;
-
-import java.time.LocalDate;
-import java.util.List;
-import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 

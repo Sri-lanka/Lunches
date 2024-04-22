@@ -1,7 +1,6 @@
-package com.sena.lunches.repositoryTest;
+package com.sena.lunches.repository;
 
 import com.sena.lunches.entities.Benefit;
-import com.sena.lunches.repository.Benefit_repo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
