@@ -1,16 +1,18 @@
-package com.sena.lunches.repositoryTest;
+package com.sena.lunches.repository;
 
 import com.sena.lunches.entities.Benefit;
-import com.sena.lunches.repository.Benefit_repo;
 
-import org.assertj.core.api.Assertions;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+
 
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+
 import org.springframework.test.annotation.Rollback;
+import org.springframework.test.context.ActiveProfiles;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -19,7 +21,9 @@ import java.util.Optional;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @DataJpaTest
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+
+@ActiveProfiles("test")
+@AutoConfigureTestDatabase
 @Rollback(false)
 
 public class Benefit_repoTest {
@@ -73,12 +77,12 @@ public class Benefit_repoTest {
                 .build();
 
         benefit_repo.save(benefit);
-        benefit_repo.save(benefit);
+        benefit_repo.save(benefit2);
 
         List<Benefit> benefitList = benefit_repo.findAll();
 
         assertThat(benefitList).isNotNull();
-        assertThat(benefitList.size()).isEqualTo(5);
+        assertThat(benefitList.size()).isEqualTo(4);
     }
 
 
@@ -151,7 +155,7 @@ public class Benefit_repoTest {
     public void testDeleteBenefit() {
         // Given
         Benefit benefit = Benefit.builder()
-                .id_benefit(16)
+                .id_benefit(15)
                 .nom_benefit("transport")
                 .description_benefit("use transport")
                 .date_start(LocalDate.of(2024, 6, 14))
