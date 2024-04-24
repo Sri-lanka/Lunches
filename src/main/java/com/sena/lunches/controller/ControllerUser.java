@@ -12,7 +12,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/")
-public class controllerUser {
+public class ControllerUser {
 
     @Autowired
     private UserSenaService userSenaService;

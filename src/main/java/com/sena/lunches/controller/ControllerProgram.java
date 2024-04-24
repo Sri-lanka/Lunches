@@ -1,8 +1,6 @@
 package com.sena.lunches.controller;
 
-import com.sena.lunches.entities.File_sena;
 import com.sena.lunches.entities.Program;
-import com.sena.lunches.repository.Program_sena_repo;
 import com.sena.lunches.service.ProgramService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,7 +12,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/program")
-public class controllerProgram {
+public class ControllerProgram {
     @Autowired
     private ProgramService programService;
     @GetMapping("/listProgram")

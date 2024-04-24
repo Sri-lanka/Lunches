@@ -11,7 +11,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/userFile")
-public class controllerUserFile {
+public class ControllerUserFile {
     @Autowired
     private UserFileService userFileService;
 

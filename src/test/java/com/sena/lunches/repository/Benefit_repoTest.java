@@ -96,24 +96,17 @@ public class Benefit_repoTest {
                 .date_start(LocalDate.of(2024, 6, 14))
                 .date_end(LocalDate.of(2024, 12, 14))
                 .build();
-
         // When
         Benefit savedBenefit = benefit_repo.save(benefit);
 
         // Then
         assertThat(savedBenefit.getId_benefit()).isNotNull(); // Verifica que el ID se haya asignado correctamente
 
-
         Optional<Benefit> retrievedBenefitOptional = benefit_repo.findById(savedBenefit.getId_benefit());
-
 
         assertThat(retrievedBenefitOptional).isPresent();
         Benefit retrievedBenefit = retrievedBenefitOptional.get();
         assertThat(retrievedBenefit.getNom_benefit()).isEqualTo("transport"); // Verifica el nombre del beneficio
-
-        // Causes an intentional failure (for example, checking for an incorrect attribute)
-
-        //assertThat(retrievedBenefit.getDescription_benefit()).isEqualTo("incorrect description");
 
 
     }

@@ -12,7 +12,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/excuse")
-public class controllerExcuse {
+public class ControllerExcuse {
     @Autowired
     private ExcuseService excuseService;
 

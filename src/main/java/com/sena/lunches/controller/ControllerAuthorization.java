@@ -11,7 +11,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping ("/authorization")
-public class controllerAuthorization {
+public class ControllerAuthorization {
 
     @Autowired
     private AuthorizationService authorizationService;

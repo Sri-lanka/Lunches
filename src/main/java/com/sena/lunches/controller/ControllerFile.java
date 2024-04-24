@@ -11,7 +11,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping ("/file")
-public class controllerFile {
+public class ControllerFile {
 
     @Autowired
     private FileService file_senaService;

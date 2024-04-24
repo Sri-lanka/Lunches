@@ -37,15 +37,6 @@ class BenefitServiceImplTest {
     private BenefitServiceImpl benefitServiceImpl;
 
 
-
-
-
-
-    @BeforeEach
-    void setUp() {
-
-    }
-
     @Test
     void getBenefit() {
         // Given
@@ -116,7 +107,6 @@ class BenefitServiceImplTest {
                 .build();
 
         // Configure repository mock behavior
-
         when(benefit_repo.findById(13)).thenReturn(Optional.of(benefit1));
 
         // When
