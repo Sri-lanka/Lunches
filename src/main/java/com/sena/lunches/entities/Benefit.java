@@ -60,4 +60,6 @@ public class Benefit {
     public void setDate_end(LocalDate date_end) {
         this.date_end = date_end;
     }
+
+
 }

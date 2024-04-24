@@ -15,6 +15,7 @@ public class ControllerBenefit {
     @Autowired
     private BenefitService benefitService;
 
+
     @GetMapping("/listBenefit")
     public String listUsers(Model model) {
         List<Benefit> benefitData = benefitService.getBenefit();
