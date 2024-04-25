@@ -1,7 +1,7 @@
 package com.sena.lunches.repository;
 
-import com.sena.lunches.entities.Benefit;
 import com.sena.lunches.entities.File_sena;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -10,13 +10,10 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ActiveProfiles;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
-
 
 @DataJpaTest
 
@@ -45,11 +42,11 @@ class File_sena_repoTest {
         // Then
         assertThat(savedFileSena.getId_file()).isNotNull();// Check if ID is assigned after persisting
 
-        // Optional: Verify if the benefit can be retrieved from the repository
+        // Optional: Verify if the file can be retrieved from the repository
 
-        Optional<File_sena> retrievedBenefit = file_sena_repo.findById(savedFileSena.getId_file());
-        assertThat(retrievedBenefit).isPresent(); // Check if benefit is found
-        assertThat(retrievedBenefit.get().getN_file()).isEqualTo(1); // Verify attribute value
+        Optional<File_sena> retrievedFile_sena = file_sena_repo.findById(savedFileSena.getId_file());
+        assertThat(retrievedFile_sena).isPresent(); // Check if file is found
+        assertThat(retrievedFile_sena.get().getN_file()).isEqualTo(1); // Verify attribute value
     }
 
     @Test
@@ -86,13 +83,13 @@ class File_sena_repoTest {
         File_sena savedFileSena = file_sena_repo.save(file_sena);
 
         // Then
-        assertThat(savedFileSena.getId_file()).isNotNull(); // Verifica que el ID se haya asignado correctamente
+        assertThat(savedFileSena.getId_file()).isNotNull(); //Verify that the ID has been assigned correctly
 
         Optional<File_sena> retrievedFileSena = file_sena_repo.findById(savedFileSena.getId_file());
 
         assertThat(retrievedFileSena).isPresent();
-        File_sena retrievedBenefit = retrievedFileSena.get();
-        assertThat(retrievedBenefit.getN_file()).isEqualTo(1); // Verifica el nombre del beneficio
+        File_sena retrievedFile_sena = retrievedFileSena.get();
+        assertThat(retrievedFile_sena.getN_file()).isEqualTo(1); // Check the file name
 
     }
 
@@ -107,24 +104,24 @@ class File_sena_repoTest {
 
         File_sena savedFile_sena = file_sena_repo.save(file_sena);
 
-        // Retrieve the saved benefit from the repository
+        // Retrieve the saved file from the repository
         Optional<File_sena> optionalFile_sena = file_sena_repo.findById(savedFile_sena.getId_file());
-        assertThat(optionalFile_sena).isPresent(); // Verify that the benefit is found
+        assertThat(optionalFile_sena).isPresent(); // Verify that the file is found
 
-        File_sena retrievedBenefit = optionalFile_sena.get();
-        retrievedBenefit.setN_file(2);
-        retrievedBenefit.setId_program(5);
+        File_sena retrievedFile_sena = optionalFile_sena.get();
+        retrievedFile_sena.setN_file(2);
+        retrievedFile_sena.setId_program(5);
 
-        File_sena updatedBenefit = file_sena_repo.save(retrievedBenefit);
+        File_sena updatedFile_sena = file_sena_repo.save(retrievedFile_sena);
 
-        assertThat(updatedBenefit.getId_file()).isEqualTo(savedFile_sena.getId_file()); // Verify ID remains the same
-        assertThat(updatedBenefit.getN_file()).isEqualTo(2); // Verify updated name
-        assertThat(updatedBenefit.getId_program()).isEqualTo(5); // Verify updated description
+        assertThat(updatedFile_sena.getId_file()).isEqualTo(savedFile_sena.getId_file()); // Verify ID remains the same
+        assertThat(updatedFile_sena.getN_file()).isEqualTo(2); // Verify updated name
+        assertThat(updatedFile_sena.getId_program()).isEqualTo(5); // Verify updated description
 
     }
 
     @Test
-    public void testDeleteBenefit() {
+    public void testDeleteFile_sena() {
         // Given
         File_sena file_sena=File_sena.builder()
                 .id_file(10)
@@ -139,11 +136,5 @@ class File_sena_repoTest {
         assertThat(file_senaReturn).isEmpty();
 
     }
-
-
-
-
-
-
 
 }
