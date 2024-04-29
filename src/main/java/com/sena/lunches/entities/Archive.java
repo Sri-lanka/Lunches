@@ -1,53 +1,76 @@
 package com.sena.lunches.entities;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
+import jakarta.persistence.Lob;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+import org.hibernate.annotations.GenericGenerator;
 
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
+
+
+@Data
 @Entity
 public class Archive {
     @Id
-    private int id_archive;
-    private int id_excuse;
-    private int id_message;
-    private String archive_pdf;
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    private String id_archive;
+    private int id_message = 10 ;
+    private String typeDoc;
+    private String name_archive;
+    private  byte[] archive_pdf;
 
 
-    public int getId_archive() {
+
+
+    public Archive(String name_archive, String typeDoc, byte[] archive_pdf) {
+        this.name_archive = name_archive;
+        this.typeDoc = typeDoc;
+        this.archive_pdf = archive_pdf;
+    }
+
+
+    public Archive() {
+
+    }
+
+    public String getId_archive() {
         return id_archive;
     }
 
-    public void setId_archive(int id_archive) {
+    public void setId_archive(String id_archive) {
         this.id_archive = id_archive;
     }
-
-    public int getId_excuse() {
-        return id_excuse;
-    }
-
-    public void setId_excuse(int id_excuse) {
-        this.id_excuse = id_excuse;
-    }
-
     public int getId_message() {
         return id_message;
     }
 
-    public void setId_message(int id_message) {
+    public void setId_message(Message idMessage) {
         this.id_message = id_message;
     }
 
-    public String getArchive_pdf() {
+    public String getTypeDoc() {
+        return typeDoc;
+    }
+
+    public void setTypeDoc(String typeDoc) {
+        this.typeDoc = typeDoc;
+    }
+
+    public  String getName_archive() {
+        return name_archive;
+    }
+
+    public void setName_archive(String name_archive) {
+        this.name_archive = name_archive;
+    }
+
+    public  byte[] getArchive_pdf() {
         return archive_pdf;
     }
 
-    public void setArchive_pdf(String archive_pdf) {
+    public void setArchive_pdf(byte[] archive_pdf) {
         this.archive_pdf = archive_pdf;
     }
 }

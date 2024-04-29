@@ -140,6 +140,7 @@ class BenefitServiceImplTest {
         assertThat(updateBenefit).isNotNull();
 
     }
+
     @Test
     public void deleteBenefit() {
         // Crear el objeto Benefit a ser eliminado
