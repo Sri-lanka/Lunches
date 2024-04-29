@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface User_file_sena_repo extends JpaRepository<User_file,Integer> {
+
 }
