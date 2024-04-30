@@ -10,332 +10,312 @@
 
 <body class="body">
 <div id="tableContainer">
-<div class="header">
-    <img  th:src="@{/img/logo.png}" class="logo"> <p class="title">Administration module</p>
-</div>
+    <div class="header">
+        <img  th:src="@{/img/logo.png}" class="logo"> <p class="title">Administration module</p>
+    </div>
 
 
-<div class="scream" >
-    <div class="display">
-        <div class="button">
+    <div class="scream" >
+        <div class="display">
+            <div class="button">
 
-            <label for="databaseTables"> <p> Seleccione una tabla:</p></label>
-            <select id="databaseTables">
-                <option>Tables</option>
-                <option  value="User" >User</option>
-                <option  value="Assistance">Assistance</option>
-                <option  value="Authorization">Authorization</option>
-                <option  value="Benefit">Benefit</option>
-                <option  value="Program">Program</option>
-                <option  value="File">File</option>
-                <option  value="User-File">User-File</option>
-                <option  value="Excuse">Excuse</option>
-                <option  value="Message">Message</option>
-                <option  value="Archive">Archive</option>
-            </select>
+                <label for="databaseTables"> <p> Seleccione una tabla:</p></label>
+                <select id="databaseTables">
+                    <option>Tables</option>
+                    <option  value="User" >User</option>
+                    <option  value="Assistance">Assistance</option>
+                    <option  value="Authorization">Authorization</option>
+                    <option  value="Benefit">Benefit</option>
+                    <option  value="Program">Program</option>
+                    <option  value="File">File</option>
+                    <option  value="User-File">User-File</option>
+                    <option  value="Message">Message</option>
+                    <option  value="Archive">Archive</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="container">
+
+            <table  class="table table-dark"  th:if="${users != null}">
+
+                <p>list beneficiaries</p>
+
+                <thead class="thead-dark">
+                <tr>
+                    <th>Id</th>
+                    <th>Document</th>
+                    <th>T.document</th>
+                    <th>Rol</th>
+                    <th>Name</th>
+                    <th></th>
+                    <th>Lastname</th>
+                    <th></th>
+                    <th>Age</th>
+                    <th >E-mail</th>
+                    <th>Phone</th>
+                    <th>State</th>
+                    <th>ID benefit</th>
+                    <th>Keyword</th>
+                    <th id="button"><a th:href="@{/newUser}"><img th:src="@{/img/add.webp}" class="icon" ></a></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="user : ${users}" th:if="${users != null}">
+                    <td th:text="${user.id_user}"></td>
+                    <td th:text="${user.document}"></td>
+                    <td>
+                        <span th:if="${user.type_document == 1}">C.C</span>
+                        <span th:if="${user.type_document  == 2}">T.I</span>
+                    </td>
+                    <td>
+                        <span th:if="${user.rol == 1}">Beneficiary</span>
+                        <span th:if="${user.rol  == 2}">Admin</span>
+                        <span th:if="${user.rol == 3}">manager</span>
+                    </td>
+                    <td th:text="${user.name_1}"></td>
+                    <td th:text="${user.name_2}"></td>
+                    <td th:text="${user.last_name_1}"></td>
+                    <td th:text="${user.last_name_2}"></td>
+                    <td th:text="${user.age}"></td>
+                    <td th:text="${user.Email}" id="email" ></td>
+                    <td th:text="${user.telephone}"></td>
+                    <td>
+                        <span th:if="${user.state == 1}">Active</span>
+                        <span th:if="${user.state == 2}">Disabled</span>
+                    </td>
+                    <td th:text="${user.id_benefit}"></td>
+                    <td th:text="${user.keyword}"></td>
+
+                    <td id="button">
+                        <a th:href="@{/editUser/{idUserSena}(idUserSena=${user.id_user})}"><img th:src="@{/img/edit.png}" class="icon" ></a>
+                        <a th:href="@{/delete/{idUserSena}(idUserSena=${user.id_user})}" class="delete"><img th:src="@{/img/delate.webp}" class="icon" ></a>
+
+                    </td>
+                </tr>
+                </tbody>
+
+            </table>
+
+
+            <table class="table table-dark"  th:if="${assistance != null}">
+                <p>list Assistance</p>
+                <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>ID Authorization</th>
+                    <th>ID user</th>
+                    <th>time</th>
+                    <th id="button"><a th:href="@{/assistance/newAssistance}"><img th:src="@{/img/add.webp}" class="icon" ></a></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="assist : ${assistance}" >
+                    <td th:text="${assist.id_assistance}"></td>
+                    <td th:text="${assist.id_authorization}"></td>
+                    <td th:text="${assist.id_user}"></td>
+                    <td th:text="${assist.date_time}"></td>
+                    <td id="button">
+                        <a th:href="@{/assistance/editAssistance/{idAssistance}(idAssistance=${assist.id_assistance})}"><img th:src="@{/img/edit.png}" class="icon" ></a>
+                        <a th:href="@{/assistance/delete/{idAssistance}(idAssistance=${assist.id_assistance})}" class="delete"><img th:src="@{/img/delate.webp}" class="icon" ></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+
+            <table class="table table-dark"  th:if="${benefits != null}">
+                <p>list Benefit</p>
+                <thead class="thead-dark">
+                <tr>
+                    <th>ID benefit</th>
+                    <th>Benefit</th>
+                    <th>Description</th>
+                    <th>Start</th>
+                    <th>End</th>
+                    <th id="button"><a th:href="@{/benefit/newBenefits}"><img th:src="@{/img/add.webp}" class="icon" ></a></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="benefit : ${benefits}" >
+                    <td th:text="${benefit.id_benefit}"></td>
+                    <td th:text="${benefit.nom_benefit}"></td>
+                    <td th:text="${benefit.description_benefit}"></td>
+                    <td th:text="${benefit.date_start}"></td>
+                    <td th:text="${benefit.date_end}"></td>
+                    <td id="button">
+                        <a th:href="@{/benefit/editBenefit/{idBenefit}(idBenefit=${benefit.id_benefit})}"><img th:src="@{/img/edit.png}" class="icon" ></a>
+                        <a th:href="@{/benefit/delete/{idBenefit}(idBenefit=${benefit.id_benefit})}" class="delete"><img th:src="@{/img/delate.webp}" class="icon" ></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+
+            <table class="table table-dark"  th:if="${file != null}">
+                <p>list Files</p>
+                <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Number</th>
+                    <th>ID program</th>
+                    <th id="button"><a th:href="@{/file/newFileSena}"><img th:src="@{/img/add.webp}" class="icon" ></a></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="Files : ${file}">
+                    <td th:text="${Files.id_file}"></td>
+                    <td th:text="${Files.n_file}"></td>
+                    <td th:text="${Files.id_program}">
+                    <td id="button">
+                        <a th:href="@{/file/editFileSena/{idFileSena}(idFileSena=${Files.id_file})}"><img th:src="@{/img/edit.png}" class="icon" ></a>
+                        <a th:href="@{/file/delete/{idFileSena}(idFileSena=${Files.id_file})}" class="delete"><img th:src="@{/img/delate.webp}" class="icon" ></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+
+            <table class="table table-dark"  th:if="${program != null}">
+                <p>list Programs</p>
+                <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th id="button"><a th:href="@{/program/newProgram}"><img th:src="@{/img/add.webp}" class="icon" ></a></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="Programs : ${program}" >
+                    <td th:text="${Programs.id_program}"></td>
+                    <td th:text="${Programs.name_program}"></td>
+
+                    <td id="button">
+                        <a th:href="@{/program/editProgram/{idProgram}(idProgram=${Programs.id_program})}"><img th:src="@{/img/edit.png}" class="icon" ></a>
+                        <a th:href="@{/program/delete/{idProgram}(idProgram=${Programs.id_program})}" class="delete"><img th:src="@{/img/delate.webp}" class="icon" ></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+
+            <table class="table table-dark"   th:if="${User_File != null}">
+                <p>list User x file</p>
+                <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>ID File</th>
+                    <th>ID User</th>
+                    <th>Asset</th>
+                    <th id="button"><a th:href="@{/userFile/newUserFile}"><img th:src="@{/img/add.webp}" class="icon" ></a></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="UserFile : ${User_File}">
+                    <td th:text="${UserFile.id_user_file}"></td>
+                    <td th:text="${UserFile.id_file}"></td>
+                    <td th:text="${UserFile.id_user}"></td>
+                    <td>
+                        <span th:if="${UserFile.asset == 1}">Active</span>
+                        <span th:if="${UserFile.asset == 2}">Disabled</span>
+                    </td>
+                    <td id="button">
+                        <a th:href="@{/userFile/editUserFile/{idUserFile}(idUserFile=${UserFile.id_user_file})}"><img th:src="@{/img/edit.png}" class="icon" ></a>
+                        <a th:href="@{/userFile/delete/{idUserFile}(idUserFile=${UserFile.id_user_file})}" class="delete"><img th:src="@{/img/delate.webp}" class="icon" ></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+
+
+            <table class="table table-dark"  th:if="${authorization != null}">
+                <p>list authorization</p>
+                <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>ID User</th>
+                    <th>ID User x Authorization</th>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th id="button"><a th:href="@{/authorization/newAuthorization}"><img th:src="@{/img/add.webp}" class="icon" ></a></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="Authorization : ${authorization}">
+                    <td th:text="${Authorization.id_authorization}"></td>
+                    <td th:text="${Authorization.id_user}"></td>
+                    <td th:text="${Authorization.id_user_autho}"></td>
+                    <td th:text="${Authorization.description_excuse}"></td>
+                    <td th:text="${Authorization.date_apli}"></td>
+                    <td id="button">
+                        <a th:href="@{/authorization/editAuthorization/{idAuthorization}(idAuthorization=${Authorization.id_authorization})}"><img th:src="@{/img/edit.png}" class="icon" ></a>
+                        <a th:href="@{/authorization/delete/{idAuthorization}(idAuthorization=${Authorization.id_authorization})}" class="delete"><img th:src="@{/img/delate.webp}" class="icon" ></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+
+            <table class="table table-dark"  th:if="${message != null}">
+                <p>list message</p>
+                <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>ID User</th>
+                    <th>ID Archive</th>
+                    <th>Type Message</th>
+                    <th>Description</th>
+                    <th>Date send</th>
+                    <th id="button"><a th:href="@{/message/newMessage}"><img th:src="@{/img/add.webp}" class="icon" ></a></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="Message : ${message}">
+                    <td th:text="${Message.id_message}"></td>
+                    <td th:text="${Message.id_user}"></td>
+                    <td th:text="${Message.id_archive}"></td>
+                    <td>
+                     <span th:if="${Message.typeMessage == 1}">Excuse</span>
+                     <span th:if="${Message.typeMessage == 2}">Reporter</span>
+                    </td>
+                    <td th:text="${Message.description_message}"></td>
+                    <td th:text="${Message.date_send}"></td>
+                    <td id="button">
+                        <a th:href="@{/message/editMessage/{idMessage}(idMessage=${Message.id_message})}"><img th:src="@{/img/edit.png}" class="icon" ></a>
+                        <a th:href="@{/message/delete/{idMessage}(idMessage=${Message.id_message})}" class="delete"><img th:src="@{/img/delate.webp}" class="icon" ></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+
+            <table class="table table-dark"  th:if="${Archive != null}">
+                <p>list archive</p>
+                <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+
+                    <th>Name </th>
+                    <th>Archive</th>
+                    <th id="button"><a th:href="@{/archive/newArchive}"><img th:src="@{/img/add.webp}" class="icon" ></a></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="Archive : ${Archive}">
+                    <td th:text="${Archive.id_archive}"></td>
+                    <td th:text="${Archive.name_archive}"></td>
+                    <td> <a th:href="@{/archive/files/{id}(id=${Archive.id_archive})}">Download</a> </td>
+
+                    <td id="button">
+                        <a th:href="@{/archive/editArchive/{idArchive}(idArchive=${Archive.id_archive})}"><img th:src="@{/img/edit.png}" class="icon" ></a>
+                        <a th:href="@{/archive/delete/{idArchive}(idArchive=${Archive.id_archive})}" class="delete"><img th:src="@{/img/delate.webp}" class="icon" ></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
-
-    <div class="container">
-
-        <table  class="table table-dark"  th:if="${users != null}">
-
-            <p>list beneficiaries</p>
-
-            <thead class="thead-dark">
-            <tr>
-                <th>Id</th>
-                <th>Document</th>
-                <th>T.document</th>
-                <th>Rol</th>
-                <th>Name</th>
-                <th></th>
-                <th>Lastname</th>
-                <th></th>
-                <th>Age</th>
-                <th >E-mail</th>
-                <th>Phone</th>
-                <th>State</th>
-                <th>ID benefit</th>
-                <th>Keyword</th>
-                <th id="button"><a th:href="@{/newUser}"><img th:src="@{/img/add.webp}" class="icon" ></a></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="user : ${users}" th:if="${users != null}">
-                <td th:text="${user.id_user}"></td>
-                <td th:text="${user.document}"></td>
-                <td>
-                    <span th:if="${user.type_document == 1}">C.C</span>
-                    <span th:if="${user.type_document  == 2}">T.I</span>
-                </td>
-                <td>
-                    <span th:if="${user.rol == 1}">Beneficiary</span>
-                    <span th:if="${user.rol  == 2}">Admin</span>
-                    <span th:if="${user.rol == 3}">manager</span>
-                </td>
-                <td th:text="${user.name_1}"></td>
-                <td th:text="${user.name_2}"></td>
-                <td th:text="${user.last_name_1}"></td>
-                <td th:text="${user.last_name_2}"></td>
-                <td th:text="${user.age}"></td>
-                <td th:text="${user.Email}" id="email" ></td>
-                <td th:text="${user.telephone}"></td>
-                <td>
-                    <span th:if="${user.state == 1}">Active</span>
-                    <span th:if="${user.state == 2}">Disabled</span>
-                </td>
-                <td th:text="${user.id_benefit}"></td>
-                <td th:text="${user.keyword}"></td>
-
-                <td id="button">
-                <a th:href="@{/editUser/{idUserSena}(idUserSena=${user.id_user})}"><img th:src="@{/img/edit.png}" class="icon" ></a>
-                <a th:href="@{/delete/{idUserSena}(idUserSena=${user.id_user})}" class="delete"><img th:src="@{/img/delate.webp}" class="icon" ></a>
-
-                </td>
-            </tr>
-            </tbody>
-
-        </table>
-
-
-        <table class="table table-dark"  th:if="${assistance != null}">
-            <p>list Assistance</p>
-            <thead class="thead-dark">
-            <tr>
-                <th>ID</th>
-                <th>ID Authorization</th>
-                <th>ID user</th>
-                <th>time</th>
-                <th id="button"><a th:href="@{/assistance/newAssistance}"><img th:src="@{/img/add.webp}" class="icon" ></a></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="assist : ${assistance}" >
-                <td th:text="${assist.id_assistance}"></td>
-                <td th:text="${assist.id_authorization}"></td>
-                <td th:text="${assist.id_user}"></td>
-                <td th:text="${assist.date_time}"></td>
-                <td id="button">
-                    <a th:href="@{/assistance/editAssistance/{idAssistance}(idAssistance=${assist.id_assistance})}"><img th:src="@{/img/edit.png}" class="icon" ></a>
-                    <a th:href="@{/assistance/delete/{idAssistance}(idAssistance=${assist.id_assistance})}" class="delete"><img th:src="@{/img/delate.webp}" class="icon" ></a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-
-
-        <table class="table table-dark"  th:if="${benefits != null}">
-            <p>list Benefit</p>
-            <thead class="thead-dark">
-            <tr>
-                <th>ID benefit</th>
-                <th>Benefit</th>
-                <th>Description</th>
-                <th>Start</th>
-                <th>End</th>
-                <th id="button"><a th:href="@{/benefit/newBenefits}"><img th:src="@{/img/add.webp}" class="icon" ></a></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="benefit : ${benefits}" >
-                <td th:text="${benefit.id_benefit}"></td>
-                <td th:text="${benefit.nom_benefit}"></td>
-                <td th:text="${benefit.description_benefit}"></td>
-                <td th:text="${benefit.date_start}"></td>
-                <td th:text="${benefit.date_end}"></td>
-                <td id="button">
-                    <a th:href="@{/benefit/editBenefit/{idBenefit}(idBenefit=${benefit.id_benefit})}"><img th:src="@{/img/edit.png}" class="icon" ></a>
-                    <a th:href="@{/benefit/delete/{idBenefit}(idBenefit=${benefit.id_benefit})}" class="delete"><img th:src="@{/img/delate.webp}" class="icon" ></a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-
-
-        <table class="table table-dark"  th:if="${file != null}">
-            <p>list Files</p>
-            <thead class="thead-dark">
-            <tr>
-                <th>ID</th>
-                <th>Number</th>
-                <th>ID program</th>
-                <th id="button"><a th:href="@{/file/newFileSena}"><img th:src="@{/img/add.webp}" class="icon" ></a></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="Files : ${file}">
-                <td th:text="${Files.id_file}"></td>
-                <td th:text="${Files.n_file}"></td>
-                <td th:text="${Files.id_program}">
-                <td id="button">
-                    <a th:href="@{/file/editFileSena/{idFileSena}(idFileSena=${Files.id_file})}"><img th:src="@{/img/edit.png}" class="icon" ></a>
-                    <a th:href="@{/file/delete/{idFileSena}(idFileSena=${Files.id_file})}" class="delete"><img th:src="@{/img/delate.webp}" class="icon" ></a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-
-
-        <table class="table table-dark"  th:if="${program != null}">
-            <p>list Programs</p>
-            <thead class="thead-dark">
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th id="button"><a th:href="@{/program/newProgram}"><img th:src="@{/img/add.webp}" class="icon" ></a></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="Programs : ${program}" >
-                <td th:text="${Programs.id_program}"></td>
-                <td th:text="${Programs.name_program}"></td>
-
-                <td id="button">
-                    <a th:href="@{/program/editProgram/{idProgram}(idProgram=${Programs.id_program})}"><img th:src="@{/img/edit.png}" class="icon" ></a>
-                    <a th:href="@{/program/delete/{idProgram}(idProgram=${Programs.id_program})}" class="delete"><img th:src="@{/img/delate.webp}" class="icon" ></a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-
-
-        <table class="table table-dark"   th:if="${User_File != null}">
-            <p>list User x file</p>
-            <thead class="thead-dark">
-            <tr>
-                <th>ID</th>
-                <th>ID File</th>
-                <th>ID User</th>
-                <th>Asset</th>
-                <th id="button"><a th:href="@{/userFile/newUserFile}"><img th:src="@{/img/add.webp}" class="icon" ></a></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="UserFile : ${User_File}">
-                <td th:text="${UserFile.id_user_file}"></td>
-                <td th:text="${UserFile.id_file}"></td>
-                <td th:text="${UserFile.id_user}"></td>
-                <td>
-                    <span th:if="${UserFile.asset == 1}">Active</span>
-                    <span th:if="${UserFile.asset == 2}">Disabled</span>
-                </td>
-                <td id="button">
-                    <a th:href="@{/userFile/editUserFile/{idUserFile}(idUserFile=${UserFile.id_user_file})}"><img th:src="@{/img/edit.png}" class="icon" ></a>
-                    <a th:href="@{/userFile/delete/{idUserFile}(idUserFile=${UserFile.id_user_file})}" class="delete"><img th:src="@{/img/delate.webp}" class="icon" ></a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-
-
-        <table class="table table-dark"  th:if="${excuse != null}">
-            <p>list Excuses</p>
-            <thead class="thead-dark">
-            <tr>
-                <th>ID</th>
-                <th>ID User</th>
-                <th>ID Assistance</th>
-                <th>Description</th>
-                <th id="button"><a th:href="@{/excuse/newExcuse}"><img th:src="@{/img/add.webp}" class="icon" ></a></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="Excuse : ${excuse}">
-                <td th:text="${Excuse.id_excuse}"></td>
-                <td th:text="${Excuse.id_user}"></td>
-                <td th:text="${Excuse.id_assistance}"></td>
-                <td th:text="${Excuse.description_excuse}"></td>
-                <td id="button">
-                    <a th:href="@{/excuse/editExcuse/{idExcuse}(idExcuse=${Excuse.id_excuse})}"><img th:src="@{/img/edit.png}" class="icon" ></a>
-                    <a th:href="@{/excuse/delete/{idExcuse}(idExcuse=${Excuse.id_excuse})}" class="delete"><img th:src="@{/img/delate.webp}" class="icon" ></a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-
-
-        <table class="table table-dark"  th:if="${authorization != null}">
-            <p>list authorization</p>
-            <thead class="thead-dark">
-            <tr>
-                <th>ID</th>
-                <th>ID User</th>
-                <th>ID User x Authorization</th>
-                <th>Description</th>
-                <th>Date</th>
-                <th id="button"><a th:href="@{/authorization/newAuthorization}"><img th:src="@{/img/add.webp}" class="icon" ></a></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="Authorization : ${authorization}">
-                <td th:text="${Authorization.id_authorization}"></td>
-                <td th:text="${Authorization.id_user}"></td>
-                <td th:text="${Authorization.id_user_autho}"></td>
-                <td th:text="${Authorization.description_excuse}"></td>
-                <td th:text="${Authorization.date_apli}"></td>
-                <td id="button">
-                    <a th:href="@{/authorization/editAuthorization/{idAuthorization}(idAuthorization=${Authorization.id_authorization})}"><img th:src="@{/img/edit.png}" class="icon" ></a>
-                    <a th:href="@{/authorization/delete/{idAuthorization}(idAuthorization=${Authorization.id_authorization})}" class="delete"><img th:src="@{/img/delate.webp}" class="icon" ></a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-
-
-        <table class="table table-dark"  th:if="${message != null}">
-            <p>list message</p>
-            <thead class="thead-dark">
-            <tr>
-                <th>ID</th>
-                <th>ID User</th>
-                <th>Description</th>
-                <th>Date send</th>
-                <th id="button"><a th:href="@{/message/newMessage}"><img th:src="@{/img/add.webp}" class="icon" ></a></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="Message : ${message}">
-                <td th:text="${Message.id_message}"></td>
-                <td th:text="${Message.id_user}"></td>
-                <td th:text="${Message.description_message}"></td>
-                <td th:text="${Message.date_send}"></td>
-                <td id="button">
-                    <a th:href="@{/message/editMessage/{idMessage}(idMessage=${Message.id_message})}"><img th:src="@{/img/edit.png}" class="icon" ></a>
-                    <a th:href="@{/message/delete/{idMessage}(idMessage=${Message.id_message})}" class="delete"><img th:src="@{/img/delate.webp}" class="icon" ></a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-
-
-        <table class="table table-dark"  th:if="${Archive != null}">
-            <p>list archive</p>
-            <thead class="thead-dark">
-            <tr>
-                <th>ID</th>
-                <th>ID Excuse</th>
-                <th>ID Message</th>
-                <th>Archive</th>
-                <th id="button"><a th:href="@{/archive/newArchive}"><img th:src="@{/img/add.webp}" class="icon" ></a></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="Archive : ${Archive}">
-                <td th:text="${Archive.id_archive}"></td>
-                <td th:text="${Archive.id_message}"></td>
-                <td th:text="${Archive.name_archive}"></td>
-                <td> <a th:href="@{/archive/files/{id}(id=${Archive.id_archive})}">Download</a> </td>
-
-                <td id="button">
-                    <a th:href="@{/archive/editArchive/{idArchive}(idArchive=${Archive.id_archive})}"><img th:src="@{/img/edit.png}" class="icon" ></a>
-                    <a th:href="@{/archive/delete/{idArchive}(idArchive=${Archive.id_archive})}" class="delete"><img th:src="@{/img/delate.webp}" class="icon" ></a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
 </div>
 
 </body>

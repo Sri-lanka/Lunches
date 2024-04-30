@@ -1,11 +1,10 @@
 package com.sena.lunches.entities;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
+//import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
 import lombok.Data;
-import org.hibernate.annotations.GenericGenerator;
+//import org.hibernate.annotations.GenericGenerator;
 
 
 
@@ -13,43 +12,34 @@ import org.hibernate.annotations.GenericGenerator;
 @Entity
 public class Archive {
     @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
-    private String id_archive;
-    private int id_message ;
+    /*@GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")*/
+    private int id_archive;
     private String typeDoc;
     private String name_archive;
     private  byte[] archive_pdf;
 
 
 
+   public Archive(String name_archive, String typeDoc, byte[] archive_pdf) {
 
-    public Archive(String name_archive, String typeDoc, byte[] archive_pdf) {
-        this.name_archive = name_archive;
-        this.typeDoc = typeDoc;
-        this.archive_pdf = archive_pdf;
-    }
-
+       this.name_archive = name_archive;
+       this.typeDoc = typeDoc;
+       this.archive_pdf = archive_pdf;
+   }
 
     public Archive() {
 
     }
 
-    public String getId_archive() {
+
+    public int getId_archive() {
         return id_archive;
     }
 
-    public void setId_archive(String id_archive) {
+    public void setId_archive(int id_archive) {
         this.id_archive = id_archive;
     }
-    public int getId_message() {
-        return id_message;
-    }
-
-    public void setId_message(Message idMessage) {
-        this.id_message = id_message;
-    }
-
     public String getTypeDoc() {
         return typeDoc;
     }
@@ -73,4 +63,6 @@ public class Archive {
     public void setArchive_pdf(byte[] archive_pdf) {
         this.archive_pdf = archive_pdf;
     }
+
+
 }

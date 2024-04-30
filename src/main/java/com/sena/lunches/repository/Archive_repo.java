@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface Archive_repo extends JpaRepository<Archive, String> {
+public interface Archive_repo extends JpaRepository<Archive, Integer> {
 
 }

@@ -19,6 +19,15 @@
             <input type="number" id="id_user" name="id_user" th:value="${message.id_user}" required>
         </div>
         <div class="formGroup">
+            <label>ID Archive:</label>
+            <input type="number" id="id_archive" name="id_archive" th:field="${message.id_archive}" required>
+        </div>
+        <div class="formGroup">
+            <label>Type message:</label>
+            <input class="form-check-input" type="radio"  name="typeMessage" id="Excuse" th:value= "1" th:checked="${message.typeMessage == 1}"/>Excuse
+            <input class="form-check-input" type="radio"  name="typeMessage" id="Reporter" th:value= "2" th:checked="${message.typeMessage == 2}"/>Reporter
+        </div>
+        <div class="formGroup">
             <label for="description_message">Description :</label>
             <input type="text" id="description_message" name="description_message" th:value="${message.description_message}" required>
         </div>

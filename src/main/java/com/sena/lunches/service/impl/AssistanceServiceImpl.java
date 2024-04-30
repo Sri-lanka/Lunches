@@ -30,7 +30,6 @@ public class AssistanceServiceImpl implements AssistanceService{
         Assistance oldAssistance = assistance_repo.findById(id).orElse(null);
         if (oldAssistance != null){
             oldAssistance.setId_authorization(assistance.getId_authorization());
-            oldAssistance.setId_user(assistance.getId_user());
             oldAssistance.setDate_time(assistance.getDate_time());
             return assistance_repo.save(oldAssistance);
         }

@@ -4,29 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Archive</title>
+    <script th:src="@{/js/hide.js}" defer ></script>
     <link rel="stylesheet" th:href="@{/css/styleForm.css}">
 </head>
 <body>
 <div class="container">
     <h1 class="logo">Create/Edit archive</h1>
-    <form class="fileForm" th:object="${archive}" th:action="${action}" method="post">
-
-
-        <div class="formGroup">
-            <label for="id_message">ID message :</label>
-            <input type="number" id="id_message" name="id_message" th:value="${archive.id_message}" required>
-        </div>
+    <form class="fileForm" th:object="${archive}"  enctype="multipart/form-data" th:action="${action}" method="post">
 
         <div class="formGroup">
         <label for="archive_pdf">Archive :</label>
-        <input type="file" id="archive_pdf" name="archive_pdf" accept=".pdf" th:value="${archive.archive_pdf}" required>
+        <input type="file" id="archive_pdf" name="file" accept=".pdf" th:value="${archive.archive_pdf}" required>
         </div>
 
         <div class="formGroup">
-            <button type="submit" class="btnSubmit">Save Archive</button>
+            <button type="submit" class="btnSubmit" >Save Archive</button>
         </div>
 
     </form>
+
 
     <br>
     <button class="btnSubmit"><a th:href="@{/archive/listArchive}"> return page</a></button>
