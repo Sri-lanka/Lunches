@@ -23,7 +23,7 @@ import static org.mockito.Mockito.*;
 
 @ActiveProfiles("test")
 @ExtendWith(MockitoExtension.class)
-class ProgramServiceImplTest {
+class  ProgramServiceImplTest {
 
     @Mock
     private Program_sena_repo program_sena_repo;

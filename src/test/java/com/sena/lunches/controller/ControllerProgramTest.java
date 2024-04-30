@@ -148,9 +148,9 @@ class ControllerProgramTest {
                 .id_program(programIdToDelete)
                 .name_program("adso")
                 .build();
-        // Simulation of the elimination of benefit
+        // Simulation of the elimination of Program
         doNothing().when(programService).deleteProgram(anyInt());
-        // Making the GET request to remove the benefit
+        // Making the GET request to remove the Program
         ResultActions response = mockMvc.perform(get("/program/delete/{id}", programIdToDelete)
                 .contentType(MediaType.APPLICATION_JSON));
         // Verification of the expected response
