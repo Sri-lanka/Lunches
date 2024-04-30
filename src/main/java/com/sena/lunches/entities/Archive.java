@@ -16,7 +16,7 @@ public class Archive {
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id_archive;
-    private int id_message = 10 ;
+    private int id_message ;
     private String typeDoc;
     private String name_archive;
     private  byte[] archive_pdf;

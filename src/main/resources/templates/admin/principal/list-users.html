@@ -323,10 +323,9 @@
             <tbody>
             <tr th:each="Archive : ${Archive}">
                 <td th:text="${Archive.id_archive}"></td>
-                <td th:text="${Archive.id_excuse}"></td>
                 <td th:text="${Archive.id_message}"></td>
-                <!--<td th:text="${Archive.name_archive}"></td>-->
-                <td th:text="${Archive.archive_pdf}"></td>
+                <td th:text="${Archive.name_archive}"></td>
+                <td> <a th:href="@{/archive/files/{id}(id=${Archive.id_archive})}">Download</a> </td>
 
                 <td id="button">
                     <a th:href="@{/archive/editArchive/{idArchive}(idArchive=${Archive.id_archive})}"><img th:src="@{/img/edit.png}" class="icon" ></a>
