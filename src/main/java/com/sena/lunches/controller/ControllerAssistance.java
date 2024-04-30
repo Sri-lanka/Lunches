@@ -16,21 +16,21 @@ public class ControllerAssistance {
     private AssistanceService assistanceService;
 
     @GetMapping("/listAssistance")
-    public String listUsers(Model model) {
+    public String listAssistance(Model model) {
         List<Assistance> assistanceData = assistanceService.getAssistance();
         model.addAttribute("assistance", assistanceData);
         return "admin/principal/list-users";
     }
 
     @GetMapping("/newAssistance")
-    public String createNewUser(Model model){
+    public String newAssistance(Model model){
         model.addAttribute("assistance", new Assistance());
         model.addAttribute("action","");
         return "admin/principal/Forms/newAssistance";
     }
 
     @PostMapping("/newAssistance")
-    public String saveUserData (@ModelAttribute Assistance assistance){
+    public String saveAssistance (@ModelAttribute Assistance assistance){
         assistanceService.saveAssistance(assistance);
         return "redirect:/assistance/listAssistance";
     }

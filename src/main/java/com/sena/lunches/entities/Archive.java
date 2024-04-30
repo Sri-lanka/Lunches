@@ -32,7 +32,6 @@ public class Archive {
 
     }
 
-
     public int getId_archive() {
         return id_archive;
     }

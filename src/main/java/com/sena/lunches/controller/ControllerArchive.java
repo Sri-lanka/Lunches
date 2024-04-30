@@ -4,9 +4,7 @@ package com.sena.lunches.controller;
 import org.springframework.ui.Model;
 import com.sena.lunches.entities.Archive;
 
-
 import com.sena.lunches.service.ArchiveService;
-
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -15,8 +13,6 @@ import org.springframework.stereotype.Controller;
 
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
-
 
 import java.io.IOException;
 import java.util.List;
@@ -50,9 +46,9 @@ public class ControllerArchive {
     }
 
 
-  @PostMapping("/newArchive")
+    @PostMapping("/newArchive")
     public String saveUserData(@RequestParam("file") MultipartFile file) throws IOException {;
-            archiveService.store( file);
+        archiveService.store( file);
         return "redirect:/archive/listArchive";
     }
     @GetMapping("/editArchive/{idArchive}")

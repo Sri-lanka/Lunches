@@ -20,20 +20,6 @@ public class ArchiveServiceImpl implements ArchiveService {
     private Archive_repo archive_repo;
 
 
-/*
-    @Override
-    public Archive updateArchive(Integer id, Archive archive) {Archive oldArchive = archive_repo.findById(id).orElse(null);
-        if (oldArchive != null){
-            oldArchive.setId_excuse(archive. getId_excuse());
-            oldArchive.setId_message(archive.getId_message());
-            oldArchive.setArchive_pdf(archive.getArchive_pdf());
-            return archive_repo.save(oldArchive);
-        }
-        return null;
-    }
-
-    */
-
     @Override
     public List<Archive> getArchive() {return archive_repo.findAll();
     }
@@ -41,14 +27,6 @@ public class ArchiveServiceImpl implements ArchiveService {
     @Override
     public Archive saveArchive(Archive archive) {return archive_repo.save(archive);
     }
-/*
-    @Override
-    public Archive store(MultipartFile file) throws IOException {
-        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-        Archive archive = new Archive(fileName, file.getContentType(), file.getBytes());
-
-        return archive_repo.save(archive);
-    }*/
 
     @Override
     public Archive store(MultipartFile file) throws IOException {

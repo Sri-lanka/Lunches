@@ -11,10 +11,7 @@ import java.util.stream.Stream;
 
 
 public interface ArchiveService {
-/*
 
-    public Archive saveArchive(Archive archive);
-*/
 
     public List<Archive> getArchive();
 
