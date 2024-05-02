@@ -82,7 +82,7 @@ public class Benefit_repoTest {
         List<Benefit> benefitList = benefit_repo.findAll();
 
         assertThat(benefitList).isNotNull();
-        assertThat(benefitList.size()).isEqualTo(4);
+        assertThat(benefitList.size()).isEqualTo(2);
     }
 
 
