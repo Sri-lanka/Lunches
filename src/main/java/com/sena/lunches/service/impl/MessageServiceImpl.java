@@ -33,7 +33,9 @@ public class MessageServiceImpl  implements MessageService {
     public Message updateMessage(Integer id, Message message) {
         Message oldMessage = message_repo.findById(id).orElse(null);
         if (oldMessage != null){
-            oldMessage.setId_user(message. getId_user());
+            oldMessage.setId_user(message.getId_user());
+            oldMessage.setId_archive(message.getId_archive());
+            oldMessage.setTypeMessage(message.getTypeMessage());
             oldMessage.setDescription_message(message.getDescription_message());
             oldMessage.setDate_send(message.getDate_send());
             return message_repo.save(oldMessage);

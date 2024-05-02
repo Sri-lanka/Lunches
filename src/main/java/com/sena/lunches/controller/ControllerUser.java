@@ -18,7 +18,7 @@ public class ControllerUser {
     private UserSenaService userSenaService;
 
     @GetMapping
-    public String listUsers(Model model) {
+    public String listUser(Model model) {
         try {
             List<User_sena> users = userSenaService.getUser_sena();
             model.addAttribute("users", users);
@@ -29,39 +29,35 @@ public class ControllerUser {
     }
 
     @GetMapping("/newUser")
-    public  String AddUser(Model model) {
+    public  String addUser(Model model) {
         model.addAttribute("userSena",new User_sena());
         model.addAttribute("action", "");
         return "admin/principal/Forms/newUser";
 
     }
     @PostMapping("/newUser")
-    public String saveUserData (@ModelAttribute User_sena userSena){
+    public String saveUser (@ModelAttribute User_sena userSena){
         userSenaService.saveUser_sena(userSena);
         return "redirect:/";
     }
 
     @GetMapping("/editUser/{idUserSena}")
-    public String updateUser_sena (@PathVariable Integer idUserSena, Model model){
+    public String updateUser (@PathVariable Integer idUserSena, Model model){
         model.addAttribute("userSena", userSenaService.getUser_senaById(idUserSena) );
         model.addAttribute("action","/editUser/" + idUserSena);
         return "admin/principal/Forms/newUser";
     }
 
     @PostMapping("/editUser/{idUserSena}")
-    public String updatingUser_sena(@PathVariable Integer idUserSena,@ModelAttribute User_sena userSena){
+    public String updatingUser(@PathVariable Integer idUserSena,@ModelAttribute User_sena userSena){
         userSenaService.updateUser_sena(idUserSena, userSena);
         return "redirect:/";
     }
 
     @GetMapping("/delete/{idUserSena}")
-    public String deleteUser_sena (@PathVariable Integer idUserSena){
+    public String deleteUser (@PathVariable Integer idUserSena){
         userSenaService.deleteUser_sena(idUserSena);
         return "redirect:/";
     }
-
-
-
-
 
 }

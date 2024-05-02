@@ -42,7 +42,7 @@ class ControllerFileTest {
     private ObjectMapper objectMapper;
 
     @Test
-    void listUsers() throws Exception {
+    void listFileSena() throws Exception {
         // Prepare test data
         File_sena file_sena1 = File_sena.builder()
                 .id_file(10)
@@ -71,7 +71,7 @@ class ControllerFileTest {
     }
 
     @Test
-    void createNewUser() throws Exception {
+    void addFileSena() throws Exception {
         File_sena newFile_sena = File_sena.builder()
                 .id_file(10)
                 .n_file(1)
@@ -91,7 +91,7 @@ class ControllerFileTest {
     }
 
     @Test
-    void saveUserData() throws Exception  {
+    void saveFileSena() throws Exception  {
         File_sena newFile_sena = File_sena.builder()
                 .id_file(10)
                 .n_file(1)
@@ -112,7 +112,7 @@ class ControllerFileTest {
     }
 
     @Test
-    void updateFile_sena() throws Exception {
+    void updateFileSena() throws Exception {
         File_sena updatedFile_sena = File_sena.builder()
                 .id_file(10)
                 .n_file(1)
@@ -131,7 +131,7 @@ class ControllerFileTest {
     }
 
     @Test
-    void updatingFile_sena() throws Exception {
+    void updatingFileSena() throws Exception {
         File_sena updatedFile_sena = File_sena.builder()
                 .id_file(10)
                 .n_file(1)
@@ -150,7 +150,7 @@ class ControllerFileTest {
     }
 
     @Test
-    void deleteFile_sena() throws Exception {
+    void deleteFileSena() throws Exception {
         // ID of the file to delete
         int fileIdToDelete = 1;
         File_sena deleteFile_sena = File_sena.builder()

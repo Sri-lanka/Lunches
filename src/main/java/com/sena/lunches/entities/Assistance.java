@@ -12,7 +12,7 @@ public class Assistance {
     @Id
     private int id_assistance;
     private int id_authorization;
-   private  int id_user;
+
    private LocalDateTime date_time;
 
     public int getId_assistance() {
@@ -31,13 +31,6 @@ public class Assistance {
         this.id_authorization = id_authorization;
     }
 
-    public int getId_user() {
-        return id_user;
-    }
-
-    public void setId_user(int id_user) {
-        this.id_user = id_user;
-    }
 
     public LocalDateTime getDate_time() {
         return date_time;

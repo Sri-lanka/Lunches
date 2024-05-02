@@ -17,21 +17,21 @@ public class ControllerAuthorization {
     private AuthorizationService authorizationService;
 
     @GetMapping("/listAuthorization")
-    public String listUsers(Model model) {
+    public String listAuthorization(Model model) {
         List<Authorization> authorizationData = authorizationService.getAuthorization();
         model.addAttribute("authorization", authorizationData);
         return "admin/principal/list-users";
     }
 
     @GetMapping("/newAuthorization")
-    public String createNewUser(Model model){
+    public String addAuthorization(Model model){
         model.addAttribute("authorization", new Authorization());
         model.addAttribute("action","");
         return "admin/principal/Forms/newAuthorization";
     }
 
     @PostMapping("/newAuthorization")
-    public String saveUserData (@ModelAttribute Authorization authorization){
+    public String saveAuthorization (@ModelAttribute Authorization authorization){
         authorizationService.saveAuthorization(authorization);
         return "redirect:/authorization/listAuthorization";
     }
