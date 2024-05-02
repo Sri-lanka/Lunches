@@ -17,13 +17,10 @@ public interface ArchiveService {
 
     public Archive getArchiveById(Integer id);
 
-    public Archive saveArchive(Archive archive);
 
     public Archive store( MultipartFile file) throws IOException ;
 
     public Archive getFile(Integer id);
-
-    public Stream<Archive> getAllFiles();
 
     public void deleteArchive(Integer id);
     public Archive updateArchive(int id, MultipartFile file) throws IOException;

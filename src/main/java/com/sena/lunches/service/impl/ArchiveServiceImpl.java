@@ -24,9 +24,7 @@ public class ArchiveServiceImpl implements ArchiveService {
     public List<Archive> getArchive() {return archive_repo.findAll();
     }
 
-    @Override
-    public Archive saveArchive(Archive archive) {return archive_repo.save(archive);
-    }
+
 
     @Override
     public Archive store(MultipartFile file) throws IOException {
@@ -50,7 +48,6 @@ public class ArchiveServiceImpl implements ArchiveService {
             // Step 3: Save the updated Archive object back to the database
             return archive_repo.save(existingArchive);
         }
-
         return null;
     }
 
@@ -62,10 +59,7 @@ public class ArchiveServiceImpl implements ArchiveService {
     public Archive getFile(Integer id) {
         return archive_repo.findById(id).get();
     }
-    @Override
-    public Stream<Archive> getAllFiles() {
-        return archive_repo.findAll().stream();
-    }
+
 
     @Override
     public void deleteArchive(Integer id) {archive_repo.deleteById(id);}

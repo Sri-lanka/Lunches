@@ -10,6 +10,7 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ActiveProfiles;
 
 import java.nio.ByteBuffer;
+import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -19,7 +20,6 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 @ActiveProfiles("test")
 @AutoConfigureTestDatabase
 @Rollback(false)
-
 public class ArchiveRepoTest {
     @Autowired
     private Archive_repo archive_repo;
@@ -29,7 +29,7 @@ public class ArchiveRepoTest {
 
     @Test
     public void testSaveBenefit() {
-
+        //function
         byte[] byteArray = new byte[10];
         for (int i = 0; i < byteArray.length; i++) {
             byteArray[i] = (byte) i;
@@ -40,9 +40,9 @@ public class ArchiveRepoTest {
 
         // Given
         Archive archive = new Archive();
-        archive.setId_archive(16);
-        archive.setTypeDoc("transport");
-        archive.setName_archive("use transport");
+        archive.setId_archive(20);
+        archive.setTypeDoc("application/pdf");
+        archive.setName_archive("Identity card");
         archive.setArchive_pdf(byteArrayPdf);
 
         // When
@@ -56,118 +56,147 @@ public class ArchiveRepoTest {
 
         Optional<Archive> retrievedArchive = archive_repo.findById(savedArchive.getId_archive());
         assertThat(retrievedArchive).isPresent(); // Check if benefit is found
-        assertThat(retrievedArchive.get().getName_archive()).isEqualTo("use transport"); // Verify attribute value
+        assertThat(retrievedArchive.get().getName_archive()).isEqualTo("Identity card"); // Verify attribute value
     }
 
-/*
-  
-
     @Test
-    public void testGetBenefit(){
+    public void testGetArchive(){
+        //function
+        byte[] byteArray = new byte[10];
+        for (int i = 0; i < byteArray.length; i++) {
+            byteArray[i] = (byte) i;
+        }
+        ByteBuffer buffer = ByteBuffer.wrap(byteArray);
+        byte[] byteArrayPdf = new byte[buffer.remaining()];
+        buffer.get(byteArrayPdf);
+
         // Given
-        Benefit benefit = Benefit.builder()
-                .id_benefit(13)
-                .nom_benefit("transport")
-                .description_benefit("use transport")
-                .date_start(LocalDate.of(2024, 6, 14))
-                .date_end(LocalDate.of(2024, 12, 14))
-                .build();
-        Benefit benefit2 = Benefit.builder()
-                .id_benefit(14)
-                .nom_benefit("sustenance")
-                .description_benefit("give sustenance")
-                .date_start(LocalDate.of(2024, 6, 14))
-                .date_end(LocalDate.of(2024, 12, 14))
-                .build();
+        Archive archive = new Archive();
+        archive.setId_archive(16);
+        archive.setTypeDoc("application/pdf");
+        archive.setName_archive("Identity card");
+        archive.setArchive_pdf(byteArrayPdf);
 
-        benefit_repo.save(benefit);
-        benefit_repo.save(benefit2);
+        Archive archive2 = new Archive();
+        archive.setId_archive(15);
+        archive.setTypeDoc("application/pdf");
+        archive.setName_archive("Identity card 2");
+        archive.setArchive_pdf(byteArrayPdf);
 
-        List<Benefit> benefitList = benefit_repo.findAll();
+        archive_repo.save(archive);
+        archive_repo.save(archive2);
 
-        assertThat(benefitList).isNotNull();
-        assertThat(benefitList.size()).isEqualTo(4);
+        List<Archive> archiveList = archive_repo.findAll();
+
+        assertThat(archiveList).isNotNull();
+        assertThat(archiveList.size()).isEqualTo(3);
     }
 
 
+
     @Test
-    public void testFindBenefit() {
+    public void testFindArchive() {
+
+        byte[] byteArray = new byte[10];
+        for (int i = 0; i < byteArray.length; i++) {
+            byteArray[i] = (byte) i;
+        }
+        ByteBuffer buffer = ByteBuffer.wrap(byteArray);
+        byte[] byteArrayPdf = new byte[buffer.remaining()];
+        buffer.get(byteArrayPdf);
+
         // Given
-        Benefit benefit = Benefit.builder()
-                .id_benefit(15)
-                .nom_benefit("transport")
-                .description_benefit("use transport")
-                .date_start(LocalDate.of(2024, 6, 14))
-                .date_end(LocalDate.of(2024, 12, 14))
-                .build();
+        Archive archive = new Archive();
+        archive.setId_archive(16);
+        archive.setTypeDoc("application/pdf");
+        archive.setName_archive("Identity card");
+        archive.setArchive_pdf(byteArrayPdf);
+
         // When
-        Benefit savedBenefit = benefit_repo.save(benefit);
+        Archive savedArchive = archive_repo.save(archive);
 
         // Then
-        assertThat(savedBenefit.getId_benefit()).isNotNull(); // Verifica que el ID se haya asignado correctamente
+        assertThat(savedArchive.getId_archive()).isNotNull(); // Verifica que el ID se haya asignado correctamente
 
-        Optional<Benefit> retrievedBenefitOptional = benefit_repo.findById(savedBenefit.getId_benefit());
+        Optional<Archive> retrievedArchiveOptional = archive_repo.findById(savedArchive.getId_archive());
 
-        assertThat(retrievedBenefitOptional).isPresent();
-        Benefit retrievedBenefit = retrievedBenefitOptional.get();
-        assertThat(retrievedBenefit.getNom_benefit()).isEqualTo("transport"); // Verifica el nombre del beneficio
+        assertThat(retrievedArchiveOptional).isPresent();
+        Archive retrievedArchive = retrievedArchiveOptional.get();
+        assertThat(retrievedArchive.getTypeDoc()).isEqualTo("application/pdf"); // Verifica el tipo del documento
 
 
     }
 
     @Test
-    public void testUpdateBenefit() {
+    public void testUpdateArchive() {
+        //function
+        byte[] byteArray = new byte[10];
+        for (int i = 0; i < byteArray.length; i++) {
+            byteArray[i] = (byte) i;
+        }
+        ByteBuffer buffer = ByteBuffer.wrap(byteArray);
+        byte[] byteArrayPdf = new byte[buffer.remaining()];
+        buffer.get(byteArrayPdf);
+
         // Given
-        Benefit benefit = Benefit.builder()
-                .id_benefit(15)
-                .nom_benefit("transport")
-                .description_benefit("use transport")
-                .date_start(LocalDate.of(2024, 6, 14))
-                .date_end(LocalDate.of(2024, 12, 14))
-                .build();
+        Archive archive = new Archive();
+        archive.setId_archive(10);
+        archive.setTypeDoc("application/pdf");
+        archive.setName_archive("Identity card");
+        archive.setArchive_pdf(byteArrayPdf);
 
-        Benefit savedBenefit = benefit_repo.save(benefit);
+        // When
+        Archive savedArchive = archive_repo.save(archive);
 
-        // Retrieve the saved benefit from the repository
-        Optional<Benefit> optionalBenefit = benefit_repo.findById(savedBenefit.getId_benefit());
-        assertThat(optionalBenefit).isPresent(); // Verify that the benefit is found
+        // Retrieve the saved Archive from the repository
+        Optional<Archive> optionalArchive = archive_repo.findById(savedArchive.getId_archive());
+        assertThat(optionalArchive).isPresent(); // Verify that the Archive is found
 
-        Benefit retrievedBenefit = optionalBenefit.get();
-        retrievedBenefit.setNom_benefit("updated transport");
-        retrievedBenefit.setDescription_benefit("updated transport description");
+        Archive retrievedArchive = optionalArchive.get();
+        retrievedArchive.setName_archive("Identity card 2");
+        retrievedArchive.setArchive_pdf(byteArrayPdf);
 
-        Benefit updatedBenefit = benefit_repo.save(retrievedBenefit);
+        Archive updatedArchive = archive_repo.save(retrievedArchive);
 
-        assertThat(updatedBenefit.getId_benefit()).isEqualTo(savedBenefit.getId_benefit()); // Verify ID remains the same
-        assertThat(updatedBenefit.getNom_benefit()).isEqualTo("updated transport"); // Verify updated name
-        assertThat(updatedBenefit.getDescription_benefit()).isEqualTo("updated transport description"); // Verify updated description
+        assertThat(updatedArchive.getId_archive()).isEqualTo(savedArchive.getId_archive()); // Verify ID remains the same
+        assertThat(updatedArchive.getName_archive()).isEqualTo("Identity card 2"); // Verify updated name
+        assertThat(updatedArchive.getArchive_pdf()).isEqualTo(byteArrayPdf); // Verify updated description
 
         // Intentional error: Uncomment the following line to intentionally fail the test
-        // assertThat(updatedBenefit.getNom_benefit()).isEqualTo("incorrect value");
+        //assertThat(updatedArchive.getName_archive()).isEqualTo("incorrect value");
 
 
     }
+
 
     @Test
     public void testDeleteBenefit() {
+        //function
+        byte[] byteArray = new byte[10];
+        for (int i = 0; i < byteArray.length; i++) {
+            byteArray[i] = (byte) i;
+        }
+        ByteBuffer buffer = ByteBuffer.wrap(byteArray);
+        byte[] byteArrayPdf = new byte[buffer.remaining()];
+        buffer.get(byteArrayPdf);
+
         // Given
-        Benefit benefit = Benefit.builder()
-                .id_benefit(15)
-                .nom_benefit("transport")
-                .description_benefit("use transport")
-                .date_start(LocalDate.of(2024, 6, 14))
-                .date_end(LocalDate.of(2024, 12, 14))
-                .build();
+        Archive archive = new Archive();
+        archive.setId_archive(16);
+        archive.setTypeDoc("application/pdf");
+        archive.setName_archive("Identity card");
+        archive.setArchive_pdf(byteArrayPdf);
 
-        benefit_repo.save(benefit);
-        benefit_repo.deleteById(benefit.getId_benefit());
-        Optional<Benefit> benefitReturn = benefit_repo.findById(benefit.getId_benefit());
+        // When
+        Archive savedArchive = archive_repo.save(archive);
 
-        assertThat(benefitReturn).isEmpty();
+        archive_repo.save(archive);
+        archive_repo.deleteById(archive.getId_archive());
+        Optional<Archive> archiveReturn = archive_repo.findById(archive.getId_archive());
+
+        assertThat(archiveReturn).isEmpty();
 
     }
-*/
-
 
 }
 
