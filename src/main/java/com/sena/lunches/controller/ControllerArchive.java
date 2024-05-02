@@ -32,14 +32,14 @@ public class ControllerArchive {
     private ArchiveService archiveService;
 
     @GetMapping("/listArchive")
-    public String listUsers(Model model) {
+    public String listArchive(Model model) {
         List<Archive> listArchives = archiveService.getArchive();
         model.addAttribute("Archive", listArchives);
         return "admin/principal/list-users";
     }
 
     @GetMapping("/newArchive")
-    public String createNewUser(Model model){
+    public String addArchive(Model model){
         model.addAttribute("archive", new Archive());
         model.addAttribute("action","");
         return "admin/principal/Forms/newArchive";
@@ -47,7 +47,7 @@ public class ControllerArchive {
 
 
     @PostMapping("/newArchive")
-    public String saveUserData(@RequestParam("file") MultipartFile file) throws IOException {;
+    public String saveArchive(@RequestParam("file") MultipartFile file) throws IOException {;
         archiveService.store( file);
         return "redirect:/archive/listArchive";
     }

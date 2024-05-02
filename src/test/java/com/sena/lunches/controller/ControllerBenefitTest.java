@@ -42,7 +42,7 @@ class ControllerBenefitTest {
 
 
     @Test
-    void listUsers() throws Exception {
+    void listBenefit() throws Exception {
         // Datos de beneficios simulados
         Benefit benefit1 = Benefit.builder()
                 .id_benefit(1)
@@ -76,7 +76,7 @@ class ControllerBenefitTest {
     }
 
     @Test
-    void createNewUser() throws Exception {
+    void addBenefit() throws Exception {
         // Data of the new benefit to be created
         Benefit newBenefit = Benefit.builder()
                 .id_benefit(1)
@@ -100,7 +100,7 @@ class ControllerBenefitTest {
     }
 
     @Test
-    void saveUserData() throws Exception {
+    void saveBenefit() throws Exception {
         // Data of the new benefit to be save
         Benefit newBenefit = Benefit.builder()
                 .id_benefit(1)

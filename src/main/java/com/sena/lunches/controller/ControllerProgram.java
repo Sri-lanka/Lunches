@@ -16,21 +16,21 @@ public class ControllerProgram {
     @Autowired
     private ProgramService programService;
     @GetMapping("/listProgram")
-    public String listUsers(Model model) {
+    public String listProgram(Model model) {
         List<Program> programsData = programService.getProgram();
         model.addAttribute("program", programsData);
         return "admin/principal/list-users";
     }
 
     @GetMapping("/newProgram")
-    public String createNewUser(Model model){
+    public String addProgram(Model model){
         model.addAttribute("program", new Program());
         model.addAttribute("action","");
         return "admin/principal/Forms/newProgram";
     }
 
     @PostMapping("/newProgram")
-    public String saveUserData (@ModelAttribute Program program){
+    public String saveProgram (@ModelAttribute Program program){
         programService.saveProgram(program);
         return "redirect:/program/listProgram";
     }

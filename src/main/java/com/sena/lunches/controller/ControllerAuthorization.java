@@ -24,7 +24,7 @@ public class ControllerAuthorization {
     }
 
     @GetMapping("/newAuthorization")
-    public String newAuthorization(Model model){
+    public String addAuthorization(Model model){
         model.addAttribute("authorization", new Authorization());
         model.addAttribute("action","");
         return "admin/principal/Forms/newAuthorization";

@@ -42,7 +42,7 @@ class ControllerUserFileTest {
     private ObjectMapper objectMapper;
 
     @Test
-    void listUsers() throws Exception {
+    void listUserFile() throws Exception {
         User_file user_file=User_file.builder()
                 .id_user_file(10)
                 .id_file(11)
@@ -71,7 +71,7 @@ class ControllerUserFileTest {
     }
 
     @Test
-    void createNewUser() throws Exception{
+    void addUserFile() throws Exception{
         User_file newUser_file=User_file.builder()
                 .id_user_file(10)
                 .id_file(11)
@@ -91,7 +91,7 @@ class ControllerUserFileTest {
     }
 
     @Test
-    void saveUserData() throws Exception{
+    void saveUserFile() throws Exception{
         User_file newUser_file=User_file.builder()
                 .id_user_file(10)
                 .id_file(11)
@@ -111,7 +111,7 @@ class ControllerUserFileTest {
     }
 
     @Test
-    void updateUser_file() throws Exception{
+    void updateUserFile() throws Exception{
         User_file updatedUser_file=User_file.builder()
                 .id_user_file(10)
                 .id_file(11)
@@ -131,7 +131,7 @@ class ControllerUserFileTest {
     }
 
     @Test
-    void updatingUser_file() throws Exception{
+    void updatingUserFile() throws Exception{
         User_file updatedUser_file=User_file.builder()
                 .id_user_file(10)
                 .id_file(11)
@@ -151,7 +151,7 @@ class ControllerUserFileTest {
     }
 
     @Test
-    void deleteUser_file() throws Exception{
+    void deleteUserFile() throws Exception{
         // ID of the user_file to delete
         int userFileIdToDelete = 1;
         User_file updatedUser_file=User_file.builder()

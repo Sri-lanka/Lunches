@@ -23,7 +23,7 @@ public class ControllerAssistance {
     }
 
     @GetMapping("/newAssistance")
-    public String newAssistance(Model model){
+    public String addAssistance(Model model){
         model.addAttribute("assistance", new Assistance());
         model.addAttribute("action","");
         return "admin/principal/Forms/newAssistance";

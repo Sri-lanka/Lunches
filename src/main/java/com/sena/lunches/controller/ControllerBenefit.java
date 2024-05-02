@@ -17,21 +17,21 @@ public class ControllerBenefit {
 
 
     @GetMapping("/listBenefit")
-    public String listUsers(Model model) {
+    public String listBenefit(Model model) {
         List<Benefit> benefitData = benefitService.getBenefit();
         model.addAttribute("benefits", benefitData);
         return "admin/principal/list-users";
     }
 
     @GetMapping("/newBenefits")
-    public String createNewUser(Model model){
+    public String addBenefit(Model model){
         model.addAttribute("benefit", new Benefit());
         model.addAttribute("action","");
         return "admin/principal/Forms/newBenefit";
     }
 
     @PostMapping("/newBenefits")
-    public String saveUserData (@ModelAttribute Benefit benefit){
+    public String saveBenefit (@ModelAttribute Benefit benefit){
         benefitService.saveBenefit(benefit);
         return "redirect:/benefit/listBenefit";
     }

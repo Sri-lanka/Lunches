@@ -41,7 +41,7 @@ class ControllerProgramTest {
     private ObjectMapper objectMapper;
 
     @Test
-    void listUsers() throws Exception {
+    void listProgram() throws Exception {
         Program program=Program.builder()
                 .id_program(10)
                 .name_program("adso")
@@ -65,7 +65,7 @@ class ControllerProgramTest {
     }
 
     @Test
-    void createNewUser() throws Exception {
+    void addProgram() throws Exception {
         Program newProgram=Program.builder()
                 .id_program(10)
                 .name_program("adso")
@@ -80,11 +80,11 @@ class ControllerProgramTest {
         // Verification of the expected response
         response.andExpect(status().is3xxRedirection()) // Redirect after creating
                 .andExpect(redirectedUrl("/program/listProgram")); // Expected redirect URL
-        
+
     }
 
     @Test
-    void saveUserData() throws Exception {
+    void savProgram() throws Exception {
         Program newProgram=Program.builder()
                 .id_program(10)
                 .name_program("adso")

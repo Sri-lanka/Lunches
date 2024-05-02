@@ -16,21 +16,21 @@ public class ControllerMessage {
     private MessageService messageService;
 
     @GetMapping("/listMessage")
-    public String listUsers(Model model) {
+    public String listMessage(Model model) {
         List<Message> messageData = messageService.getMessage();
         model.addAttribute("message", messageData);
         return "admin/principal/list-users";
     }
 
     @GetMapping("/newMessage")
-    public String createNewUser(Model model){
+    public String addMessage(Model model){
         model.addAttribute("message", new Message());
         model.addAttribute("action","");
         return "admin/principal/Forms/newMessage";
     }
 
     @PostMapping("/newMessage")
-    public String saveUserData (@ModelAttribute Message message){
+    public String saveMessage (@ModelAttribute Message message){
         messageService.saveMessage(message);
         return "redirect:/message/listMessage";
     }
