@@ -84,7 +84,7 @@ class ControllerProgramTest {
     }
 
     @Test
-    void savProgram() throws Exception {
+    void saveProgram() throws Exception {
         Program newProgram=Program.builder()
                 .id_program(10)
                 .name_program("adso")

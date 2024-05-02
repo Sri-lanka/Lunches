@@ -228,7 +228,7 @@ class ControllerUserTest {
                 .last_name_1("asdf")
                 .last_name_2("fdas")
                 .age(18)
-                .Email("asdfsag@gmail.com") 
+                .Email("asdfsag@gmail.com")
                 .telephone(3216549872L)
                 .keyword("1234")
                 .state(1)
