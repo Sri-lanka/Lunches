@@ -176,9 +176,9 @@
                     <td th:text="${Files.n_file}"></td>
                     <td th:text="${Files.id_program}">
                     <td class="button">
-                        <a th:href="@{/file/editFileSena/{idFileSena}(idFileSena=${Files.id_file})}"><img
+                        <a th:href="@{/fileSena/editFileSena/{idFileSena}(idFileSena=${Files.id_file})}"><img
                                 th:src="@{/img/edit.png}" class="icon"></a>
-                        <a th:href="@{/file/delete/{idFileSena}(idFileSena=${Files.id_file})}"
+                        <a th:href="@{/fileSena/delete/{idFileSena}(idFileSena=${Files.id_file})}"
                            class="delete"><img th:src="@{/img/delate.webp}" class="icon"></a>
                     </td>
                 </tr>

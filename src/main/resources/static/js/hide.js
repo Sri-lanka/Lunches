@@ -55,7 +55,7 @@ function assignClickEvents() {
 
   activities.addEventListener("change", function () {
     if (activities.value == "File") {
-      fetchData('/file/listFileSena');
+      fetchData('/fileSena/listFileSena');
     }
   });
 

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping ("/file")
+@RequestMapping ("/fileSena")
 public class ControllerFile {
 
     @Autowired
@@ -33,25 +33,25 @@ public class ControllerFile {
     @PostMapping("/newFileSena")
     public String saveFileSena (@ModelAttribute File_sena file_sena){
         file_senaService.saveFile_sena(file_sena);
-        return "redirect:/file/listFileSena";
+        return "redirect:/fileSena/listFileSena";
     }
 
     @GetMapping("/editFileSena/{idFileSena}")
     public String updateFileSena (@PathVariable Integer idFileSena, Model model){
         model.addAttribute("file_sena", file_senaService.getFile_senaById(idFileSena) );
-        model.addAttribute("action","/file_sena/editFile_sena/" + idFileSena);
+        model.addAttribute("action","/fileSena/editFileSena/" + idFileSena);
         return "admin/principal/Forms/newFile";
     }
 
     @PostMapping("/editFileSena/{idFileSena}")
     public String updatingFileSena (@PathVariable Integer idFileSena,@ModelAttribute File_sena file_sena){
         file_senaService.updateFile_sena(idFileSena, file_sena);
-        return "redirect:/file/listFileSena";
+        return "redirect:/fileSena/listFileSena";
     }
 
     @GetMapping("/delete/{idFileSena}")
     public String deleteFile_sena (@PathVariable Integer idFileSena){
         file_senaService.deleteFile_sena(idFileSena);
-        return "redirect:/file/listFileSena";
+        return "redirect:/fileSena/listFileSena";
     }
 }

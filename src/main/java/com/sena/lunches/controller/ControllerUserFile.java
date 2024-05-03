@@ -38,7 +38,7 @@ public class ControllerUserFile {
     @GetMapping("/editUserFile/{idUserFile}")
     public String updateUserFile (@PathVariable Integer idUserFile, Model model){
         model.addAttribute("user_file", userFileService.getUser_fileById(idUserFile) );
-        model.addAttribute("action","/userFile/idUserFile/" + idUserFile);
+        model.addAttribute("action","/userFile/editUserFile/" + idUserFile);
         return "admin/principal/Forms/newUserFile";
     }
 
