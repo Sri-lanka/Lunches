@@ -18,7 +18,7 @@ public interface ArchiveService {
     public Archive getArchiveById(Integer id);
 
     public Archive store( MultipartFile file) throws IOException ;
-
+    public Archive saveArchive(Archive archive);
 
     public void deleteArchive(Integer id);
     public Archive updateArchive(int id, MultipartFile file) throws IOException;

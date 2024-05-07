@@ -35,6 +35,11 @@ public class ArchiveServiceImpl implements ArchiveService {
         return archive_repo.save(archive);
     }
 
+    @Override
+    public Archive saveArchive(Archive archive) {
+        return archive_repo.save(archive);
+    }
+
 
     @Override
     public Archive updateArchive(int id, MultipartFile file) throws IOException {

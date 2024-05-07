@@ -31,6 +31,11 @@ public class ControllerArchive {
     @Autowired
     private ArchiveService archiveService;
 
+
+    public ControllerArchive(ArchiveService archiveService) {
+        this.archiveService = archiveService;
+    }
+
     @GetMapping("/listArchive")
     public String listArchive(Model model) {
         List<Archive> listArchives = archiveService.getArchive();
