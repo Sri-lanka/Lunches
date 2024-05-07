@@ -1,9 +1,13 @@
 package com.sena.lunches.service.impl;
 
 import com.sena.lunches.entities.Archive;
+import com.sena.lunches.entities.Benefit;
 import com.sena.lunches.repository.Archive_repo;
+import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
@@ -73,7 +77,7 @@ class ArchiveServiceImplTest {
         verify(archiveRepo, times(1)).findAll();
     }
 
-    @Test
+   @Test
     void store() throws IOException {
         // Arrange
         String fileName = "example.pdf";
@@ -86,16 +90,10 @@ class ArchiveServiceImplTest {
 
         // Assert
         verify(archiveRepo).save(new Archive(fileName, contentType, content));
-
-        /*
-        // Simulate repository save failure
-        doThrow(new RuntimeException("Failed to save archive")).when(archiveRepo).save(any());
-        // Act & Assert
-        //Call the store method and handle the expected exception
-        assertThrows(RuntimeException.class, () -> archiveService.store(mockMultipartFile));
-        */
-
+       // Assert
+       assertNotNull(mockMultipartFile);
     }
+
 
 
     @Test
@@ -108,7 +106,7 @@ class ArchiveServiceImplTest {
         MockMultipartFile mockMultipartFile = new MockMultipartFile(fileName, fileName, contentType, content);
 
         // Simulate repository findById failure
-        when(archiveRepo.findById(id)).thenReturn(Optional.empty());
+        when(archiveRepo.findById(1)).thenReturn(Optional.empty());
 
         // Act & Assert
         assertNull(archiveServiceImpl.updateArchive(id, mockMultipartFile));
@@ -116,13 +114,62 @@ class ArchiveServiceImplTest {
 
     @Test
     void getArchiveById() {
+        //function
+        byte[] byteArray = new byte[10];
+        for (int i = 0; i < byteArray.length; i++) {
+            byteArray[i] = (byte) i;
+        }
+        ByteBuffer buffer = ByteBuffer.wrap(byteArray);
+        byte[] byteArrayPdf = new byte[buffer.remaining()];
+        buffer.get(byteArrayPdf);
+
+        // Given
+        Archive archive = new Archive();
+        archive.setId_archive(1);
+        archive.setTypeDoc("application/pdf");
+        archive.setName_archive("Identity card");
+        archive.setArchive_pdf(byteArrayPdf);
+
+        when(archiveRepo.findById(1)).thenReturn(Optional.of(archive));
+
+        // When
+        Archive retrievedArchive = archiveServiceImpl.getArchiveById(1);
+
+        // Then
+        assertThat(retrievedArchive).isNotNull();
+        assertThat(retrievedArchive.getId_archive()).isEqualTo(1);
+        assertThat(retrievedArchive.getName_archive()).isEqualTo("Identity card");
+
+        // Verify repository method invocation
+        verify(archiveRepo, times(1)).findById(1);
     }
 
-    @Test
-    void getFile() {
-    }
 
     @Test
     void deleteArchive() {
+        //function
+        byte[] byteArray = new byte[10];
+        for (int i = 0; i < byteArray.length; i++) {
+            byteArray[i] = (byte) i;
+        }
+        ByteBuffer buffer = ByteBuffer.wrap(byteArray);
+        byte[] byteArrayPdf = new byte[buffer.remaining()];
+        buffer.get(byteArrayPdf);
+
+        // Given
+        Archive archive = new Archive();
+        archive.setId_archive(1);
+        archive.setTypeDoc("application/pdf");
+        archive.setName_archive("Identity card");
+        archive.setArchive_pdf(byteArrayPdf);
+
+        // Mockear el repositorio para que devuelva el objeto cuando se busque por el ID 15
+
+
+        // Llamar al método para eliminar el beneficio con ID 15
+        archiveServiceImpl.deleteArchive(1);
+
+        // Verificar que se haya llamado al método delete del repositorio con el beneficio correcto
+        verify(archiveRepo, times(1)).deleteById(1);
     }
 }

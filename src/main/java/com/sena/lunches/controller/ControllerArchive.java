@@ -68,7 +68,7 @@ public class ControllerArchive {
 
     @GetMapping("/files/{id}")
     public ResponseEntity<byte[]> getFile(@PathVariable Integer id) {
-        Archive archive = archiveService.getFile(id);
+        Archive archive = archiveService.getArchiveById(id);
 
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + archive.getName_archive() + "\"")

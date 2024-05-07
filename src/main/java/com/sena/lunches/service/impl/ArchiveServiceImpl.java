@@ -20,6 +20,7 @@ public class ArchiveServiceImpl implements ArchiveService {
     private Archive_repo archive_repo;
 
 
+
     @Override
     public List<Archive> getArchive() {return archive_repo.findAll();
     }
@@ -55,10 +56,6 @@ public class ArchiveServiceImpl implements ArchiveService {
     public Archive getArchiveById(Integer id) {return archive_repo.findById(id).orElse(null);
     }
 
-    @Override
-    public Archive getFile(Integer id) {
-        return archive_repo.findById(id).get();
-    }
 
 
     @Override
