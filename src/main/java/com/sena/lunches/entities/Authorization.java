@@ -2,9 +2,16 @@ package com.sena.lunches.entities;
 
 import jakarta.persistence.Id;
 import jakarta.persistence.Entity;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+
 import java.time.LocalDate;
 
-@Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Entity(name = "Authorizations")
 public class Authorization {
 
     @Id
