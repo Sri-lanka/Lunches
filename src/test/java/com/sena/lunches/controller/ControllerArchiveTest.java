@@ -20,7 +20,6 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.web.multipart.MultipartFile;
 
-
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.Arrays;
@@ -39,7 +38,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ExtendWith(MockitoExtension.class)
 class ControllerArchiveTest {
 
-
     @Autowired
     private MockMvc mockMvc;
 
@@ -48,29 +46,21 @@ class ControllerArchiveTest {
 
     @Autowired
     private ObjectMapper objectMapper;
+
     @Test
     void listArchive() throws Exception {
-        //function
-        byte[] byteArray = new byte[10];
-        for (int i = 0; i < byteArray.length; i++) {
-            byteArray[i] = (byte) i;
-        }
-        ByteBuffer buffer = ByteBuffer.wrap(byteArray);
-        byte[] byteArrayPdf = new byte[buffer.remaining()];
-        buffer.get(byteArrayPdf);
-
         // Given
         Archive archive1 = new Archive();
         archive1.setId_archive(20);
         archive1.setTypeDoc("application/pdf");
         archive1.setName_archive("Identity card");
-        archive1.setArchive_pdf(byteArrayPdf);
+        archive1.setArchive_pdf("Mock PDF content".getBytes());
 
         Archive archive2 = new Archive();
         archive2.setId_archive(10);
         archive2.setTypeDoc("application/pdf");
         archive2.setName_archive("Identity card 2");
-        archive2.setArchive_pdf(byteArrayPdf);
+        archive2.setArchive_pdf("Mock PDF content 2".getBytes());
 
         List<Archive> listArchives = Arrays.asList(archive1, archive2);
 
@@ -83,27 +73,22 @@ class ControllerArchiveTest {
         // Verification of the expected response
         response.andExpect(status().isOk())
                 .andExpect(view().name("admin/principal/list-users")) // Check the view
-                .andExpect(model().attributeExists("Archive")) // Check the existence of the "archive" attribute in the model
-                .andExpect(model().attribute("Archive", listArchives)); // Verify that the "archives" attribute contains the list of archives
+                .andExpect(model().attributeExists("Archive")) // Check the existence of the "archive" attribute in the
+                // model
+                .andExpect(model().attribute("Archive", listArchives)); // Verify that the "archives" attribute contains
+        // the list of archives
     }
 
     @Test
     void addArchive() throws Exception {
-        // Given
-        byte[] byteArray = new byte[10];
-        for (int i = 0; i < byteArray.length; i++) {
-            byteArray[i] = (byte) i;
-        }
-        ByteBuffer buffer = ByteBuffer.wrap(byteArray);
-        byte[] byteArrayPdf = new byte[buffer.remaining()];
-        buffer.get(byteArrayPdf);
 
         // Creamos un archivo multipart
-        MockMultipartFile file = new MockMultipartFile("file", "example.pdf", "application/pdf", byteArrayPdf);
+        MockMultipartFile file = new MockMultipartFile("file", "example.pdf", "application/pdf",
+                "Mock PDF content".getBytes());
 
-        //POST request to create a new archive
+        // POST request to create a new archive
         ResultActions response = mockMvc.perform(MockMvcRequestBuilders.multipart("/archive/newArchive")
-                .file(file)  // Agregamos el archivo como parte de la solicitud multipart
+                .file(file) // Agregamos el archivo como parte de la solicitud multipart
                 .param("typeDoc", "application/pdf")
                 .param("nameArchive", "Identity card"));
 
@@ -112,26 +97,15 @@ class ControllerArchiveTest {
                 .andExpect(redirectedUrl("/archive/listArchive"));
     }
 
-
-
     @Test
     void saveArchive() throws Exception {
-        // Given
-        byte[] byteArray = new byte[10];
-        for (int i = 0; i < byteArray.length; i++) {
-            byteArray[i] = (byte) i;
-        }
-        ByteBuffer buffer = ByteBuffer.wrap(byteArray);
-        byte[] byteArrayPdf = new byte[buffer.remaining()];
-        buffer.get(byteArrayPdf);
-
-
         // Creamos un archivo multipart
-        MockMultipartFile file = new MockMultipartFile("file", "example.pdf", "application/pdf", byteArrayPdf);
+        MockMultipartFile file = new MockMultipartFile("file", "example.pdf", "application/pdf",
+                "Mock PDF content".getBytes());
 
-        //POST request to create a new archive
+        // POST request to create a new archive
         ResultActions response = mockMvc.perform(MockMvcRequestBuilders.multipart("/archive/newArchive")
-                .file(file)  // Agregamos el archivo como parte de la solicitud multipart
+                .file(file) // Agregamos el archivo como parte de la solicitud multipart
                 .param("typeDoc", "application/pdf")
                 .param("nameArchive", "Identity card"));
 
@@ -142,54 +116,42 @@ class ControllerArchiveTest {
 
     @Test
     void updateArchive() throws Exception {
-        byte[] byteArray = new byte[10];
-        for (int i = 0; i < byteArray.length; i++) {
-            byteArray[i] = (byte) i;
-        }
-        ByteBuffer buffer = ByteBuffer.wrap(byteArray);
-        byte[] byteArrayPdf = new byte[buffer.remaining()];
-        buffer.get(byteArrayPdf);
 
         // Creamos un archivo multipart
-        MockMultipartFile file = new MockMultipartFile("file", "example.pdf", "application/pdf", byteArrayPdf);
+        MockMultipartFile file = new MockMultipartFile("file", "example.pdf", "application/pdf",
+                "Mock PDF content".getBytes());
 
-// Simulación de la actualización del archivo
-        when(archiveService.updateArchive(any(Integer.class),  any(MultipartFile.class))).thenReturn(null);
+        // Simulación de la actualización del archivo
+        when(archiveService.updateArchive(any(Integer.class), any(MultipartFile.class))).thenReturn(null);
 
-// Solicitud POST para actualizar un archivo existente y verificar la respuesta
+        // Solicitud POST para actualizar un archivo existente y verificar la respuesta
         ResultActions response = mockMvc.perform(MockMvcRequestBuilders.multipart("/archive/editArchive/{id}", 1)
-                .file(file)  // Agregamos el archivo como parte de la solicitud multipart
+                .file(file) // Agregamos el archivo como parte de la solicitud multipart
                 .param("name_archive", "New archive")
                 .param("typeDoc", "application/pdf"));
 
-// Verificación de la respuesta esperada
+        // Verificación de la respuesta esperada
         response.andExpect(status().is3xxRedirection()) // Redirección después de la actualización
                 .andExpect(redirectedUrl("/archive/listArchive"));
     }
 
     @Test
     void updatingArchive() throws Exception {
-        byte[] byteArray = new byte[10];
-        for (int i = 0; i < byteArray.length; i++) {
-            byteArray[i] = (byte) i;
-        }
-        ByteBuffer buffer = ByteBuffer.wrap(byteArray);
-        byte[] byteArrayPdf = new byte[buffer.remaining()];
-        buffer.get(byteArrayPdf);
 
         // Creamos un archivo multipart
-        MockMultipartFile file = new MockMultipartFile("file", "example.pdf", "application/pdf", byteArrayPdf);
+        MockMultipartFile file = new MockMultipartFile("file", "example.pdf", "application/pdf",
+                "Mock PDF content".getBytes());
 
-// Simulación de la actualización del archivo
-        when(archiveService.updateArchive(any(Integer.class),  any(MultipartFile.class))).thenReturn(null);
+        // Simulación de la actualización del archivo
+        when(archiveService.updateArchive(any(Integer.class), any(MultipartFile.class))).thenReturn(null);
 
-// Solicitud POST para actualizar un archivo existente y verificar la respuesta
+        // Solicitud POST para actualizar un archivo existente y verificar la respuesta
         ResultActions response = mockMvc.perform(MockMvcRequestBuilders.multipart("/archive/editArchive/{id}", 1)
-                .file(file)  // Agregamos el archivo como parte de la solicitud multipart
+                .file(file) // Agregamos el archivo como parte de la solicitud multipart
                 .param("name_archive", "New archive")
                 .param("typeDoc", "application/pdf"));
 
-// Verificación de la respuesta esperada
+        // Verificación de la respuesta esperada
         response.andExpect(status().is3xxRedirection()) // Redirección después de la actualización
                 .andExpect(redirectedUrl("/archive/listArchive"));
     }
@@ -204,44 +166,42 @@ class ControllerArchiveTest {
         archive.setName_archive("example.pdf");
         archive.setArchive_pdf(fileContent);
 
-
-
-// Mock del servicio ArchiveService
+        // Mock del servicio ArchiveService
         ArchiveService archiveService = mock(ArchiveService.class);
         when(archiveService.getArchiveById(id)).thenReturn(archive);
 
-// Construir el controlador con el servicio mock
+        // Construir el controlador con el servicio mock
         ControllerArchive archiveController = new ControllerArchive(archiveService);
 
         // Act
         ResponseEntity<byte[]> response = archiveController.getFile(id);
 
         // Assert
-        // Verificar que se llama al método getArchiveById del servicio con el id adecuado
+        // Verificar que se llama al método getArchiveById del servicio con el id
+        // adecuado
         verify(archiveService).getArchiveById(id);
 
         // Verificar que la respuesta del controlador sea la esperada
         assertAll(
                 () -> assertEquals(HttpStatus.OK, response.getStatusCode()),
-                () -> assertEquals("attachment; filename=\"example.pdf\"", response.getHeaders().getFirst(HttpHeaders.CONTENT_DISPOSITION)),
-                () -> assertArrayEquals(fileContent, response.getBody())
-        );
+                () -> assertEquals("attachment; filename=\"example.pdf\"",
+                        response.getHeaders().getFirst(HttpHeaders.CONTENT_DISPOSITION)),
+                () -> assertArrayEquals(fileContent, response.getBody()));
 
     }
 
     @Test
     void deleteArchive() throws Exception {
         // ID del archivo a eliminar
-        //
         int archiveIdToDelete = 1;
         System.out.println(archiveIdToDelete);
-// Simulación de la eliminación del archivo
+        // Simulación de la eliminación del archivo
         doNothing().when(archiveService).deleteArchive(anyInt());
 
-// Haciendo la solicitud GET para eliminar el archivo
+        // Haciendo la solicitud GET para eliminar el archivo
         ResultActions response = mockMvc.perform(get("/archive/delete/{id}", archiveIdToDelete));
 
-// Verificación de la respuesta esperada
+        // Verificación de la respuesta esperada
         response.andExpect(status().is3xxRedirection()) // Se espera redireccionamiento después de la eliminación
                 .andExpect(redirectedUrl("/archive/listArchive"));
         System.out.println(response);

@@ -39,27 +39,18 @@ class ArchiveServiceImplTest {
     private ArchiveServiceImpl archiveServiceImpl;
     @Test
     void getBenefit() {
-        //function
-        byte[] byteArray = new byte[10];
-        for (int i = 0; i < byteArray.length; i++) {
-            byteArray[i] = (byte) i;
-        }
-        ByteBuffer buffer = ByteBuffer.wrap(byteArray);
-        byte[] byteArrayPdf = new byte[buffer.remaining()];
-        buffer.get(byteArrayPdf);
-
         // Given
         Archive archive1 = new Archive();
         archive1.setId_archive(1);
         archive1.setTypeDoc("application/pdf");
         archive1.setName_archive("Identity card");
-        archive1.setArchive_pdf(byteArrayPdf);
+        archive1.setArchive_pdf("Mock PDF content".getBytes());
 
         Archive archive2 = new Archive();
         archive2.setId_archive(2);
         archive2.setTypeDoc("application/pdf");
         archive2.setName_archive("Identity card 2");
-        archive2.setArchive_pdf(byteArrayPdf);
+        archive2.setArchive_pdf("Mock PDF content 2".getBytes());
 
         List<Archive> mockArchive = Arrays.asList(archive1, archive2);
 
@@ -114,21 +105,13 @@ class ArchiveServiceImplTest {
 
     @Test
     void getArchiveById() {
-        //function
-        byte[] byteArray = new byte[10];
-        for (int i = 0; i < byteArray.length; i++) {
-            byteArray[i] = (byte) i;
-        }
-        ByteBuffer buffer = ByteBuffer.wrap(byteArray);
-        byte[] byteArrayPdf = new byte[buffer.remaining()];
-        buffer.get(byteArrayPdf);
 
         // Given
         Archive archive = new Archive();
         archive.setId_archive(1);
         archive.setTypeDoc("application/pdf");
         archive.setName_archive("Identity card");
-        archive.setArchive_pdf(byteArrayPdf);
+        archive.setArchive_pdf("Mock PDF content".getBytes());
 
         when(archiveRepo.findById(1)).thenReturn(Optional.of(archive));
 
@@ -147,21 +130,12 @@ class ArchiveServiceImplTest {
 
     @Test
     void deleteArchive() {
-        //function
-        byte[] byteArray = new byte[10];
-        for (int i = 0; i < byteArray.length; i++) {
-            byteArray[i] = (byte) i;
-        }
-        ByteBuffer buffer = ByteBuffer.wrap(byteArray);
-        byte[] byteArrayPdf = new byte[buffer.remaining()];
-        buffer.get(byteArrayPdf);
-
         // Given
         Archive archive = new Archive();
         archive.setId_archive(1);
         archive.setTypeDoc("application/pdf");
         archive.setName_archive("Identity card");
-        archive.setArchive_pdf(byteArrayPdf);
+        archive.setArchive_pdf("Mock PDF content".getBytes());
 
         // Mockear el repositorio para que devuelva el objeto cuando se busque por el ID 15
 

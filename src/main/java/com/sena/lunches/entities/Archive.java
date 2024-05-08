@@ -1,35 +1,28 @@
 package com.sena.lunches.entities;
 
 import jakarta.persistence.Entity;
-//import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import lombok.Data;
-//import org.hibernate.annotations.GenericGenerator;
-
-
 
 @Data
 @Entity
 public class Archive {
+
     @Id
-    /*@GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")*/
     private int id_archive;
     private String typeDoc;
     private String name_archive;
     private  byte[] archive_pdf;
 
-
-
-   public Archive(String name_archive, String typeDoc, byte[] archive_pdf) {
-
-       this.name_archive = name_archive;
-       this.typeDoc = typeDoc;
-       this.archive_pdf = archive_pdf;
-   }
-
     public Archive() {
 
+    }
+
+    //this constructor is created to store the information from the file
+    public Archive(String name_archive, String typeDoc, byte[] archive_pdf) {
+        this.name_archive = name_archive;
+        this.typeDoc = typeDoc;
+        this.archive_pdf = archive_pdf;
     }
 
     public int getId_archive() {

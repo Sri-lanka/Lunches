@@ -91,10 +91,8 @@
                     <td th:text="${user.id_benefit}"></td>
                     <td th:text="${user.keyword}"></td>
                     <td class="button">
-                        <a th:href="@{/editUser/{idUserSena}(idUserSena=${user.id_user})}"><img
-                                th:src="@{/img/edit.png}" class="icon"></a>
-                        <a th:href="@{/delete/{idUserSena}(idUserSena=${user.id_user})}" class="delete"><img
-                                th:src="@{/img/delate.webp}" class="icon"></a>
+                        <a th:href="@{/editUser/{idUserSena}(idUserSena=${user.id_user})}"><img th:src="@{/img/edit.png}" class="icon"></a>
+                        <a th:href="@{/delete/{idUserSena}(idUserSena=${user.id_user})}" class="delete"><img th:src="@{/img/delate.webp}" class="icon"></a>
                     </td>
                 </tr>
                 </tbody>
@@ -108,8 +106,7 @@
                     <th>ID</th>
                     <th>ID Authorization</th>
                     <th>time</th>
-                    <th class="button"><a th:href="@{/assistance/newAssistance}"><img th:src="@{/img/add.webp}"
-                                                                                      class="icon"></a></th>
+                    <th class="button"><a th:href="@{/assistance/newAssistance}"><img th:src="@{/img/add.webp}" class="icon"></a></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -118,11 +115,8 @@
                     <td th:text="${assist.id_authorization}"></td>
                     <td th:text="${assist.date_time}"></td>
                     <td class="button">
-                        <a
-                                th:href="@{/assistance/editAssistance/{idAssistance}(idAssistance=${assist.id_assistance})}"><img
-                                th:src="@{/img/edit.png}" class="icon"></a>
-                        <a th:href="@{/assistance/delete/{idAssistance}(idAssistance=${assist.id_assistance})}"
-                           class="delete"><img th:src="@{/img/delate.webp}" class="icon"></a>
+                        <a th:href="@{/assistance/editAssistance/{idAssistance}(idAssistance=${assist.id_assistance})}"><img th:src="@{/img/edit.png}" class="icon"></a>
+                        <a th:href="@{/assistance/delete/{idAssistance}(idAssistance=${assist.id_assistance})}" class="delete"><img th:src="@{/img/delate.webp}" class="icon"></a>
                     </td>
                 </tr>
                 </tbody>
@@ -138,8 +132,7 @@
                     <th>Description</th>
                     <th>Start</th>
                     <th>End</th>
-                    <th class="button"><a th:href="@{/benefit/newBenefits}"><img th:src="@{/img/add.webp}"
-                                                                                 class="icon"></a></th>
+                    <th class="button"><a th:href="@{/benefit/newBenefits}"><img th:src="@{/img/add.webp}" class="icon"></a></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -151,8 +144,7 @@
                     <td th:text="${benefit.date_end}"></td>
                     <td class="button">
                         <a th:href="@{/benefit/editBenefit/{idBenefit}(idBenefit=${benefit.id_benefit})}"><img th:src="@{/img/edit.png}" class="icon"></a>
-                        <a th:href="@{/benefit/delete/{idBenefit}(idBenefit=${benefit.id_benefit})}"
-                           class="delete"><img th:src="@{/img/delate.webp}" class="icon"></a>
+                        <a th:href="@{/benefit/delete/{idBenefit}(idBenefit=${benefit.id_benefit})}" class="delete"><img th:src="@{/img/delate.webp}" class="icon"></a>
                     </td>
                 </tr>
                 </tbody>
@@ -166,8 +158,7 @@
                     <th>ID</th>
                     <th>Number</th>
                     <th>ID program</th>
-                    <th class="button"><a th:href="@{/file/newFileSena}"><img th:src="@{/img/add.webp}"
-                                                                              class="icon"></a></th>
+                    <th class="button"><a th:href="@{/file/newFileSena}"><img th:src="@{/img/add.webp}" class="icon"></a></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -176,10 +167,8 @@
                     <td th:text="${Files.n_file}"></td>
                     <td th:text="${Files.id_program}">
                     <td class="button">
-                        <a th:href="@{/fileSena/editFileSena/{idFileSena}(idFileSena=${Files.id_file})}"><img
-                                th:src="@{/img/edit.png}" class="icon"></a>
-                        <a th:href="@{/fileSena/delete/{idFileSena}(idFileSena=${Files.id_file})}"
-                           class="delete"><img th:src="@{/img/delate.webp}" class="icon"></a>
+                        <a th:href="@{/fileSena/editFileSena/{idFileSena}(idFileSena=${Files.id_file})}"><img th:src="@{/img/edit.png}" class="icon"></a>
+                        <a th:href="@{/fileSena/delete/{idFileSena}(idFileSena=${Files.id_file})}" class="delete"><img th:src="@{/img/delate.webp}" class="icon"></a>
                     </td>
                 </tr>
                 </tbody>
@@ -192,20 +181,16 @@
                 <tr>
                     <th>ID</th>
                     <th>Name</th>
-                    <th class="button"><a th:href="@{/program/newProgram}"><img th:src="@{/img/add.webp}"
-                                                                                class="icon"></a></th>
+                    <th class="button"><a th:href="@{/program/newProgram}"><img th:src="@{/img/add.webp}" class="icon"></a></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="Programs : ${program}">
                     <td th:text="${Programs.id_program}"></td>
                     <td th:text="${Programs.name_program}"></td>
-
                     <td class="button">
-                        <a th:href="@{/program/editProgram/{idProgram}(idProgram=${Programs.id_program})}"><img
-                                th:src="@{/img/edit.png}" class="icon"></a>
-                        <a th:href="@{/program/delete/{idProgram}(idProgram=${Programs.id_program})}"
-                           class="delete"><img th:src="@{/img/delate.webp}" class="icon"></a>
+                        <a th:href="@{/program/editProgram/{idProgram}(idProgram=${Programs.id_program})}"><img th:src="@{/img/edit.png}" class="icon"></a>
+                        <a th:href="@{/program/delete/{idProgram}(idProgram=${Programs.id_program})}" class="delete"><img th:src="@{/img/delate.webp}" class="icon"></a>
                     </td>
                 </tr>
                 </tbody>
@@ -220,8 +205,7 @@
                     <th>ID File</th>
                     <th>ID User</th>
                     <th>Asset</th>
-                    <th class="button"><a th:href="@{/userFile/newUserFile}"><img th:src="@{/img/add.webp}"
-                                                                                  class="icon"></a></th>
+                    <th class="button"><a th:href="@{/userFile/newUserFile}"><img th:src="@{/img/add.webp}" class="icon"></a></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -234,11 +218,9 @@
                         <span th:if="${UserFile.asset == 2}">Disabled</span>
                     </td>
                     <td class="button">
-                        <a
-                                th:href="@{/userFile/editUserFile/{idUserFile}(idUserFile=${UserFile.id_user_file})}"><img
-                                th:src="@{/img/edit.png}" class="icon"></a>
-                        <a th:href="@{/userFile/delete/{idUserFile}(idUserFile=${UserFile.id_user_file})}"
-                           class="delete"><img th:src="@{/img/delate.webp}" class="icon"></a>
+                        <a th:href="@{/userFile/editUserFile/{idUserFile}(idUserFile=${UserFile.id_user_file})}">
+                            <img th:src="@{/img/edit.png}" class="icon"></a>
+                        <a th:href="@{/userFile/delete/{idUserFile}(idUserFile=${UserFile.id_user_file})}" class="delete"><img th:src="@{/img/delate.webp}" class="icon"></a>
                     </td>
                 </tr>
                 </tbody>
@@ -255,8 +237,7 @@
                     <th>ID User x Authorization</th>
                     <th>Description</th>
                     <th>Date</th>
-                    <th class="button"><a th:href="@{/authorization/newAuthorization}"><img
-                            th:src="@{/img/add.webp}" class="icon"></a></th>
+                    <th class="button"><a th:href="@{/authorization/newAuthorization}"><img th:src="@{/img/add.webp}" class="icon"></a></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -267,11 +248,10 @@
                     <td th:text="${Authorization.description_excuse}"></td>
                     <td th:text="${Authorization.date_apli}"></td>
                     <td class="button">
-                        <a
-                                th:href="@{/authorization/editAuthorization/{idAuthorization}(idAuthorization=${Authorization.id_authorization})}"><img
+                        <a th:href="@{/authorization/editAuthorization/{idAuthorization}(idAuthorization=${Authorization.id_authorization})}"><img
                                 th:src="@{/img/edit.png}" class="icon"></a>
-                        <a th:href="@{/authorization/delete/{idAuthorization}(idAuthorization=${Authorization.id_authorization})}"
-                           class="delete"><img th:src="@{/img/delate.webp}" class="icon"></a>
+                        <a th:href="@{/authorization/delete/{idAuthorization}(idAuthorization=${Authorization.id_authorization})}" class="delete">
+                            <img th:src="@{/img/delate.webp}" class="icon"></a>
                     </td>
                 </tr>
                 </tbody>
@@ -288,8 +268,7 @@
                     <th>Type Message</th>
                     <th>Description</th>
                     <th>Date send</th>
-                    <th class="button"><a th:href="@{/message/newMessage}"><img th:src="@{/img/add.webp}"
-                                                                                class="icon"></a></th>
+                    <th class="button"><a th:href="@{/message/newMessage}"><img th:src="@{/img/add.webp}" class="icon"></a></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -304,10 +283,8 @@
                     <td th:text="${Message.description_message}"></td>
                     <td th:text="${Message.date_send}"></td>
                     <td class="button">
-                        <a th:href="@{/message/editMessage/{idMessage}(idMessage=${Message.id_message})}"><img
-                                th:src="@{/img/edit.png}" class="icon"></a>
-                        <a th:href="@{/message/delete/{idMessage}(idMessage=${Message.id_message})}"
-                           class="delete"><img th:src="@{/img/delate.webp}" class="icon"></a>
+                        <a th:href="@{/message/editMessage/{idMessage}(idMessage=${Message.id_message})}"><img th:src="@{/img/edit.png}" class="icon"></a>
+                        <a th:href="@{/message/delete/{idMessage}(idMessage=${Message.id_message})}" class="delete"><img th:src="@{/img/delate.webp}" class="icon"></a>
                     </td>
                 </tr>
                 </tbody>
@@ -338,10 +315,9 @@
                 </tr>
                 </tbody>
             </table>
+
         </div>
     </div>
 </div>
-
 </body>
-
 </html>

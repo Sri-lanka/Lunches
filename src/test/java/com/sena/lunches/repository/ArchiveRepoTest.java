@@ -30,21 +30,13 @@ public class ArchiveRepoTest {
 
     @Test
     public void testSaveBenefit() {
-        //function
-        byte[] byteArray = new byte[10];
-        for (int i = 0; i < byteArray.length; i++) {
-            byteArray[i] = (byte) i;
-        }
-        ByteBuffer buffer = ByteBuffer.wrap(byteArray);
-        byte[] byteArrayPdf = new byte[buffer.remaining()];
-        buffer.get(byteArrayPdf);
 
         // Given
         Archive archive = new Archive();
         archive.setId_archive(20);
         archive.setTypeDoc("application/pdf");
         archive.setName_archive("Identity card");
-        archive.setArchive_pdf(byteArrayPdf);
+        archive.setArchive_pdf("Mock PDF content".getBytes());
 
         // When
         Archive savedArchive = entityManager.persist(archive);
@@ -62,27 +54,18 @@ public class ArchiveRepoTest {
 
     @Test
     public void testGetArchive(){
-        //function
-        byte[] byteArray = new byte[10];
-        for (int i = 0; i < byteArray.length; i++) {
-            byteArray[i] = (byte) i;
-        }
-        ByteBuffer buffer = ByteBuffer.wrap(byteArray);
-        byte[] byteArrayPdf = new byte[buffer.remaining()];
-        buffer.get(byteArrayPdf);
-
         // Given
         Archive archive = new Archive();
         archive.setId_archive(16);
         archive.setTypeDoc("application/pdf");
         archive.setName_archive("Identity card");
-        archive.setArchive_pdf(byteArrayPdf);
+        archive.setArchive_pdf("Mock PDF content".getBytes());
 
         Archive archive2 = new Archive();
-        archive.setId_archive(15);
-        archive.setTypeDoc("application/pdf");
-        archive.setName_archive("Identity card 2");
-        archive.setArchive_pdf(byteArrayPdf);
+        archive2.setId_archive(15);
+        archive2.setTypeDoc("application/pdf");
+        archive2.setName_archive("Identity card 2");
+        archive2.setArchive_pdf("Mock PDF content 2".getBytes());
 
         archive_repo.save(archive);
         archive_repo.save(archive2);
@@ -90,7 +73,7 @@ public class ArchiveRepoTest {
         List<Archive> archiveList = archive_repo.findAll();
 
         assertThat(archiveList).isNotNull();
-        assertThat(archiveList.size()).isEqualTo(3);
+        assertThat(archiveList.size()).isEqualTo(2);
     }
 
 
@@ -98,20 +81,12 @@ public class ArchiveRepoTest {
     @Test
     public void testFindArchive() {
 
-        byte[] byteArray = new byte[10];
-        for (int i = 0; i < byteArray.length; i++) {
-            byteArray[i] = (byte) i;
-        }
-        ByteBuffer buffer = ByteBuffer.wrap(byteArray);
-        byte[] byteArrayPdf = new byte[buffer.remaining()];
-        buffer.get(byteArrayPdf);
-
         // Given
         Archive archive = new Archive();
         archive.setId_archive(16);
         archive.setTypeDoc("application/pdf");
         archive.setName_archive("Identity card");
-        archive.setArchive_pdf(byteArrayPdf);
+        archive.setArchive_pdf("Mock PDF content".getBytes());
 
         // When
         Archive savedArchive = archive_repo.save(archive);
@@ -130,21 +105,12 @@ public class ArchiveRepoTest {
 
     @Test
     public void testUpdateArchive() {
-        //function
-        byte[] byteArray = new byte[10];
-        for (int i = 0; i < byteArray.length; i++) {
-            byteArray[i] = (byte) i;
-        }
-        ByteBuffer buffer = ByteBuffer.wrap(byteArray);
-        byte[] byteArrayPdf = new byte[buffer.remaining()];
-        buffer.get(byteArrayPdf);
-
         // Given
         Archive archive = new Archive();
         archive.setId_archive(10);
         archive.setTypeDoc("application/pdf");
         archive.setName_archive("Identity card");
-        archive.setArchive_pdf(byteArrayPdf);
+        archive.setArchive_pdf("Mock PDF content 2".getBytes());
 
         // When
         Archive savedArchive = archive_repo.save(archive);
@@ -155,13 +121,13 @@ public class ArchiveRepoTest {
 
         Archive retrievedArchive = optionalArchive.get();
         retrievedArchive.setName_archive("Identity card 2");
-        retrievedArchive.setArchive_pdf(byteArrayPdf);
+        retrievedArchive.setArchive_pdf("Mock PDF content".getBytes());
 
         Archive updatedArchive = archive_repo.save(retrievedArchive);
 
         assertThat(updatedArchive.getId_archive()).isEqualTo(savedArchive.getId_archive()); // Verify ID remains the same
         assertThat(updatedArchive.getName_archive()).isEqualTo("Identity card 2"); // Verify updated name
-        assertThat(updatedArchive.getArchive_pdf()).isEqualTo(byteArrayPdf); // Verify updated description
+        assertThat(updatedArchive.getArchive_pdf()).isEqualTo("Mock PDF content".getBytes()); // Verify updated description
 
         // Intentional error: Uncomment the following line to intentionally fail the test
         //assertThat(updatedArchive.getName_archive()).isEqualTo("incorrect value");
@@ -172,21 +138,12 @@ public class ArchiveRepoTest {
 
     @Test
     public void testDeleteBenefit() {
-        //function
-        byte[] byteArray = new byte[10];
-        for (int i = 0; i < byteArray.length; i++) {
-            byteArray[i] = (byte) i;
-        }
-        ByteBuffer buffer = ByteBuffer.wrap(byteArray);
-        byte[] byteArrayPdf = new byte[buffer.remaining()];
-        buffer.get(byteArrayPdf);
-
         // Given
         Archive archive = new Archive();
         archive.setId_archive(16);
         archive.setTypeDoc("application/pdf");
         archive.setName_archive("Identity card");
-        archive.setArchive_pdf(byteArrayPdf);
+        archive.setArchive_pdf("Mock PDF content".getBytes());
 
         // When
         Archive savedArchive = archive_repo.save(archive);

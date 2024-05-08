@@ -12,15 +12,18 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.stream.Stream;
 
+//it is a Spring service component that provides functionality related to managing archive data.
+// It  contains methods for creating, retrieving, updating, and deleting archive data.
 @Service
 public class ArchiveServiceImpl implements ArchiveService {
+    // the ArchiveServiceImpl class gains access to the methods provided by Archive_repo,
+    // allowing it to interact with the underlying data store  to perform CRUD operations or other data-related tasks involving Archive entities.
     @Autowired
     private Archive_repo archive_repo;
 
-
-
+    // this method implementation retrieves all Archive entities from the underlying data store using the archive_repo instance and returns them as a List<Archive>.
+    // It's a method  to provide functionality for fetching all archive data from the database and returning for possibly for display or further processing in the application.
     @Override
     public List<Archive> getArchive() {return archive_repo.findAll();
     }
@@ -31,14 +34,9 @@ public class ArchiveServiceImpl implements ArchiveService {
     public Archive store(MultipartFile file) throws IOException {
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
         Archive archive = new Archive(fileName, file.getContentType(), file.getBytes());
-
         return archive_repo.save(archive);
     }
 
-    @Override
-    public Archive saveArchive(Archive archive) {
-        return archive_repo.save(archive);
-    }
 
 
     @Override

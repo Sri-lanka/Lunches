@@ -39,7 +39,6 @@ public class MessageRepoTest {
                 .description_message("A report")
                 .date_send(LocalDate.of(2024, 12, 14))
                 .build();
-
         // When
         Message savedmessage = entityManager.persist(message);
         entityManager.flush(); // Forcibly flush the data to the database
@@ -48,7 +47,6 @@ public class MessageRepoTest {
         assertThat(savedmessage.getId_message()).isNotNull();// Check if ID is assigned after persisting
 
         // Optional: Verify if the benefit can be retrieved from the repository
-
         Optional<Message> retrievedMessage = message_repo.findById(savedmessage.getId_message());
         assertThat(retrievedMessage).isPresent(); // Check if benefit is found
         assertThat(retrievedMessage.get().getDescription_message()).isEqualTo("A report"); // Verify attribute value
@@ -141,8 +139,6 @@ public class MessageRepoTest {
 
         // Intentional error: Uncomment the following line to intentionally fail the test
         // assertThat(updatedBenefit.getNom_benefit()).isEqualTo("incorrect value");
-
-
     }
 
     @Test
