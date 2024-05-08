@@ -21,7 +21,6 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 @ActiveProfiles("test")
 @AutoConfigureTestDatabase
 @Rollback(false)
-
 public class MessageRepoTest {
     @Autowired
     private Message_repo message_repo;
@@ -87,7 +86,7 @@ public class MessageRepoTest {
 
 
     @Test
-    public void testFindBenefit() {
+    public void testFindMessage() {
         // Given
         Message message = Message.builder()
                 .id_message(16)
@@ -113,7 +112,7 @@ public class MessageRepoTest {
     }
 
     @Test
-    public void testUpdateBenefit() {
+    public void testUpdateMessage() {
         // Given
         Message message = Message.builder()
                 .id_message(16)
@@ -147,7 +146,7 @@ public class MessageRepoTest {
     }
 
     @Test
-    public void testDeleteBenefit() {
+    public void testDeleteMessage() {
         // Given
         Message message = Message.builder()
                 .id_message(16)
@@ -157,13 +156,13 @@ public class MessageRepoTest {
                 .description_message("A report")
                 .date_send(LocalDate.of(2024, 12, 14))
                 .build();
-/*
-        benefit_repo.save(benefit);
-        benefit_repo.deleteById(benefit.getId_benefit());
-        Optional<Benefit> benefitReturn = benefit_repo.findById(benefit.getId_benefit());
 
-        assertThat(benefitReturn).isEmpty();
-*/
+        message_repo.save(message);
+        message_repo.deleteById(message.getId_message());
+        Optional<Message> messageReturn = message_repo.findById(message.getId_message());
+
+        assertThat(messageReturn).isEmpty();
+
     }
 
 

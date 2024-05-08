@@ -60,7 +60,7 @@ class ControllerFileTest {
         when(fileService.getFile_sena()).thenReturn(file_senaList);
 
         // Perform GET request to list users and verify the response
-        ResultActions response = mockMvc.perform(get("/file/listFileSena"));
+        ResultActions response = mockMvc.perform(get("/fileSena/listFileSena"));
 
         // Verify the expected response
         response.andExpect(status().isOk())
@@ -81,12 +81,12 @@ class ControllerFileTest {
         when(fileService.saveFile_sena(any())).thenReturn(newFile_sena);
 
         //POST request to create a new File
-        ResultActions response = mockMvc.perform(post("/file/newFileSena")
+        ResultActions response = mockMvc.perform(post("/fileSena/newFileSena")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(newFile_sena)));
         // Verification of the expected response
         response.andExpect(status().is3xxRedirection()) // Redirect after creating
-                .andExpect(redirectedUrl("/file/listFileSena")); // Expected redirect URL
+                .andExpect(redirectedUrl("/fileSena/listFileSena")); // Expected redirect URL
 
     }
 
@@ -101,13 +101,13 @@ class ControllerFileTest {
         when(fileService.saveFile_sena(any())).thenReturn(newFile_sena);
 
         //POST request to create a new File
-        ResultActions response = mockMvc.perform(post("/file/newFileSena")
+        ResultActions response = mockMvc.perform(post("/fileSena/newFileSena")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(newFile_sena)));
 
         // Verification of the expected response
         response.andExpect(status().is3xxRedirection()) // Redirect after creating
-                .andExpect(redirectedUrl("/file/listFileSena")); // Expected redirect URL
+                .andExpect(redirectedUrl("/fileSena/listFileSena")); // Expected redirect URL
 
     }
 
@@ -121,12 +121,12 @@ class ControllerFileTest {
         // Simulation of updating the File
         when(fileService.updateFile_sena(any(Integer.class), any(File_sena.class))).thenReturn(updatedFile_sena);
         // POST request to update an existing File and verify the response
-        ResultActions response = mockMvc.perform(post("/file/editFileSena/{id}", 1)
+        ResultActions response = mockMvc.perform(post("/fileSena/editFileSena/{id}", 1)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(updatedFile_sena)));
         // Verification of the expected response
         response.andExpect(status().is3xxRedirection()) // Redirect after update
-                .andExpect(redirectedUrl("/file/listFileSena")); // Expected redirect URL
+                .andExpect(redirectedUrl("/fileSena/listFileSena")); // Expected redirect URL
 
     }
 
@@ -140,12 +140,12 @@ class ControllerFileTest {
         // Mocking the updatedFile_sena method in the service
         when(fileService.updateFile_sena(any(Integer.class), any(File_sena.class))).thenReturn(updatedFile_sena);
         // Performing the POST request to update the File
-        ResultActions response = mockMvc.perform(post("/file/editFileSena/{id}", 1)
+        ResultActions response = mockMvc.perform(post("/fileSena/editFileSena/{id}", 1)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(updatedFile_sena)));
         // Verification of the expected response
         response.andExpect(status().is3xxRedirection()) // Redirect after update
-                .andExpect(redirectedUrl("/file/listFileSena")); // Expected redirect URL
+                .andExpect(redirectedUrl("/fileSena/listFileSena")); // Expected redirect URL
 
     }
 
@@ -161,11 +161,11 @@ class ControllerFileTest {
         // Simulation of the elimination of benefit
         doNothing().when(fileService).deleteFile_sena(anyInt());
         // Making the GET request to remove the benefit
-        ResultActions response = mockMvc.perform(get("/file/delete/{id}", fileIdToDelete)
+        ResultActions response = mockMvc.perform(get("/fileSena/delete/{id}", fileIdToDelete)
                 .contentType(MediaType.APPLICATION_JSON));
         // Verification of the expected response
         response.andExpect(status().is3xxRedirection()) // Redirect after update
-                .andExpect(redirectedUrl("/file/listFileSena")); // Expected redirect URL
+                .andExpect(redirectedUrl("/fileSena/listFileSena")); // Expected redirect URL
 
     }
 
