@@ -137,13 +137,11 @@ class ArchiveServiceImplTest {
         archive.setName_archive("Identity card");
         archive.setArchive_pdf("Mock PDF content".getBytes());
 
-        // Mockear el repositorio para que devuelva el objeto cuando se busque por el ID 15
-
-
-        // Llamar al método para eliminar el beneficio con ID 15
+        // Mockeying the repository to return the object when searching for ID 1
+        // Call the method to remove the profit with ID
         archiveServiceImpl.deleteArchive(1);
 
-        // Verificar que se haya llamado al método delete del repositorio con el beneficio correcto
+        // Verify that the delete method of the repository has been called with the correct Archive
         verify(archiveRepo, times(1)).deleteById(1);
     }
 }

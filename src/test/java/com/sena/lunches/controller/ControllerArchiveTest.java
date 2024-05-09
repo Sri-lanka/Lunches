@@ -82,13 +82,13 @@ class ControllerArchiveTest {
     @Test
     void addArchive() throws Exception {
 
-        // Creamos un archivo multipart
+        // Create a archive multipart
         MockMultipartFile file = new MockMultipartFile("file", "example.pdf", "application/pdf",
                 "Mock PDF content".getBytes());
 
         // POST request to create a new archive
         ResultActions response = mockMvc.perform(MockMvcRequestBuilders.multipart("/archive/newArchive")
-                .file(file) // Agregamos el archivo como parte de la solicitud multipart
+                .file(file) // We add the file as part of the multipart request
                 .param("typeDoc", "application/pdf")
                 .param("nameArchive", "Identity card"));
 
@@ -99,13 +99,13 @@ class ControllerArchiveTest {
 
     @Test
     void saveArchive() throws Exception {
-        // Creamos un archivo multipart
+        //Create a archive multipart
         MockMultipartFile file = new MockMultipartFile("file", "example.pdf", "application/pdf",
                 "Mock PDF content".getBytes());
 
         // POST request to create a new archive
         ResultActions response = mockMvc.perform(MockMvcRequestBuilders.multipart("/archive/newArchive")
-                .file(file) // Agregamos el archivo como parte de la solicitud multipart
+                .file(file) // We add the file as part of the multipart request
                 .param("typeDoc", "application/pdf")
                 .param("nameArchive", "Identity card"));
 
@@ -117,42 +117,42 @@ class ControllerArchiveTest {
     @Test
     void updateArchive() throws Exception {
 
-        // Creamos un archivo multipart
+        //Create a archive multipart
         MockMultipartFile file = new MockMultipartFile("file", "example.pdf", "application/pdf",
                 "Mock PDF content".getBytes());
 
-        // Simulación de la actualización del archivo
+        // Simulation of file update
         when(archiveService.updateArchive(any(Integer.class), any(MultipartFile.class))).thenReturn(null);
 
-        // Solicitud POST para actualizar un archivo existente y verificar la respuesta
+        // POST request to update an existing file and check response
         ResultActions response = mockMvc.perform(MockMvcRequestBuilders.multipart("/archive/editArchive/{id}", 1)
-                .file(file) // Agregamos el archivo como parte de la solicitud multipart
+                .file(file) // We add the file as part of the multipart request
                 .param("name_archive", "New archive")
                 .param("typeDoc", "application/pdf"));
 
-        // Verificación de la respuesta esperada
-        response.andExpect(status().is3xxRedirection()) // Redirección después de la actualización
+        // Verification of expected response
+        response.andExpect(status().is3xxRedirection()) // Redirect after creating
                 .andExpect(redirectedUrl("/archive/listArchive"));
     }
 
     @Test
     void updatingArchive() throws Exception {
 
-        // Creamos un archivo multipart
+        //Create a archive multipart
         MockMultipartFile file = new MockMultipartFile("file", "example.pdf", "application/pdf",
                 "Mock PDF content".getBytes());
 
-        // Simulación de la actualización del archivo
+        // Simulation of file update
         when(archiveService.updateArchive(any(Integer.class), any(MultipartFile.class))).thenReturn(null);
 
-        // Solicitud POST para actualizar un archivo existente y verificar la respuesta
+        // POST request to update an existing file and check response
         ResultActions response = mockMvc.perform(MockMvcRequestBuilders.multipart("/archive/editArchive/{id}", 1)
-                .file(file) // Agregamos el archivo como parte de la solicitud multipart
+                .file(file) // We add the file as part of the multipart request
                 .param("name_archive", "New archive")
                 .param("typeDoc", "application/pdf"));
 
-        // Verificación de la respuesta esperada
-        response.andExpect(status().is3xxRedirection()) // Redirección después de la actualización
+        // Verification of expected response
+        response.andExpect(status().is3xxRedirection()) // Redirect after creating
                 .andExpect(redirectedUrl("/archive/listArchive"));
     }
 
@@ -166,22 +166,21 @@ class ControllerArchiveTest {
         archive.setName_archive("example.pdf");
         archive.setArchive_pdf(fileContent);
 
-        // Mock del servicio ArchiveService
+        // ArchiveService Mock
         ArchiveService archiveService = mock(ArchiveService.class);
         when(archiveService.getArchiveById(id)).thenReturn(archive);
 
-        // Construir el controlador con el servicio mock
+        // Build the controller with the mock service
         ControllerArchive archiveController = new ControllerArchive(archiveService);
 
         // Act
         ResponseEntity<byte[]> response = archiveController.getFile(id);
 
         // Assert
-        // Verificar que se llama al método getArchiveById del servicio con el id
-        // adecuado
+        //Verify that the service's getArchiveById method is called with the proper id appropriate
         verify(archiveService).getArchiveById(id);
 
-        // Verificar que la respuesta del controlador sea la esperada
+        // Verify that the response of the controller is as expected
         assertAll(
                 () -> assertEquals(HttpStatus.OK, response.getStatusCode()),
                 () -> assertEquals("attachment; filename=\"example.pdf\"",
@@ -192,17 +191,17 @@ class ControllerArchiveTest {
 
     @Test
     void deleteArchive() throws Exception {
-        // ID del archivo a eliminar
+        // ID of the archive to be deleted
         int archiveIdToDelete = 1;
         System.out.println(archiveIdToDelete);
-        // Simulación de la eliminación del archivo
+        // Simulation of archive deletion
         doNothing().when(archiveService).deleteArchive(anyInt());
 
-        // Haciendo la solicitud GET para eliminar el archivo
+        // Making the GET request to delete the file
         ResultActions response = mockMvc.perform(get("/archive/delete/{id}", archiveIdToDelete));
 
-        // Verificación de la respuesta esperada
-        response.andExpect(status().is3xxRedirection()) // Se espera redireccionamiento después de la eliminación
+        // Verification of the expected response
+        response.andExpect(status().is3xxRedirection())// Redirection is expected after deletion.
                 .andExpect(redirectedUrl("/archive/listArchive"));
         System.out.println(response);
     }

@@ -45,10 +45,10 @@ public class ArchiveRepoTest {
         // Then
         assertThat(savedArchive.getId_archive()).isNotNull();// Check if ID is assigned after persisting
 
-        // Optional: Verify if the benefit can be retrieved from the repository
+        // Optional: Verify if the Archive can be retrieved from the repository
 
         Optional<Archive> retrievedArchive = archive_repo.findById(savedArchive.getId_archive());
-        assertThat(retrievedArchive).isPresent(); // Check if benefit is found
+        assertThat(retrievedArchive).isPresent(); // Check if Archive is found
         assertThat(retrievedArchive.get().getName_archive()).isEqualTo("Identity card"); // Verify attribute value
     }
 
@@ -92,13 +92,13 @@ public class ArchiveRepoTest {
         Archive savedArchive = archive_repo.save(archive);
 
         // Then
-        assertThat(savedArchive.getId_archive()).isNotNull(); // Verifica que el ID se haya asignado correctamente
+        assertThat(savedArchive.getId_archive()).isNotNull(); // Verify that the ID has been assigned correctly
 
         Optional<Archive> retrievedArchiveOptional = archive_repo.findById(savedArchive.getId_archive());
 
         assertThat(retrievedArchiveOptional).isPresent();
         Archive retrievedArchive = retrievedArchiveOptional.get();
-        assertThat(retrievedArchive.getTypeDoc()).isEqualTo("application/pdf"); // Verifica el tipo del documento
+        assertThat(retrievedArchive.getTypeDoc()).isEqualTo("application/pdf"); // veryfy the type of document
 
 
     }
@@ -127,7 +127,7 @@ public class ArchiveRepoTest {
 
         assertThat(updatedArchive.getId_archive()).isEqualTo(savedArchive.getId_archive()); // Verify ID remains the same
         assertThat(updatedArchive.getName_archive()).isEqualTo("Identity card 2"); // Verify updated name
-        assertThat(updatedArchive.getArchive_pdf()).isEqualTo("Mock PDF content".getBytes()); // Verify updated description
+        assertThat(updatedArchive.getArchive_pdf()).isEqualTo("Mock PDF content".getBytes()); // Verify updated document
 
         // Intentional error: Uncomment the following line to intentionally fail the test
         //assertThat(updatedArchive.getName_archive()).isEqualTo("incorrect value");
