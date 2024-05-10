@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Entity(name = "Authorizations")
+@Entity
 public class Authorization {
 
     @Id

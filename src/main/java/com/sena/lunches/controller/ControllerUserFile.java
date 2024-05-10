@@ -18,6 +18,7 @@ public class ControllerUserFile {
     @GetMapping("/listUserFile")
     public String listUserFile(Model model) {
         List<User_file> user_fileData = userFileService.getUser_file();
+        model.addAttribute("currentEndpoint", "/userFile/listUserFile");
         model.addAttribute("User_File", user_fileData);
         return "admin/principal/list-users";
     }

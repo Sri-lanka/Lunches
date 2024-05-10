@@ -18,6 +18,7 @@ public class ControllerProgram {
     @GetMapping("/listProgram")
     public String listProgram(Model model) {
         List<Program> programsData = programService.getProgram();
+        model.addAttribute("currentEndpoint", "/program/listProgram");
         model.addAttribute("program", programsData);
         return "admin/principal/list-users";
     }

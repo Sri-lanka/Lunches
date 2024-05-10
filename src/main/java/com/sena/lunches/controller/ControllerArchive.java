@@ -46,6 +46,7 @@ public class ControllerArchive {
         List<Archive> listArchives = archiveService.getArchive();
         //This line adds an attribute named "Archive" to the Model object. The "Archive" attribute will hold the list of archives retrieved from the archiveService.
         // This data can then be accessed in the view.
+        model.addAttribute("currentEndpoint", "/archive/listArchive");
         model.addAttribute("Archive", listArchives);
         //This line specifies the logical view name to be returned. It tells Spring MVC to render the view named "admin/principal/list-users".
         return "admin/principal/list-users";

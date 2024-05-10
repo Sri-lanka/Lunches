@@ -18,6 +18,7 @@ public class ControllerMessage {
     @GetMapping("/listMessage")
     public String listMessage(Model model) {
         List<Message> messageData = messageService.getMessage();
+        model.addAttribute("currentEndpoint", "/message/listMessage");
         model.addAttribute("message", messageData);
         return "admin/principal/list-users";
     }

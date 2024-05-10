@@ -19,6 +19,7 @@ public class ControllerFile {
     @GetMapping("/listFileSena")
     public String listFileSena(Model model) {
         List<File_sena> file_senaData = file_senaService.getFile_sena();
+        model.addAttribute("currentEndpoint", "/fileSena/listFileSena");
         model.addAttribute("file", file_senaData);
         return "admin/principal/list-users";
     }

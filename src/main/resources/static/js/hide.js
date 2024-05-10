@@ -1,4 +1,4 @@
-function fetchData(url) {
+/*function fetchData(url) {
   fetch(url)
     .then(response => {
       if (!response.ok) {
@@ -77,4 +77,4 @@ function assignClickEvents() {
     }
   });
 }
-assignClickEvents();
+assignClickEvents();*/

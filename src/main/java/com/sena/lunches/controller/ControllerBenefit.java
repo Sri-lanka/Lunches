@@ -19,6 +19,7 @@ public class ControllerBenefit {
     @GetMapping("/listBenefit")
     public String listBenefit(Model model) {
         List<Benefit> benefitData = benefitService.getBenefit();
+        model.addAttribute("currentEndpoint", "/benefit/listBenefit");
         model.addAttribute("benefits", benefitData);
         return "admin/principal/list-users";
     }

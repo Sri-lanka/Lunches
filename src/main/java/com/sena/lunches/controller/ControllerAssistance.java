@@ -18,6 +18,7 @@ public class ControllerAssistance {
     @GetMapping("/listAssistance")
     public String listAssistance(Model model) {
         List<Assistance> assistanceData = assistanceService.getAssistance();
+        model.addAttribute("currentEndpoint", "/assistance/listAssistance");
         model.addAttribute("assistance", assistanceData);
         return "admin/principal/list-users";
     }

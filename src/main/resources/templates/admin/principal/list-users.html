@@ -23,17 +23,16 @@
                 <label for="databaseTables">
                     <p>Select a table:</p>
                 </label>
-                <select id="databaseTables">
-                    <option>Tables</option>
-                    <option value="User">User</option>
-                    <option value="Assistance">Assistance</option>
-                    <option value="Authorization">Authorization</option>
-                    <option value="Benefit">Benefit</option>
-                    <option value="Program">Program</option>
-                    <option value="File">File</option>
-                    <option value="User-File">User-File</option>
-                    <option value="Message">Message</option>
-                    <option value="Archive">Archive</option>
+                <select id="databaseTables" onchange="window.location.href = this.value;">
+                    <option value="/" th:selected="${currentEndpoint == null || currentEndpoint == '/'}">User</option>
+                    <option value="/assistance/listAssistance" th:selected="${currentEndpoint == '/assistance/listAssistance'}">Assistance</option>
+                    <option value="/authorization/listAuthorization" th:selected="${currentEndpoint == '/authorization/listAuthorization'}">Authorization</option>
+                    <option value="/benefit/listBenefit" th:selected="${currentEndpoint == '/benefit/listBenefit'}">Benefit</option>
+                    <option value="/program/listProgram" th:selected="${currentEndpoint == '/program/listProgram'}">Program</option>
+                    <option value="/fileSena/listFileSena" th:selected="${currentEndpoint == '/fileSena/listFileSena'}">File</option>
+                    <option value="/userFile/listUserFile" th:selected="${currentEndpoint == '/userFile/listUserFile'}">User-File</option>
+                    <option value="/message/listMessage" th:selected="${currentEndpoint == '/message/listMessage'}">Message</option>
+                    <option value="/archive/listArchive" th:selected="${currentEndpoint == '/archive/listArchive'}">Archive</option>
                 </select>
             </div>
         </div>
