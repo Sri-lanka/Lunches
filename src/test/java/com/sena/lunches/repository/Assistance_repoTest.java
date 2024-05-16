@@ -17,43 +17,31 @@ import java.util.Optional;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 @DataJpaTest
-
 @ActiveProfiles("test")
 @AutoConfigureTestDatabase
 @Rollback(false)
-
 public class Assistance_repoTest {
-
     @Autowired
     private Assistance_repo assistance_repo;
-
     @Autowired
     private TestEntityManager entityManager;
-
     @Test
     public void testSaveAssistance(){
-
         // Given
         Assistance assistance = Assistance.builder()
                 .id_assistance(16)
                 .id_authorization(20)
                 .date_time(LocalDateTime.of(2024, 6, 14,12,30))
                 .build();
-
         // When
         Assistance savedAssistence = entityManager.persist(assistance);
         entityManager.flush(); // Forcibly flush the data to the database
-
         // Then
         assertThat(savedAssistence.getId_assistance()).isNotNull();// Check if ID is assigned after persisting
-
         // Optional: Verify if the benefit can be retrieved from the repository
-
         Optional<Assistance> retrievedAssistence = assistance_repo.findById(savedAssistence.getId_assistance());
         assertThat(retrievedAssistence).isPresent(); // Check if benefit is found
         assertThat(retrievedAssistence.get().getId_authorization()).isEqualTo(20); // Verify attribute value
-
-
     }
 
     @Test

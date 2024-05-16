@@ -22,17 +22,13 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @DataJpaTest
-
 @ActiveProfiles("test")
 @ExtendWith(MockitoExtension.class)
 class AssistanceServiceImplTest {
-
     @Mock
     private Assistance_repo assistance_repo;
-
     @InjectMocks
     private AssistanceServiceImpl assistanceServiceImpl;
-
     @Test
     void getAssistance() {
         // Given
@@ -41,26 +37,20 @@ class AssistanceServiceImplTest {
                 .id_authorization(20)
                 .date_time(LocalDateTime.of(2024, 6, 14,12,30))
                 .build();
-
         Assistance assistance2 = Assistance.builder()
                 .id_assistance(17)
                 .id_authorization(21)
                 .date_time(LocalDateTime.of(2024, 6, 14,12,30))
                 .build();
-
         List<Assistance> mockAssistance = Arrays.asList(assistance, assistance2);
-
         // Configure repository mock behavior
         when(assistance_repo.findAll()).thenReturn(mockAssistance);
-
         // When
         List<Assistance> retrievedAssistance = assistanceServiceImpl.getAssistance();
-
         // Then
         assertThat(retrievedAssistance).isNotNull();
         assertThat(retrievedAssistance).hasSize(2);
         assertThat(retrievedAssistance).contains(assistance, assistance2);
-
         // Verify repository method invocation
         verify(assistance_repo, times(1)).findAll();
     }

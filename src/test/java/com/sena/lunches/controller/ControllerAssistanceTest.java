@@ -34,44 +34,37 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc(addFilters = false)
 @ExtendWith(MockitoExtension.class)
 class ControllerAssistanceTest {
-
     @Autowired
     private MockMvc mockMvc;
-
     @MockBean
     private AssistanceService assistanceService;
-
     @Autowired
     private ObjectMapper objectMapper;
     @Test
     void listAssistance() throws Exception {
-
         Assistance assistance = Assistance.builder()
                 .id_assistance(16)
                 .id_authorization(20)
                 .date_time(LocalDateTime.of(2024, 6, 14,12,30))
                 .build();
-
         Assistance assistance2 = Assistance.builder()
                 .id_assistance(17)
                 .id_authorization(21)
                 .date_time(LocalDateTime.of(2024, 6, 14,12,30))
                 .build();
-
         List<Assistance> assistanceList = Arrays.asList(assistance, assistance2);
-
         // Simulation of obtaining the list of assistance
         when(assistanceService.getAssistance()).thenReturn(assistanceList);
-
         // GET request to list assistance and verify response
         ResultActions response = mockMvc.perform(get("/assistance/listAssistance"));
-
         // Verification of the expected response
         response.andExpect(status().isOk())
-                .andExpect(view().name("admin/principal/list-users")) // Check the view
-                .andExpect(model().attributeExists("assistance")) // Check the existence of the "benefits" attribute in the model
-                .andExpect(model().attribute("assistance", assistanceList)); // Verify that the "benefits" attribute contains the list of benefits
-
+                // Check the view
+                .andExpect(view().name("admin/principal/list-users"))
+                // Check the existence of the "benefits" attribute in the model
+                .andExpect(model().attributeExists("assistance"))
+                // Verify that the "benefits" attribute contains the list of benefits
+                .andExpect(model().attribute("assistance", assistanceList));
     }
 
     @Test
