@@ -27,7 +27,6 @@
                     <option value="/" th:selected="${currentEndpoint == null || currentEndpoint == '/'}">User</option>
                     <option value="/assistance/listAssistance" th:selected="${currentEndpoint == '/assistance/listAssistance'}">Assistance</option>
                     <option value="/authorization/listAuthorization" th:selected="${currentEndpoint == '/authorization/listAuthorization'}">Authorization</option>
-                    <option value="/benefit/listBenefit" th:selected="${currentEndpoint == '/benefit/listBenefit'}">Benefit</option>
                     <option value="/program/listProgram" th:selected="${currentEndpoint == '/program/listProgram'}">Program</option>
                     <option value="/fileSena/listFileSena" th:selected="${currentEndpoint == '/fileSena/listFileSena'}">File</option>
                     <option value="/userFile/listUserFile" th:selected="${currentEndpoint == '/userFile/listUserFile'}">User-File</option>
@@ -50,14 +49,10 @@
                     <th>T.document</th>
                     <th>Rol</th>
                     <th>Name</th>
-                    <th></th>
                     <th>Lastname</th>
-                    <th></th>
-                    <th>Age</th>
                     <th>E-mail</th>
                     <th>Phone</th>
                     <th>State</th>
-                    <th>ID benefit</th>
                     <th>Keyword</th>
                     <th class="button"><a th:href="@{/newUser}"><img th:src="@{/img/add.webp}" class="icon"></a>
                     </th>
@@ -71,23 +66,19 @@
                         <span th:if="${user.type_document == 1}">C.C</span>
                         <span th:if="${user.type_document  == 2}">T.I</span>
                     </td>
-                    <td>
-                        <span th:if="${user.rol == 1}">Beneficiary</span>
-                        <span th:if="${user.rol  == 2}">Admin</span>
-                        <span th:if="${user.rol == 3}">manager</span>
-                    </td>
-                    <td th:text="${user.name_1}"></td>
-                    <td th:text="${user.name_2}"></td>
-                    <td th:text="${user.last_name_1}"></td>
-                    <td th:text="${user.last_name_2}"></td>
-                    <td th:text="${user.age}"></td>
+                    <!--<td>
+                        <span th:if="${user.roles == 1}">Beneficiary</span>
+                        <span th:if="${user.roles == 2}">Admin</span>
+                        <span th:if="${user.roles == 3}">manager</span>
+                    </td>-->
+                    <td th:text="${user.nameUser}"></td>
+                    <td th:text="${user.lastName}"></td>
                     <td th:text="${user.Email}" id="email"></td>
                     <td th:text="${user.telephone}"></td>
                     <td>
                         <span th:if="${user.state == 1}">Active</span>
                         <span th:if="${user.state == 2}">Disabled</span>
                     </td>
-                    <td th:text="${user.id_benefit}"></td>
                     <td th:text="${user.keyword}"></td>
                     <td class="button">
                         <a th:href="@{/editUser/{idUserSena}(idUserSena=${user.id_user})}"><img th:src="@{/img/edit.png}" class="icon"></a>
@@ -121,33 +112,6 @@
                 </tbody>
             </table>
 
-
-            <table class="table table-dark" th:if="${benefits != null}">
-                <p>list Benefit</p>
-                <thead class="thead-dark">
-                <tr>
-                    <th>ID benefit</th>
-                    <th>Benefit</th>
-                    <th>Description</th>
-                    <th>Start</th>
-                    <th>End</th>
-                    <th class="button"><a th:href="@{/benefit/newBenefits}"><img th:src="@{/img/add.webp}" class="icon"></a></th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="benefit : ${benefits}">
-                    <td th:text="${benefit.id_benefit}"></td>
-                    <td th:text="${benefit.nom_benefit}"></td>
-                    <td th:text="${benefit.description_benefit}"></td>
-                    <td th:text="${benefit.date_start}"></td>
-                    <td th:text="${benefit.date_end}"></td>
-                    <td class="button">
-                        <a th:href="@{/benefit/editBenefit/{idBenefit}(idBenefit=${benefit.id_benefit})}"><img th:src="@{/img/edit.png}" class="icon"></a>
-                        <a th:href="@{/benefit/delete/{idBenefit}(idBenefit=${benefit.id_benefit})}" class="delete"><img th:src="@{/img/delate.webp}" class="icon"></a>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
 
 
             <table class="table table-dark" th:if="${file != null}">

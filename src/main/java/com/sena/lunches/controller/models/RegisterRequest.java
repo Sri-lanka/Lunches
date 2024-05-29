@@ -1,27 +1,8 @@
-package com.sena.lunches.entities;
+package com.sena.lunches.controller.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+import com.sena.lunches.entities.Role;
 
-import java.util.Collection;
-import java.util.List;
-
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
-@Entity
-public class User_sena implements UserDetails {
-
-    @Id
+public class RegisterRequest {
     private int id_user;
     private int document;
     private int type_document;
@@ -31,9 +12,7 @@ public class User_sena implements UserDetails {
     private long telephone;
     private String keyword;
     private int state;
-    @Enumerated(EnumType.ORDINAL)
     private Role roles;
-
 
     public int getId_user() {
         return id_user;
@@ -79,8 +58,8 @@ public class User_sena implements UserDetails {
         return email;
     }
 
-    public void setEmail(String Email) {
-        this.email = Email;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public long getTelephone() {
@@ -107,46 +86,11 @@ public class User_sena implements UserDetails {
         this.state = state;
     }
 
-    public Role getRole() {
+    public Role getRoles() {
         return roles;
     }
 
-    public void setRole(Role role) {
-        this.roles = role;
-    }
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(roles.name()));
-    }
-
-    @Override
-    public String getPassword() {
-        return keyword;
-    }
-
-    @Override
-    public String getUsername() {
-        return email;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
+    public void setRoles(Role roles) {
+        this.roles = roles;
     }
 }
