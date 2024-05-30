@@ -29,7 +29,7 @@
 
                 <h2>Sign In</h2>
 
-                <form  th:action="@{/login/loginPro}" method="post" class="form">>
+                <form  th:action="@{/login/loginPro}" method="post" class="form">
                     <!--<div class="select">
                         <select name="lenguajes" id="lang">
                             <option class="text_value" name="type" value="User"><i>Administrator</i>
@@ -38,33 +38,23 @@
                             <option class="text_value" name="type" value="User"><i>Apprentice</i></option>
                         </select>
                     </div>-->
-
-                    <!--<div class="inputBox">
-                        <label for="document"></label>
-                        <input type="number" id="document" required> <i>Document</i>
-                    </div>
-                    <div class="inputBox">
-                        <label for="keyword"></label>
-                        <input type="password" id="keyword" required> <i>Password</i>
-                    </div>
+                   <div class="inputBox">
+                       <label for="document"></label>
+                       <input type="number" id="document" name="document" required><i>Document</i>
+                   </div>
+                   <div class="inputBox">
+                       <label for="keyword"></label>
+                       <input type="password" id="keyword" name="keyword" required><i>Password</i>
+                   </div>
                     <div class="links">
                         <a href="http://oferta.senasofiaplus.edu.co/sofia-oferta/recuperarclave.html">Forgot
                             Password</a>
-                    </div>-->
-                    <div class="inputBox">
-                        <label for="document">Document</label>
-                        <input type="number" id="document" name="document" required>
                     </div>
-                    <div class="inputBox">
-                        <label for="keyword">Password</label>
-                        <input type="password" id="keyword" name="keyword" required>
-                    </div>
-
                     <div class="btn-login">
                        <!--<input class="boton" type="button" value="Login" onclick="loggin()">-->
                         <button class="boton" type="submit" >Login</button>
                     </div>
-                </>
+                </form>
             </div>
         </div>
     </div>

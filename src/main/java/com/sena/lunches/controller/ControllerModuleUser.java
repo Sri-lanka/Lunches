@@ -74,13 +74,13 @@ public class ControllerModuleUser {
     @GetMapping("/updateUser/{idUserSena}")
     public String updateUser (@PathVariable Integer idUserSena, Model model){
         model.addAttribute("userSena", userSenaService.getUser_senaById(idUserSena) );
-        model.addAttribute("action","/updateUser/" + idUserSena);
+        model.addAttribute("action","/moduleUser/updateUser/" + idUserSena);
         return "UserModule/apprentice/formU/updateUser";
     }
-    @PostMapping("/userData/{idUserSena}")
+    @PostMapping("/updateUser/{idUserSena}")
     public String updatingUser(@PathVariable Integer idUserSena, @ModelAttribute User_sena userSena){
         userSenaService.updateUser_sena(idUserSena, userSena);
-        return "redirect:/";
+        return "redirect:/moduleUser/userData";
     }
 
 
