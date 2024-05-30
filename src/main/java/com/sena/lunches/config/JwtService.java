@@ -13,7 +13,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
-
+/*
 
 @Service
 public class JwtService {
@@ -43,11 +43,12 @@ public class JwtService {
     }
 
     private  Claims getAllClaims(String token){
-        return (Claims) Jwts
+        return Jwts
                 .parserBuilder()
                 .setSigningKey(getSignInKey())
                 .build()
-                .parseClaimsJws(token);
+                .parseClaimsJws(token)
+                .getBody();
     }
 
     private Key getSignInKey(){
@@ -56,10 +57,9 @@ public class JwtService {
     }
 
     public boolean validateToken(String token, UserDetails userDetails) {
-        final String userName =getUserName(token);
+        final String userName = getUserName(token);
         return (userName.equals(userDetails.getUsername()) && isTokenExpired(token));
     }
-
     private boolean isTokenExpired(String token) {
         return getExpiration(token).before(new Date());
     }
@@ -68,3 +68,4 @@ public class JwtService {
         return  getClaim(token, Claims::getExpiration);
     }
 }
+*/

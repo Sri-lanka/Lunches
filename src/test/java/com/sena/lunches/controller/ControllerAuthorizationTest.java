@@ -2,9 +2,7 @@ package com.sena.lunches.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sena.lunches.entities.Authorization;
-import com.sena.lunches.entities.Benefit;
 import com.sena.lunches.service.AuthorizationService;
-import com.sena.lunches.service.BenefitService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;

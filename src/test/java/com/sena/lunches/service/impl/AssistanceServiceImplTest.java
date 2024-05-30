@@ -1,7 +1,6 @@
 package com.sena.lunches.service.impl;
 
 import com.sena.lunches.entities.Assistance;
-import com.sena.lunches.entities.Benefit;
 import com.sena.lunches.repository.Assistance_repo;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

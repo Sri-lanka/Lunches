@@ -1,5 +1,5 @@
 package com.sena.lunches.controller.models;
-
+/*
 import com.sena.lunches.entities.Role;
 
 public class RegisterRequest {
@@ -93,4 +93,4 @@ public class RegisterRequest {
     public void setRoles(Role roles) {
         this.roles = roles;
     }
-}
+}*/

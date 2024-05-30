@@ -1,5 +1,5 @@
 package com.sena.lunches.config;
-
+/*
 import com.sena.lunches.repository.User_sena_repo;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -20,7 +20,6 @@ public class AppConfiguration {
     private final User_sena_repo userSenaRepo;
     @Bean
     public UserDetailsService userDetailsService(){
-
                 return username -> userSenaRepo.findByEmail(username)
                         .orElseThrow(() -> new UsernameNotFoundException("User not found"));
     }
@@ -44,4 +43,4 @@ public class AppConfiguration {
     }
 
 
-}
+}*/

@@ -1,5 +1,5 @@
 package com.sena.lunches.config;
-
+/*
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -29,12 +29,11 @@ public class JwtFilter extends OncePerRequestFilter {
        final String authHeader = request.getHeader("Authorization");
        final String jwt;
        final String userEmail;
-       if (authHeader == null || !authHeader.startsWith("Barrear")){
-           filterChain.doFilter(request, response);
-           return;
+        if (authHeader == null || !authHeader.startsWith("Bearer")) {
+            filterChain.doFilter(request, response);
+            return;
         }
        jwt = authHeader.substring(7);
-
        userEmail = jwtService.getUserName(jwt);
 
        if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {
@@ -51,4 +50,4 @@ public class JwtFilter extends OncePerRequestFilter {
        }
        filterChain.doFilter(request, response);
     }
-}
+}*/

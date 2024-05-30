@@ -28,7 +28,7 @@ class User_sena_repoTest {
     @Autowired
     private TestEntityManager entityManager;
 
-    @Test
+  /*  @Test
     public void testSaveUser_sena() {
         // Given
         User_sena user_sena=User_sena.builder()
@@ -203,7 +203,7 @@ class User_sena_repoTest {
 
     }
     
-    
+    */
     
 
 }

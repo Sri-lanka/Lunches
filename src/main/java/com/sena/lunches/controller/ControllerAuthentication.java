@@ -1,5 +1,5 @@
 package com.sena.lunches.controller;
-
+/*
 import com.sena.lunches.controller.models.AuthReponse;
 import com.sena.lunches.controller.models.AuthenticateRequest;
 import com.sena.lunches.controller.models.RegisterRequest;
@@ -27,4 +27,4 @@ public class ControllerAuthentication {
     public ResponseEntity<AuthReponse> authenticate(@RequestBody AuthenticateRequest request){
         return ResponseEntity.ok(authService.authenticate(request));
     }
-}
+}*/

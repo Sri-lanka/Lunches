@@ -19,7 +19,7 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 @Entity
-public class User_sena implements UserDetails {
+public class User_sena /*implements UserDetails*/ {
 
     @Id
     private int id_user;
@@ -114,7 +114,7 @@ public class User_sena implements UserDetails {
     public void setRole(Role role) {
         this.roles = role;
     }
-
+/*
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(roles.name()));
@@ -148,5 +148,5 @@ public class User_sena implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
-    }
+    }*/
 }
