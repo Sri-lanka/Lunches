@@ -1,0 +1,106 @@
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" th:href="@{/css/StylePHome.css}">
+    <script th:src="@{/js/home.js}" defer></script>
+    <title>home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+
+
+
+<div class="head">
+    <div class="img">
+        <img th:src="@{/Img/logo.png}" class="logo">
+    </div>
+    <div class="se">
+        <h1>Servicio Nacional de Aprendizaje</h1>
+    </div>
+</div>
+
+<div class="navegate">
+    <div class="nav1">
+        <a th:href="@{/apprentice/home.html}" class="nav1Icon"><img th:src="@{/Img/home.png}" class="icon" />Home</a>
+        <a th:href="@{/apprentice/data.html}" class="nav1Icon"><img th:src="@{/Img/data.png}" class="icon" />Data</a>
+        <a th:href="@{/apprentice/history.html}" class="nav1Icon"><img th:src="@{/Img/history.webp}"  class="icon" />History</a>
+    </div>
+    <div class="nav2">
+        <a th:href="@{/templates/index.html}" class="logOut"><img th:src="@{/Img/logout.png}" class="icon" />Log Out</a>
+    </div>
+</div>
+
+<div class="screen">
+
+    <div class="profile">
+        <img th:src="@{/Img/data.png}" class="proImg">
+
+            <h3>Luis martinez</h3>
+
+            <h3>Code: 2570120</h3>
+
+            <h3>Status: hold up</h3>
+
+
+    </div>
+
+
+
+    <div class="contH">
+
+        <div class="mail">
+            <header><img th:src="@{/Img/in.png}"  class="icon2">
+                <p>INBOX</p>
+            </header>
+            <div id="inbox" class="table">
+                <table class="inbox">
+                    <tr>
+                        <th>For</th>
+                        <th>Message</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="mesenger">
+            <header><img th:src="@{/Img/mesenger.png}" class="icon2">
+                <p>SEND MESSAGE</p>
+            </header>
+            <div class="form">
+                <form action="" method="post" onsubmit="event.preventDefault(); sendMessage();">
+                    <label for="txtFor">For:</label> <br>
+                    <input class="for" type="text" name="txtFor" id="txtFor" required><br><br>
+                    <label for="txtMensaje">Message:</label>
+                    <textarea  name="txtMensaje" id="txtMensaje" class="txtMensaje" cols="38" rows="10" required
+                               placeholder="New message:"></textarea><br>
+
+                    <label for="txtArchive" class="upload">Upload Archive</label>
+                    <input id="txtArchive" type="file" class="txt" name="txtArchive"/>
+                    <br>
+                    <input class="send" type="submit" name="btnSend" value="Send">
+                </form>
+            </div>
+        </div>
+        <div class="mail">
+            <header><img th:src="@{/Img/out.png}"  class="icon2">
+                <p>OUTBOX</p>
+            </header>
+            <div class="table">
+                <table id="outbox">
+                    <tr>
+                        <th>For</th>
+                        <th>Message</th>
+
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
