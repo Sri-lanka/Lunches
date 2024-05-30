@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add User</title>
+    <link rel="stylesheet" th:href="@{/css/styleForm.css}">
+</head>
+<body>
+<div class="container">
+    <h1 class="logo">Edit User</h1>
+    <form class="userForm" th:object="${userSena}" th:action="${action}" method="post">
+
+        <div class="formGroup">
+            <label>Type document:</label>
+            <input class="form-check-input" type="radio"  name="type_document" id="C.C" th:value= "1" th:checked="${userSena.type_document == 1}"/>C.C
+            <input class="form-check-input" type="radio"  name="type_document" id="T.I" th:value= "2" th:checked="${userSena.type_document == 2}"/>T.I
+
+        </div>
+        <div class="formGroup">
+            <label for="document">Document:</label>
+            <input type="number" id="document" name="document" th:value="${userSena.document}" >
+        </div>
+
+        <div class="formGroup">
+            <label for="Email">Email:</label>
+            <input type="email" id="Email" name="Email" th:value="${userSena.Email}" >
+        </div>
+
+        <div class="formGroup">
+            <label for="telephone">Telephone: </label>
+            <input type="number" id="telephone" name="telephone" th:value="${userSena.telephone}" >
+        </div>
+
+        <div class="formGroup">
+            <button type="submit" class="btnSubmit">Save User</button>
+        </div>
+    </form>
+
+    <br>
+    <button class="btnSubmit"><a th:href="@{'/moduleUser/userData'}"> return page</a></button>
+</div>
+</body>
+</html>

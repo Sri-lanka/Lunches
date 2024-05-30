@@ -55,6 +55,8 @@ public class ControllerUser {
         return "redirect:/";
     }
 
+
+
     @GetMapping("/delete/{idUserSena}")
     public String deleteUser (@PathVariable Integer idUserSena){
         userSenaService.deleteUser_sena(idUserSena);
