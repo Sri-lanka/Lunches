@@ -185,6 +185,12 @@ header{
     border-radius: 8px;
     color: rgb(0, 0, 0);
 }
+p{
+    font-size: 16px;
+    text-align: left;
+    
+
+}
 
 .mail{
     background: #00AF00 ;
