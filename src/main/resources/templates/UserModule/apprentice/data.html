@@ -48,11 +48,12 @@
                     <p th:each="file : ${file}" th:if="${file.id_file == userFile.id_file}">
                         <span th:text="${file.n_file}"></span>
                     </p>
-                    <h2>state:</h2>
-                    <h1>
-                        <span th:if="${user.state == 1}">Active</span>
-                        <span th:if="${user.state == 2}">Disabled</span>
-                    </h1>
+                </h1>
+                <h2>state:</h2>
+                <h1>
+                    <span th:if="${user.state == 1}">Active</span>
+                    <span th:if="${user.state == 2}">Disabled</span>
+                </h1>
             </tr>
         </table>
     </div>

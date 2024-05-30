@@ -27,7 +27,7 @@ public class ControllerApp {
 
             if(login!=null){
 
-                return "redirect:/moduleUser/data";
+                return "redirect:/moduleUser";
 
             } else {
                 return "admin/logIn";
