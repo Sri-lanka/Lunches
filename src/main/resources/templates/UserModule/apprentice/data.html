@@ -25,9 +25,9 @@
 
 <div class="navegate">
     <div class="nav1">
-        <a th:href="@{/apprentice/home.html}" class="nav1Icon"><img th:src="@{/Img/home.png}" class="icon" />Home</a>
-        <a th:href="@{/apprentice/data.html}" class="nav1Icon"><img th:src="@{/Img/data.png}" class="icon" />Data</a>
-        <a th:href="@{/apprentice/history.html}" class="nav1Icon"><img th:src="@{/Img/history.webp}"  class="icon" />History</a>
+        <a th:href="@{/moduleUser}" class="nav1Icon"><img th:src="@{/Img/home.png}" class="icon" />Home</a>
+        <a th:href="@{/moduleUser/userData}" class="nav1Icon"><img th:src="@{/Img/data.png}" class="icon" />Data</a>
+        <a th:href="@{/moduleUser/userHistory}" class="nav1Icon"><img th:src="@{/Img/history.webp}"  class="icon" />History</a>
     </div>
     <div class="nav2">
         <a th:href="@{/templates/index.html}" class="logOut"><img th:src="@{/Img/logout.png}" class="icon" />Log Out</a>
@@ -38,15 +38,23 @@
 <div class="screen">
 
     <div class="profile">
-        <img th:src="@{/Img/data.png}"  class="proImg">
-
-        <h3>Luis martinez</h3>
-
-        <h3>Code: 2570120</h3>
-
-        <h3>Status: hold up</h3>
-
-
+      <img th:src="@{/Img/data.png}"  class="proImg">
+        <table>
+            <tr th:each="user : ${users}" th:if="${user.id_user == 1}">
+                <h2>Name:</h2>
+                <h1 th:text="${user.nameUser}"></h1>
+                <h2>code file:</h2>
+                <h1 th:each="userFile : ${User_File}" th:if="${userFile.id_user == user.id_user}">
+                    <p th:each="file : ${file}" th:if="${file.id_file == userFile.id_file}">
+                        <span th:text="${file.n_file}"></span>
+                    </p>
+                    <h2>state:</h2>
+                    <h1>
+                        <span th:if="${user.state == 1}">Active</span>
+                        <span th:if="${user.state == 2}">Disabled</span>
+                    </h1>
+            </tr>
+        </table>
     </div>
 
     <div class="cont">
@@ -54,41 +62,41 @@
             <caption>DATA</caption>
             <thead>
 
-            <tr>
-                <td data-label="NAME">Luis</td>
-                <td data-label="LAST NAME">Martinez</td>
-                <td data-label="N° DE ID">123456789</td>
-                <td data-label="PHONE" id="phoneCell">322 468 7766</td>
+            <tr th:each="user : ${users}" th:if="${user.id_user == 1}">
+                <td th:text="${user.nameUser}"></td>
+                <td th:text="${user.lastName}"></td>
+                <td th:text="${user.document}"></td>
+
             </tr>
-            <tr>
-                <td data-label="E-MAIL" id="emailCell">LuisMart13@gmail.com</td>
-                <td data-label="BIRTHDATE">10/05/2003</td>
-                <td data-label="ADDRESS" id="addressCell">CLL 12 # 47a Pescadero</td>
-                <td class="file-select">
-                    <p id="nombreArchivo"></p>
+            <tr th:each="user : ${users}" th:if="${user.id_user == 1}">
+                <td th:text="${user.telephone}"></td>
+                <td th:text="${user.email}"></td>
+                <td th:each="Archive : ${Archive}" th:if="${Archive.id_archive == 1}">
+                    <a th:href="@{/archive/files/{id}(id=${Archive.id_archive})}">Download</a>
                 </td>
             </tr>
         </table>
 
-        <div class="button">
+<!--
             <div class="archive">
                 <input type="file" id="archivo" placeholder="Select archive" onchange="mostrarNombre()">
             </div>
+        <div>
+            <form class="userForm" th:object="${userSena}" th:action="${/userData/{idUserSena}}" method="post">
             <br>
             <label for="newEmail">New Email:</label>
-            <input type="text" id="newEmail">
-            <label for="newPhone">New Phone:</label>
-            <input type="text" id="newPhone">
-            <label for="newAddress">New Address:</label>
-            <input type="text" id="newAddress">
-            <button type="button" onclick="updateData()" class="update">Update Data</button>
+                <input type="email" id="newEmail" name="Email" th:value="${userSena.Email}" >
 
+            <label for="telephone">New Phone:</label>
+                <input type="number" id="telephone" name="telephone" th:value="${userSena.telephone}" >
+
+                <button type="submit" class="update">Save User</button>
+            </form>
         </div>
 
     </div>
-
+-->
 </div>
-
 
 
 </body>

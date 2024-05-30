@@ -19,13 +19,9 @@ public class ControllerUser {
 
     @GetMapping
     public String listUser(Model model) {
-        try {
-            List<User_sena> users = userSenaService.getUser_sena();
-            model.addAttribute("currentEndpoint", "/");
-            model.addAttribute("users", users);
-        }catch (Exception e) {
-            System.out.println("Error: " + e);
-        }
+        List<User_sena> users = userSenaService.getUser_sena();
+        model.addAttribute("currentEndpoint", "/");
+        model.addAttribute("users", users);
         return "admin/principal/list-users";
     }
 
