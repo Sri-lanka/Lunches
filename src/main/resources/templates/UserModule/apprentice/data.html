@@ -74,7 +74,11 @@
                 <td th:each="Archive : ${Archive}" th:if="${Archive.id_archive == 1}">
                     <a th:href="@{/archive/files/{id}(id=${Archive.id_archive})}">Download</a>
                 </td>
+                <td>
+                    <a th:href="@{updateUser/{idUserSena}(idUserSena=${user.id_user})}"><img th:src="@{/img/edit.png}" class="icon"></a>
+                </td>
             </tr>
+
         </table>
 
 <!--
