@@ -11,16 +11,16 @@ import java.util.List;
 
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/userSena")
 public class ControllerUser {
 
     @Autowired
     private UserSenaService userSenaService;
 
-    @GetMapping
+    @GetMapping("/listUser")
     public String listUser(Model model) {
         List<User_sena> users = userSenaService.getUser_sena();
-        model.addAttribute("currentEndpoint", "/");
+        model.addAttribute("currentEndpoint", "/userSena/listUser");
         model.addAttribute("users", users);
         return "admin/principal/list-users";
     }
@@ -30,25 +30,24 @@ public class ControllerUser {
         model.addAttribute("userSena",new User_sena());
         model.addAttribute("action", "");
         return "admin/principal/Forms/newUser";
-
     }
     @PostMapping("/newUser")
     public String saveUser (@ModelAttribute User_sena userSena){
         userSenaService.saveUser_sena(userSena);
-        return "redirect:/";
+        return "redirect:/userSena/listUser";
     }
 
     @GetMapping("/editUser/{idUserSena}")
     public String updateUser (@PathVariable Integer idUserSena, Model model){
         model.addAttribute("userSena", userSenaService.getUser_senaById(idUserSena) );
-        model.addAttribute("action","/editUser/" + idUserSena);
+        model.addAttribute("action","/userSena/editUser/" + idUserSena);
         return "admin/principal/Forms/newUser";
     }
 
     @PostMapping("/editUser/{idUserSena}")
     public String updatingUser(@PathVariable Integer idUserSena,@ModelAttribute User_sena userSena){
         userSenaService.updateUser_sena(idUserSena, userSena);
-        return "redirect:/";
+        return "redirect:/userSena/listUser";
     }
 
 
@@ -56,7 +55,7 @@ public class ControllerUser {
     @GetMapping("/delete/{idUserSena}")
     public String deleteUser (@PathVariable Integer idUserSena){
         userSenaService.deleteUser_sena(idUserSena);
-        return "redirect:/";
+        return "redirect:/userSena/listUser";
     }
 
 }

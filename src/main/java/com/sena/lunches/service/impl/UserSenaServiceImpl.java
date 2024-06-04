@@ -31,7 +31,6 @@ public class UserSenaServiceImpl implements UserSenaService {
         User_sena oldUser_sena = userSenaRepo.findById(id).orElse(null);
         if (oldUser_sena != null){
             oldUser_sena.setDocument(userSena.getDocument());
-            oldUser_sena.setRole(userSena.getRole());
             oldUser_sena.setType_document(userSena.getType_document());
             oldUser_sena.setNameUser(userSena.getNameUser());
             oldUser_sena.setLastName(userSena.getLastName());
@@ -39,6 +38,7 @@ public class UserSenaServiceImpl implements UserSenaService {
             oldUser_sena.setTelephone(userSena.getTelephone());
             oldUser_sena.setKeyword(userSena.getKeyword());
             oldUser_sena.setState(userSena.getState());
+            oldUser_sena.setRoles(userSena.getRoles());
             return userSenaRepo.save(oldUser_sena);
         }
         return null;

@@ -28,24 +28,20 @@ class User_sena_repoTest {
     @Autowired
     private TestEntityManager entityManager;
 
-  /*  @Test
+   @Test
     public void testSaveUser_sena() {
         // Given
         User_sena user_sena=User_sena.builder()
                 .id_user(12)
                 .document(11)
                 .type_document(1)
-                .rol(1)
-                .name_1("blue")
-                .name_2("black")
-                .last_name_1("asdf")
-                .last_name_2("fdas")
-                .age(18)
-                .Email("asdfsag@gmail.com")
+                .roles(1)
+                .nameUser("blue")
+                .lastName("asdf")
+                .email("asdfsag@gmail.com")
                 .telephone(3216549872L)
                 .keyword("1234")
                 .state(1)
-                .id_benefit(11)
                 .build();
         // When
         User_sena savedUser_sena = entityManager.persist(user_sena);
@@ -60,7 +56,7 @@ class User_sena_repoTest {
         assertThat(retrievedUser_sena.get().getState()).isEqualTo(1); // Verify attribute value
         
     }
-    @Test
+   /* @Test
     public void testGetUser_sena(){
         // Given
         User_sena user_sena=User_sena.builder()

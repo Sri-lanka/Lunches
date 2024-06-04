@@ -19,21 +19,26 @@ public class ControllerApp {
         return "index";
     }
 
+
     @PostMapping("/loginPro")
-    public String verifProfessional(@RequestParam int document, @RequestParam String keyword){
+    public String verifProfessional(@RequestParam Integer document, @RequestParam String keyword){
         try {
-            User_sena login=null;
-            login=userSenaRepo.findByDocumentAndKeyword(document,keyword);
+            User_sena user=null;
+            user=userSenaRepo.findByDocumentAndKeyword(document,keyword);
+            if(user!=null){
+                if(user.getRoles()==1){
+                    return "redirect:/moduleUser/" + document;
 
-            if(login!=null){
-
-                return "redirect:/moduleUser";
-
+                }if(user.getRoles()==2 || user.getRoles()==3){
+                    return "redirect:/userSena/listUser";
+                }else{
+                    return "redirect:/login";
+                }
             } else {
-                return "admin/logIn";
+                return "redirect:/login";
             }
         }catch (Exception e){
-            return "admin/logIn";
+            return "redirect:/login";
         }
     }
 }

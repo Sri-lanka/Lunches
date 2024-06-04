@@ -36,7 +36,7 @@
 
 <div class="screen">
 
-    <div class="profile">
+    <!--<div class="profile">
         <img th:src="@{/Img/data.png}" class="proImg">
         <table>
             <tr th:each="user : ${users}" th:if="${user.id_user == 1}">
@@ -52,6 +52,37 @@
                         <span th:if="${user.state == 1}">Active</span>
                         <span th:if="${user.state == 2}">Disabled</span>
                     </h1>
+            </tr>
+        </table>
+    </div>-->
+
+    <div class="profile">
+        <img th:src="@{/Img/data.png}" class="proImg">
+        <table>
+            <tr>
+                <th>Name:</th>
+                <td th:text="${user.nameUser}"></td>
+            </tr>
+            <tr>
+                <th>Document:</th>
+                <td th:text="${user.document}"></td>
+            </tr>
+            <tr>
+                <th>Code file:</th>
+                <td>
+                    <ul>
+                        <li th:each="userFile : ${User_File}">
+                            <span th:text="${userFile.codeFile}"></span>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <th>State:</th>
+                <td>
+                    <span th:if="${user.state == 1}">Active</span>
+                    <span th:if="${user.state == 2}">Disabled</span>
+                </td>
             </tr>
         </table>
     </div>

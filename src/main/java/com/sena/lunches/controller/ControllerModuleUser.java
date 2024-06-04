@@ -20,12 +20,13 @@ import java.util.List;
 
 
 @Controller
-@RequestMapping("/moduleUser")
+@RequestMapping("/moduleUser/{document}")
 public class ControllerModuleUser {
 
     @Autowired
     private UserSenaService userSenaService;
-
+    @Autowired
+    private User_sena_repo userSenaRepo;
 
     @Autowired
     private UserFileService userFileService;
@@ -36,16 +37,18 @@ public class ControllerModuleUser {
 
 
     @GetMapping
-    public  String homeUser(Model model){
+    public  String homeUser(Model model,int document){
+        User_sena user = userSenaRepo.findByDocument(document);
         List<User_sena> users = userSenaService.getUser_sena();
         model.addAttribute("users", users);
         List<User_file> user_fileData = userFileService.getUser_file();
         model.addAttribute("User_File", user_fileData);
         List<File_sena> file_senaData = fileService.getFile_sena();
         model.addAttribute("file", file_senaData);
-        return "UserModule/apprentice/home";
 
+        return "UserModule/apprentice/home";
     }
+
 
     @GetMapping("/userData")
     public String dataUser(Model model) {
@@ -72,8 +75,9 @@ public class ControllerModuleUser {
     }
 
     @GetMapping("/updateUser/{idUserSena}")
-    public String updateUser (@PathVariable Integer idUserSena, Model model){
-        model.addAttribute("userSena", userSenaService.getUser_senaById(idUserSena) );
+    public String updateUser(@PathVariable Integer idUserSena, Model model){
+        User_sena userSena = userSenaService.getUser_senaById(idUserSena);
+        model.addAttribute("userSena", userSena);
         model.addAttribute("action","/moduleUser/updateUser/" + idUserSena);
         return "UserModule/apprentice/formU/updateUser";
     }

@@ -24,7 +24,7 @@
                     <p>Select a table:</p>
                 </label>
                 <select id="databaseTables" onchange="window.location.href = this.value;">
-                    <option value="/" th:selected="${currentEndpoint == null || currentEndpoint == '/'}">User</option>
+                    <option value="/userSena/listUser" th:selected="${currentEndpoint ==  '/userSena/listUser'}">User</option>
                     <option value="/assistance/listAssistance" th:selected="${currentEndpoint == '/assistance/listAssistance'}">Assistance</option>
                     <option value="/authorization/listAuthorization" th:selected="${currentEndpoint == '/authorization/listAuthorization'}">Authorization</option>
                     <option value="/program/listProgram" th:selected="${currentEndpoint == '/program/listProgram'}">Program</option>
@@ -47,14 +47,14 @@
                     <th>Id</th>
                     <th>Document</th>
                     <th>T.document</th>
-                    <th>Rol</th>
                     <th>Name</th>
                     <th>Lastname</th>
                     <th>E-mail</th>
                     <th>Phone</th>
                     <th>State</th>
                     <th>Keyword</th>
-                    <th class="button"><a th:href="@{/newUser}"><img th:src="@{/img/add.webp}" class="icon"></a>
+                    <th>Rol</th>
+                    <th class="button"><a th:href="@{/userSena/newUser}"><img th:src="@{/img/add.webp}" class="icon"></a>
                     </th>
                 </tr>
                 </thead>
@@ -66,23 +66,23 @@
                         <span th:if="${user.type_document == 1}">C.C</span>
                         <span th:if="${user.type_document  == 2}">T.I</span>
                     </td>
-                    <!--<td>
-                        <span th:if="${user.roles == 1}">Beneficiary</span>
-                        <span th:if="${user.roles == 2}">Admin</span>
-                        <span th:if="${user.roles == 3}">manager</span>
-                    </td>-->
                     <td th:text="${user.nameUser}"></td>
                     <td th:text="${user.lastName}"></td>
-                    <td th:text="${user.Email}" id="email"></td>
+                    <td th:text="${user.email}" id="email"></td>
                     <td th:text="${user.telephone}"></td>
                     <td>
                         <span th:if="${user.state == 1}">Active</span>
                         <span th:if="${user.state == 2}">Disabled</span>
                     </td>
                     <td th:text="${user.keyword}"></td>
+                    <td>
+                        <span th:if="${user.roles == 1}">User</span>
+                        <span th:if="${user.roles == 2}">Admin</span>
+                        <span th:if="${user.roles == 3}">Manager</span>
+                    </td>
                     <td class="button">
-                        <a th:href="@{/editUser/{idUserSena}(idUserSena=${user.id_user})}"><img th:src="@{/img/edit.png}" class="icon"></a>
-                        <a th:href="@{/delete/{idUserSena}(idUserSena=${user.id_user})}" class="delete"><img th:src="@{/img/delate.webp}" class="icon"></a>
+                        <a th:href="@{/userSena/editUser/{idUserSena}(idUserSena=${user.id_user})}"><img th:src="@{/img/edit.png}" class="icon"></a>
+                        <a th:href="@{/userSena/delete/{idUserSena}(idUserSena=${user.id_user})}" class="delete"><img th:src="@{/img/delate.webp}" class="icon"></a>
                     </td>
                 </tr>
                 </tbody>

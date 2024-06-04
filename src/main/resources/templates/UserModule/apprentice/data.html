@@ -62,7 +62,6 @@
         <table class="table">
             <caption>DATA</caption>
             <thead>
-
             <tr th:each="user : ${users}" th:if="${user.id_user == 1}">
                 <td th:text="${user.nameUser}"></td>
                 <td th:text="${user.lastName}"></td>
@@ -79,7 +78,6 @@
                     <a th:href="@{updateUser/{idUserSena}(idUserSena=${user.id_user})}"><img th:src="@{/img/edit.png}" class="icon"></a>
                 </td>
             </tr>
-
         </table>
 
 <!--
