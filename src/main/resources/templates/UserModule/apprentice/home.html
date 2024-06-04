@@ -40,18 +40,18 @@
         <img th:src="@{/Img/data.png}" class="proImg">
         <table>
             <tr th:each="user : ${users}" th:if="${user.id_user == 1}">
-                <h2>Name:</h2>
-                <h1 th:text="${user.nameUser}"></h1>
-                <h2>code file:</h2>
-                <h1 th:each="userFile : ${User_File}" th:if="${userFile.id_user == user.id_user}">
-                    <p th:each="file : ${file}" th:if="${file.id_file == userFile.id_file}">
-                        <span th:text="${file.n_file}"></span>
+                <td>
+                    <p th:text="${user.nameUser}"></p>
+                    <p>code file:</p>
+                    <p th:each="userFile : ${User_File}" th:if="${userFile.id_user == user.id_user}">
+                        <span th:each="file : ${file}" th:if="${file.id_file == userFile.id_file}" th:text="${file.n_file}"></span>
                     </p>
-                    <h2>state:</h2>
-                    <h1>
+                    <p>state:</p>
+                    <p>
                         <span th:if="${user.state == 1}">Active</span>
                         <span th:if="${user.state == 2}">Disabled</span>
-                    </h1>
+                    </p>
+                </td>
             </tr>
         </table>
     </div>-->
