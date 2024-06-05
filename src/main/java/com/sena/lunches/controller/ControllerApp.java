@@ -27,7 +27,7 @@ public class ControllerApp {
             user=userSenaRepo.findByDocumentAndKeyword(document,keyword);
             if(user!=null){
                 if(user.getRoles()==1){
-                    return "redirect:/moduleUser/" + document;
+                    return "redirect:/moduleUser/home/" + document;
 
                 }if(user.getRoles()==2 || user.getRoles()==3){
                     return "redirect:/userSena/listUser";

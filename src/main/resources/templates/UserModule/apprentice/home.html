@@ -25,37 +25,16 @@
 
 <div class="navegate">
     <div class="nav1">
-        <a th:href="@{/moduleUser}" class="nav1Icon"><img th:src="@{/Img/home.png}" class="icon" />Home</a>
-        <a th:href="@{/moduleUser/userData}" class="nav1Icon"><img th:src="@{/Img/data.png}" class="icon" />Data</a>
-        <a th:href="@{/moduleUser/userHistory}" class="nav1Icon"><img th:src="@{/Img/history.webp}"  class="icon" />History</a>
+        <a th:href="@{/moduleUser/home/{document}(document=${user.document})}" class="nav1Icon"><img th:src="@{/Img/home.png}" class="icon" />Home</a>
+        <a th:href="@{/moduleUser/userData/{document}(document=${user.document})}" class="nav1Icon"><img th:src="@{/Img/data.png}" class="icon" />Data</a>
+        <a th:href="@{/moduleUser/userHistory/{document}(document=${user.document})}" class="nav1Icon"><img th:src="@{/Img/history.webp}"  class="icon" />History</a>
     </div>
     <div class="nav2">
-        <a th:href="@{/templates/index.html}" class="logOut"><img th:src="@{/Img/logout.png}" class="icon" />Log Out</a>
+        <a th:href="@{/login}" class="logOut"><img th:src="@{/Img/logout.png}" class="icon" />Log Out</a>
     </div>
 </div>
 
 <div class="screen">
-
-    <!--<div class="profile">
-        <img th:src="@{/Img/data.png}" class="proImg">
-        <table>
-            <tr th:each="user : ${users}" th:if="${user.id_user == 1}">
-                <td>
-                    <p th:text="${user.nameUser}"></p>
-                    <p>code file:</p>
-                    <p th:each="userFile : ${User_File}" th:if="${userFile.id_user == user.id_user}">
-                        <span th:each="file : ${file}" th:if="${file.id_file == userFile.id_file}" th:text="${file.n_file}"></span>
-                    </p>
-                    <p>state:</p>
-                    <p>
-                        <span th:if="${user.state == 1}">Active</span>
-                        <span th:if="${user.state == 2}">Disabled</span>
-                    </p>
-                </td>
-            </tr>
-        </table>
-    </div>-->
-
     <div class="profile">
         <img th:src="@{/Img/data.png}" class="proImg">
         <table>
@@ -69,12 +48,10 @@
             </tr>
             <tr>
                 <th>Code file:</th>
-                <td>
-                    <ul>
-                        <li th:each="userFile : ${User_File}">
-                            <span th:text="${userFile.codeFile}"></span>
-                        </li>
-                    </ul>
+                <td th:each="userFile : ${userFile}" th:if="${userFile.id_user == user.id_user}">
+
+                  <span th:each="file : ${file}" th:if="${file.id_file == userFile.id_file}" th:text="${file.n_file}"></span>
+
                 </td>
             </tr>
             <tr>
