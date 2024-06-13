@@ -36,15 +36,14 @@
         <img th:src="@{/Img/data.png}" class="proImg">
         <table>
             <tr>
-                <th>Name:</th>
-                <td th:text="${user.nameUser}"></td>
+                <td colspan="2"> <p class="p1" th:text="${user.nameUser}"></td>
             </tr>
             <tr>
-                <th>Document:</th>
+                <th><p>Document:</p></th>
                 <td th:text="${user.document}"></td>
             </tr>
             <tr>
-                <th>Code file:</th>
+                <th><p>Code file:</p></th>
                 <td th:each="userFile : ${userFile}" th:if="${userFile.id_user == user.id_user}">
 
                     <span th:each="file : ${file}" th:if="${file.id_file == userFile.id_file}" th:text="${file.n_file}"></span>
@@ -52,7 +51,7 @@
                 </td>
             </tr>
             <tr>
-                <th>State:</th>
+                <th><p>State:</p></th>
                 <td>
                     <span th:if="${user.state == 1}">Active</span>
                     <span th:if="${user.state == 2}">Disabled</span>

@@ -2,6 +2,16 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.column {
+  width: 100%;
+}
+
+@media (min-width: 600px) {
+  .column {
+    width: 50%;
+  }
+}
+
 body{
     width: 100%;
     margin: 0%;
@@ -133,6 +143,16 @@ a:link {
     box-shadow: 7px 7px 7px #076b0393;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
+
+.profile table th p {
+   text-align: left;
+}
+
+.p1{
+    font-size: 20px;
+    font-weight: bold;
+}
+
 }
 .proImg{
     width: 70%;
@@ -185,12 +205,11 @@ header{
     margin: 10px;
     border-radius: 8px;
     color: rgb(0, 0, 0);
+
 }
 p{
     font-size: 16px;
     text-align: left;
-    
-
 }
 
 .mail{

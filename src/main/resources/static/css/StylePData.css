@@ -143,6 +143,15 @@ a:link {
     border-bottom-right-radius: 10px;
 }
 
+.profile table th p {
+   text-align: left;
+}
+
+.p1{
+    font-size: 20px;
+    font-weight: bold;
+}
+
 .proImg {
     width: 70%;
     margin-top: 10px;
