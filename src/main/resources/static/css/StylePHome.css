@@ -5,7 +5,7 @@
 body{
     width: 100%;
     margin: 0%;
-    background: lightgray  ;
+    background: #ebeaea;
 
     height: 90vh;
 
@@ -43,75 +43,76 @@ body{
     color: black;
 }
 
-.navegate{
-    background: #00AF00 ;
-    font-family: "calibri" ;
+.navegate {
+    background: #00af00;
+    font-family: "calibri";
     font-size: 20px;
     color: #000000;
     display: flex;
-    grid-template-columns:  1fr 1fr;
+    grid-template-columns: 1fr 1fr;
 }
-.icon{
+
+.icon {
     height: 1.25rem;
     margin-right: 0.5rem;
     -webkit-filter: invert();
     filter: invert();
 }
 
+.nav1Icon {
+    display: inline-flex;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.783);
+    text-decoration: none;
+    padding: 0.5rem;
+}
 
-.nav1{
+.nav1Icon:hover {
+    background-color: #0f0;
+    color: rgb(0, 0, 0);
+    border-radius: 3px;
+}
+
+.nav1 {
     position: relative;
     margin-bottom: 0px;
     border: #000000;
     flex: 1;
 }
 
-.nav1Icon{
-    display: inline-flex;
-    align-items: center;
-    color:  rgba(255, 255, 255, 0.783);
-    text-decoration: none;
-    padding: .5rem;
-}
-
-.nav1Icon:hover{
-    background-color:#0f0;
-    color: rgb(0, 0, 0);
-    border-radius: 3px;
-}
-
-.nav1Icon:hover > .icon {
+.nav1Icon:hover>.icon {
     -webkit-filter: none;
     filter: none;
 }
 
-.nav2{
+.nav2 {
     position: relative;
     margin-bottom: 0px;
     border: #000000;
 }
-.logOut{
+
+.logOut {
     display: inline-flex;
     align-items: center;
-    color:  rgba(255, 255, 255, 0.783);
+    color: rgba(255, 255, 255, 0.783);
     text-decoration: none;
-    padding: .5rem;
-    margin-right: .5rem;
+    padding: 0.5rem;
+    margin-right: 0.5rem;
 }
 
-.logOut:hover{
-    background-color:#0f0;
+.logOut:hover {
+    background-color: #0f0;
     color: #000000;
     border-radius: 3px;
 }
-.logOut:hover > .icon {
+
+.logOut:hover>.icon {
     -webkit-filter: none;
     filter: none;
 }
 
-
-a:link{
-    color: rgba(255, 255, 255, 0.783);
+a:link {
+    color: black;
 }
 
 .screen{
