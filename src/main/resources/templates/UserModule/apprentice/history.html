@@ -67,8 +67,25 @@
                 <option value="2">reports</option>
                 <option value="3">excuses</option>
             </select>
-
         </div>
+
+        <table class="table table-dark">
+            <p>list message</p>
+            <thead class="thead-dark">
+            <tr>
+                <th>Description</th>
+                <th>Archive</th>
+                <th>Date send</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="Message : ${message}">
+                <td th:text="${Message.description_message}"></td>
+                <td th:text="${Message.id_archive}"></td>
+                <td th:text="${Message.date_send}"></td>
+            </tr>
+            </tbody>
+        </table>
 
     </div>
 </div>

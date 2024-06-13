@@ -14,7 +14,6 @@ import java.time.LocalDate;
 public class Message {
     @Id
     private  int id_message;
-    private int id_user;
     private int id_archive;
     private int typeMessage;
     private String description_message;
@@ -28,13 +27,7 @@ public class Message {
         this.id_message = id_message;
     }
 
-    public int getId_user() {
-        return id_user;
-    }
 
-    public void setId_user(int id_user) {
-        this.id_user = id_user;
-    }
 
     public String getDescription_message() {
         return description_message;

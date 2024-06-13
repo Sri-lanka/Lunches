@@ -73,9 +73,13 @@
             </header>
             <div id="inbox" class="table">
                 <table class="inbox">
-                    <tr>
+                    <tr th:each="user : ${user}">
                         <th>For</th>
                         <th>Message</th>
+                    </tr>
+                    <tr>
+                        <td th:text="${user.nameUser}"></td>
+                        <td></td>
                     </tr>
                 </table>
             </div>

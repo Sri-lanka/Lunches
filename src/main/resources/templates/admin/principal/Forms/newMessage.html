@@ -14,10 +14,7 @@
             <label>ID:</label>
             <input type="number" id="id_message" name="id_message" th:field="*{id_message}" required>
         </div>
-        <div class="formGroup">
-            <label for="id_user">ID User:</label>
-            <input type="number" id="id_user" name="id_user" th:value="${message.id_user}" required>
-        </div>
+
         <div class="formGroup">
             <label>ID Archive:</label>
             <input type="number" id="id_archive" name="id_archive" th:field="${message.id_archive}" required>

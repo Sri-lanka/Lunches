@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Message</title>
+    <link rel="stylesheet" th:href="@{/css/styleForm.css}">
+</head>
+<body>
+<div class="container">
+    <h1 class="logo">Create/Edit Message</h1>
+    <form class="messageForm" th:object="${userMessage}" th:action="${action}" method="post">
+        <div class="formGroup">
+            <label>ID:</label>
+            <input type="number" id="idUserMessage" name="idUserMessage" th:field="*{idUserMessage}" required>
+        </div>
+
+        <div class="formGroup">
+            <label>ID User:</label>
+            <input type="number" id="id_user" name="id_user" th:field="${userMessage.id_user}" required>
+        </div>
+
+        <div class="formGroup">
+            <label>ID Message :</label>
+            <input type="number" id="id_message" name="id_message" th:value="${userMessage.id_message}" required>
+        </div>
+
+        <div class="formGroup">
+            <label>Recipient</label>
+            <input type="number" id="recipient" name="recipient" th:value="${userMessage.recipient}" required>
+        </div>
+
+        <div class="formGroup">
+            <button type="submit" class="btnSubmit">Save UserMessage</button>
+        </div>
+    </form>
+
+    <br>
+    <button class="btnSubmit"><a th:href="@{/userMessage/listUserMessage}"> return page</a></button>
+</div>
+</body>
+</html>

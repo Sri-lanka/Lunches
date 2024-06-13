@@ -1,15 +1,10 @@
 package com.sena.lunches.controller;
 
-import com.sena.lunches.entities.User_sena;
+import com.sena.lunches.entities.*;
 
-import com.sena.lunches.entities.Archive;
-import com.sena.lunches.entities.File_sena;
-import com.sena.lunches.entities.User_file;
+
 import com.sena.lunches.repository.User_sena_repo;
-import com.sena.lunches.service.ArchiveService;
-import com.sena.lunches.service.FileService;
-import com.sena.lunches.service.UserFileService;
-import com.sena.lunches.service.UserSenaService;
+import com.sena.lunches.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,6 +29,8 @@ public class ControllerModuleUser {
     @Autowired
     private  ArchiveService archiveService;
 
+    @Autowired
+    private MessageService messageService;
 
     @GetMapping("/home/{document}")
     public String ListUser(Model model, @PathVariable int document){
@@ -67,6 +64,8 @@ public class ControllerModuleUser {
         model.addAttribute("userFile", user_fileData);
         List<File_sena> file_senaData = fileService.getFile_sena();
         model.addAttribute("file", file_senaData);
+        List<Message> messageData = messageService.getMessage();
+        model.addAttribute("message", messageData);
         return "UserModule/apprentice/history";
     }
 
