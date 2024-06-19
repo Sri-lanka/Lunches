@@ -20,6 +20,11 @@ public class MessageServiceImpl  implements MessageService {
     }
 
     @Override
+    public List<Message> findByTypeMessage(int typeMessage) {
+            return message_repo.findByTypeMessage(typeMessage);
+    }
+
+    @Override
     public Message saveMessage(Message message) {
         return message_repo.save(message);
     }

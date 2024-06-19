@@ -5,6 +5,7 @@ import java.util.List;
 
 public interface AssistanceService {
     public List<Assistance> getAssistance();
+    public List<Assistance> findByAssistance(int id_user);
 
     public Assistance saveAssistance(Assistance assistance);
 

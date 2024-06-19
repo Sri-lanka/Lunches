@@ -3,6 +3,7 @@ package com.sena.lunches.controller;
 import com.sena.lunches.entities.*;
 
 
+import com.sena.lunches.repository.Message_repo;
 import com.sena.lunches.repository.User_sena_repo;
 import com.sena.lunches.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,8 @@ public class ControllerModuleUser {
 
     @Autowired
     private MessageService messageService;
+    @Autowired
+    private Message_repo message_repo;
 
     @GetMapping("/home/{document}")
     public String ListUser(Model model, @PathVariable int document){
@@ -57,15 +60,17 @@ public class ControllerModuleUser {
     }
 
     @GetMapping("/userHistory/{document}")
-    public String historyUser(Model model, @PathVariable int document) {
+    public String historyUser(Model model, @PathVariable int document,@RequestParam(value = "typeMessage", defaultValue = "1") int typeMessage) {
         User_sena userSena = userSenaRepo.findByDocument(document);
         model.addAttribute("user",userSena);
         List<User_file> user_fileData = userFileService.getUser_file();
         model.addAttribute("userFile", user_fileData);
         List<File_sena> file_senaData = fileService.getFile_sena();
         model.addAttribute("file", file_senaData);
-        List<Message> messageData = messageService.getMessage();
+
+        List<Message> messageData = messageService.findByTypeMessage(typeMessage);
         model.addAttribute("message", messageData);
+
         return "UserModule/apprentice/history";
     }
 
