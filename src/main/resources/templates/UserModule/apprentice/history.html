@@ -66,35 +66,53 @@
             <select name="typeMessage" id="typeMessage">
                 <option value="1" th:selected="${typeMessage == 1}">Excuse </option>
                 <option value="2" th:selected="${typeMessage == 2}">Report </option>
+                <option value="3" th:selected="${typeMessage == 3}">Attendance </option>
                 <!--<option value="2">reports</option>
                 <option value="3">excuses</option>-->
             </select>
             <button type="submit">Filter</button>
             </form>
-            <!--<select class="selectHistory">
-                <option value="">select</option>
-                <option value="1">attendance</option>
-                <option value="2">reports</option>
-                <option value="3">excuses</option>
-            </select>-->
+
         </div>
 
-        <table class="table table-dark">
+        <table class="table table-dark" th:if="${typeMessage != 3}">
             <thead class="thead-dark">
             <tr>
                 <th>Description</th>
                 <th>Archive</th>
                 <th>Date send</th>
+                <th>Recipient</th>
             </tr>
             </thead>
-            <tbody>
-            <tr th:each="Message : ${message}">
+            <tbody th:each="userMessageData : ${userMessageData}" th:if="${userMessageData.id_user == user.id_user}">
+            <tr th:each="Message : ${message}" th:if="${Message.id_message == userMessageData.id_message || userMessageData.recipient == user.id_user}">
                 <td th:text="${Message.description_message}"></td>
-                <td th:text="${Message.id_archive}"></td>
+                <td th:each="Archive : ${Archive}" th:if="${Archive.id_archive == Message.id_archive}"> <a th:href="@{/archive/files/{id}(id=${Archive.id_archive})}">Download</a> </td>
                 <td th:text="${Message.date_send}"></td>
+                <td  th:text="${userMessageData.recipient}"></td>
             </tr>
             </tbody>
         </table>
+
+        <table class="table table-dark" th:if="${typeMessage == 3}">
+            <p>list Assistance</p>
+            <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>ID Authorization</th>
+                <th>time</th>
+            </tr>
+            </thead>
+            <tbody th:each="Authorization : ${authorization}" th:if="${Authorization.id_user == user.id_user}">
+            <tr th:each="assist : ${assistance}" th:if="${assist.id_assistance == Authorization.id_assistance}">
+                <td th:text="${assist.id_assistance}"></td>
+                <td th:text="${assist.id_authorization}"></td>
+                <td th:text="${assist.date_time}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+
 
     </div>
 </div>
