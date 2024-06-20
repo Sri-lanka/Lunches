@@ -74,16 +74,17 @@
             <div id="inbox" class="table">
                 <table class="inbox">
                     <tr th:each="user : ${user}">
-                        <th>For</th>
-                        <th>Message</th>
+                        <th class="text" >For</th>
+                        <th class="text">Message</th>
                     </tr>
-                    <tr>
-                        <td th:text="${user.nameUser}"></td>
-                        <td></td>
+                    <tr th:each="Message : ${message}">
+                        <td th:text="${Message.id_archive}" class="for"></td>
+                        <td class="message" th:text="${Message.description_message}"></td>
                     </tr>
                 </table>
             </div>
         </div>
+
         <div class="mesenger">
             <header><img th:src="@{/Img/mesenger.png}" class="icon2">
                 <p>SEND MESSAGE</p>
@@ -103,20 +104,7 @@
                 </form>
             </div>
         </div>
-        <div class="mail">
-            <header><img th:src="@{/Img/out.png}"  class="icon2">
-                <p>OUTBOX</p>
-            </header>
-            <div class="table">
-                <table id="outbox">
-                    <tr>
-                        <th>For</th>
-                        <th>Message</th>
 
-                    </tr>
-                </table>
-            </div>
-        </div>
     </div>
 </div>
 </body>

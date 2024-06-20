@@ -215,10 +215,23 @@ p{
 .mail{
     background: #00AF00 ;
     margin-top: 10px;
-    width: 350px;
+    width: 550px;
     height: 250px;
     border-radius: 8px;
 }
+.text{
+    width:120px;
+    text-align: left;
+}
+.for{
+  max-width:100px;
+  overflow:hidden;
+}
+.message{
+  max-width:100px;
+  overflow:hidden;
+}
+
 .form{
     margin: 10px;
     width: 300px;
@@ -250,6 +263,7 @@ p{
     margin-right: 12px;
     margin-bottom: 14px;
 }
+
 
 .upload{
     margin-top: 100px;
