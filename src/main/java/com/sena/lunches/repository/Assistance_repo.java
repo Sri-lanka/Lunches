@@ -8,6 +8,8 @@ import java.util.List;
 
 @Repository
 public interface Assistance_repo extends JpaRepository<Assistance,Integer>{
-
+/*
     List<Assistance> findByAssistance(int id_user);
+    */
+
 }

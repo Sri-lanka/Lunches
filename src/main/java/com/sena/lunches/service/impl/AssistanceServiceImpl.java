@@ -17,6 +17,8 @@ public class AssistanceServiceImpl implements AssistanceService{
     public List<Assistance> getAssistance() {return assistance_repo.findAll();
     }
 
+
+
     @Override
     public Assistance saveAssistance (Assistance assistance) {return assistance_repo.save(assistance);
     }
